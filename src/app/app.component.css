@@ -1,0 +1,10 @@
+.toolbar-navegador{
+    background-color: black;
+    max: height 300px ;
+}
+a{
+    color: white;
+}
+.espacio{
+    flex: 1 1 auto;
+}

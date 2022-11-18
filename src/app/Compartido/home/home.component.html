@@ -1,0 +1,54 @@
+
+<div class="buscador">
+    <div  fxLayoutAlign="space-around" >
+        <div>
+            <div class="buscador-descripcion" ><h1 class="buscador-descripcion-texto">Busca y encuentra todas las ofertas de empleo en Chuquisaca</h1></div>
+            <div class="buscador-box">
+                <form class="buscador-box-formulario">
+                    <div fxLayoutAlign="row">
+                    <div>
+                        <mat-form-field class="buscador-box-formulario-input" appearance="fill">
+                            <mat-label>Categoria</mat-label>
+                            <input type="text"
+                                 matInput
+                                 aria-label="Categoria"
+                                 [matAutocomplete]="auto">
+                            <mat-autocomplete #auto="matAutocomplete">
+                                <mat-option *ngFor="let option of options" [value]="option">
+                                    {{option}}
+                                </mat-option>
+                             </mat-autocomplete>
+                        </mat-form-field>
+                    </div>
+    
+                    <div>
+                        <mat-form-field class="buscador-box-formulario-input" appearance="fill">
+                            <mat-label>Categoria</mat-label>
+                            <input type="text"
+                                 matInput
+                                 aria-label="Categoria"
+                                 [matAutocomplete]="auto">
+                            <mat-autocomplete #auto="matAutocomplete">
+                                <mat-option *ngFor="let option of options" [value]="option">
+                                    {{option}}
+                                </mat-option>
+                             </mat-autocomplete>  
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <button class="buscador-boton" mat-button>
+                            Buscar>
+                        </button>
+                    </div>
+                    </div>
+                </form>
+            </div>
+            </div>
+        <div>
+            <img class="buscador-imagen" src="..\assets\logos\logo inicio.png" alt="inicio">
+        </div>
+    </div>
+    <div fxLayoutAlign="center">
+        <h2 class="buscador-segunda-descripicon">Contamos con una bolsa de empleos con todas las ofertas de Chuquisaca</h2>
+    </div>
+</div>
