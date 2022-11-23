@@ -46,8 +46,37 @@
     width: 350px;
   }
 
-  .buscador-segunda-descripicon{
+.buscador-segunda-descripicon{
     color: white;
     font-size: 30px;
     margin-bottom: 5%;
   }
+
+.ofertas-recientes{
+    background-color: black;
+}
+
+.ofertas-recientes-titulo{
+    color: white;
+    font-size: 50px;
+    line-height: 70px;
+    padding: 5%;
+    text-decoration:underline;
+}
+.ofertas-recientes-card{
+    
+    box-shadow:   15px 15px 20px rgba(255, 255, 255, 0.158);
+    background-color: #1e1e1e;
+    margin-bottom: 100px;
+    max-width: 500px;
+    max-width: auto;
+    
+}
+.ofertas-recientes-card-image{
+    
+    height: 200px;
+    width: 500px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:cover;
+}
