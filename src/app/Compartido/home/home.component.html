@@ -37,7 +37,7 @@
                     </div>
                     <div>
                         <button class="buscador-boton" mat-button>
-                            Buscar>
+                            Buscar
                         </button>
                     </div>
                     </div>
@@ -55,23 +55,51 @@
 <div class="ofertas-recientes">
     <div fxLayoutAlign="center"  >
         <h1 class="ofertas-recientes-titulo">Ofertas Recientes</h1>
+    </div >
+    <div fxLayout="row" fxLayoutAlign="center">
+        <div fxLayout="column" >
+            <mat-card class="ofertas-recientes-card"  *ngFor="let option of Ofertas_recientes1">
+                <img mat-card-image class ="ofertas-recientes-card-image" src="https://material.angular.io/assets/img/examples/shiba2.jpg" >
+                <mat-card-content>
+                    <mat-card-title class="card-titulo">
+                        {{option.puesto_empleo}}
+                    </mat-card-title>
+                    <br>
+                    <mat-card-subtitle class="card-subtitulo">
+                        {{option.nombre_empresa}}
+                    </mat-card-subtitle>
+                    <div fxLayoutAlign="space-between">
+                        <span class="card-fecha">Fecha de publicacion: <br> {{option.fecha_publicacion}}</span>
+                        <button class="card-boton" mat-button>
+                        Ver detalles
+                        </button>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+            
+        </div>
+        <div fxLayout="column" >
+            <mat-card class="ofertas-recientes-card" *ngFor="let option of Ofertas_recientes2">
+                <img mat-card-image class ="ofertas-recientes-card-image" src="https://material.angular.io/assets/img/examples/shiba2.jpg" >
+                <mat-card-content>
+                    <mat-card-title class="card-titulo">
+                        {{option.puesto_empleo}}
+                    </mat-card-title>
+                    <br>
+                    <mat-card-subtitle class="card-subtitulo">
+                        {{option.nombre_empresa}}
+                    </mat-card-subtitle>
+                    <div fxLayoutAlign="space-between">
+                        <span class="card-fecha">Fecha de publicacion: <br> {{option.fecha_publicacion}}</span>
+                        <button class="card-boton" mat-button>
+                        Ver detalles
+                        </button>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+
     </div>
-    <div fxLayoutAlign="center">
-        <mat-card class="ofertas-recientes-card">
-            <img mat-card-image class ="ofertas-recientes-card-image" src="https://material.angular.io/assets/img/examples/shiba2.jpg" >
-            <mat-card-content>
-                <mat-card-title>
-                    Cargo empleo
-                </mat-card-title>
-                <mat-card-subtitle>
-                    Nombre empresa
-                </mat-card-subtitle>
-                <span>Fecha de publicacion</span>
-            </mat-card-content>
-        </mat-card>
-        
-        
-        <
-    </div>
+    
 
 </div>
