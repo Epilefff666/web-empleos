@@ -1,23 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { CompartidosService } from '../servicios/compartidos.service';
+import { Router } from '@angular/router';
 import { ofertas_recientesDTO } from '../interfaces/compartido.interfaces';
-import { Router} from '@angular/router';
+import { CompartidosService } from '../servicios/compartidos.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-buscar-empleo',
+  templateUrl: './buscar-empleo.component.html',
+  styleUrls: ['./buscar-empleo.component.css']
 })
-export class HomeComponent implements OnInit {
-  
+export class BuscarEmpleoComponent implements OnInit {
+
   options: string[]=['ingenieria','ventas','administración'];
   Ofertas_recientes1: ofertas_recientesDTO[] = [] ;
   Ofertas_recientes2: ofertas_recientesDTO[] = [] ;
 
-
-  constructor(private compartidosService : CompartidosService, private router:Router) {}
+  constructor(private compartidosService:CompartidosService,private router:Router) { }
 
   ngOnInit(): void {
 
@@ -34,12 +31,10 @@ export class HomeComponent implements OnInit {
       }
     }, error => console.error(error));
 
-    } 
-
-
-
-    navegar(url:string){
-      this.router.navigate([url]);
-    }
   }
 
+  navegar(url:string){
+    this.router.navigate([url]);
+  }
+
+}

@@ -12,6 +12,7 @@ import { MenuComponent } from './Compartido/menu/menu.component';
 import { HomeComponent } from './Compartido/home/home.component';
 import { RegistrarseComponent } from './Compartido/registrarse/registrarse.component';
 import { IngresarComponent } from './Compartido/ingresar/ingresar.component';
+import { BuscarEmpleoComponent } from './Compartido/buscar-empleo/buscar-empleo.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { IngresarComponent } from './Compartido/ingresar/ingresar.component';
     HomeComponent,
     RegistrarseComponent,
     IngresarComponent,
+    BuscarEmpleoComponent,
     
   ],
   imports: [

@@ -23,20 +23,20 @@
     
                     <div>
                         <mat-form-field class="buscador-box-formulario-input" appearance="fill">
-                            <mat-label>Categoria</mat-label>
+                            <mat-label>Palabra clave</mat-label>
                             <input type="text"
                                  matInput
-                                 aria-label="Categoria"
-                                 [matAutocomplete]="auto">
-                            <mat-autocomplete #auto="matAutocomplete">
+                                 aria-label="Categoria">
+                                 <!-- [matAutocomplete]="auto"> -->
+                           <!--  <mat-autocomplete #auto="matAutocomplete">
                                 <mat-option *ngFor="let option of options" [value]="option">
                                     {{option}}
                                 </mat-option>
-                             </mat-autocomplete>  
+                             </mat-autocomplete>   -->
                         </mat-form-field>
                     </div>
                     <div>
-                        <button class="buscador-boton" mat-button>
+                        <button class="buscador-boton" mat-button (click)="navegar('buscar-empleo')">
                             Buscar
                         </button>
                     </div>

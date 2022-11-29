@@ -11,18 +11,12 @@ export class CompartidosService {
 
   constructor(private http: HttpClient) { }
 
-  private apiURL = environment.apiURL + 'EmpleosPublicados';
+  private apiURL = environment.apiURL + 'inicio';
 
   public Obtener_ofertas_recientes(): Observable<ofertas_recientesDTO[]>{
-    return this.http.get<ofertas_recientesDTO[]>(this.apiURL+'/ofertas');
+    return this.http.get<ofertas_recientesDTO[]>(this.apiURL);
     
-   /*  [{
-    id_empleo_publicado : 1 ,
-    puesto_empleo : 'administrador',
-    nombre_empresa : 'epistore',
-    fecha_publicacion :new Date() ,
-    id_perfil_empresa : 1,
-    id_estado : 1
-    }]; */
   }
+
+  /* public Obtener_todas_las_ofertas():Observable<> */
 }

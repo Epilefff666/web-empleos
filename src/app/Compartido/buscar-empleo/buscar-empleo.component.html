@@ -1,0 +1,94 @@
+ <div class="buscador" >
+    <div class="buscador-box" >
+        <form class="buscador-box-formulario">
+            <div fxLayoutAlign="row">
+            <div>
+                <mat-form-field class="buscador-box-formulario-input" appearance="fill">
+                    <mat-label>Categoria</mat-label>
+                    <input type="text"
+                         matInput
+                         aria-label="Categoria"
+                         [matAutocomplete]="auto">
+                    <mat-autocomplete #auto="matAutocomplete">
+                        <mat-option *ngFor="let option of options" [value]="option">
+                            {{option}}
+                        </mat-option>
+                     </mat-autocomplete>
+                </mat-form-field>
+            </div>
+
+            <div>
+                <mat-form-field class="buscador-box-formulario-input" appearance="fill">
+                    <mat-label>Palabra clave</mat-label>
+                    <input type="text"
+                         matInput
+                         aria-label="Categoria">
+                         <!-- [matAutocomplete]="auto"> -->
+                   <!--  <mat-autocomplete #auto="matAutocomplete">
+                        <mat-option *ngFor="let option of options" [value]="option">
+                            {{option}}
+                        </mat-option>
+                     </mat-autocomplete>   -->
+                </mat-form-field>
+            </div>
+            <div>
+                <button class="buscador-boton" mat-button (click)="navegar('buscar-empleo')">
+                    Buscar
+                </button>
+            </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="lista-empleos">
+
+    <div fxLayout="row" fxLayoutAlign="center">
+        <div fxLayout="column" >
+            <mat-card class="lista-empleos-card"  *ngFor="let option of Ofertas_recientes1">
+                <img mat-card-image class ="lista-empleos-card-image" src="https://material.angular.io/assets/img/examples/shiba2.jpg" >
+                <mat-card-content>
+                    <mat-card-title class="card-titulo">
+                        {{option.puesto_empleo}}
+                    </mat-card-title>
+                    <br>
+                    <mat-card-subtitle class="card-subtitulo">
+                        {{option.nombre_empresa}}
+                    </mat-card-subtitle>
+                    <div fxLayoutAlign="space-between">
+                        <span class="card-fecha">Fecha de publicacion: <br> {{option.fecha_publicacion}}</span>
+                        <button class="card-boton" mat-button>
+                        Ver detalles
+                        </button>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+            
+        </div>
+
+
+        <div fxLayout="column" >
+            <mat-card class="lista-empleos-card" *ngFor="let option of Ofertas_recientes2">
+                <img mat-card-image class ="lista-empleos-card-image" src="https://material.angular.io/assets/img/examples/shiba2.jpg" >
+                <mat-card-content>
+                    <mat-card-title class="card-titulo">
+                        {{option.puesto_empleo}}
+                    </mat-card-title>
+                    <br>
+                    <mat-card-subtitle class="card-subtitulo">
+                        {{option.nombre_empresa}}
+                    </mat-card-subtitle>
+                    <div fxLayoutAlign="space-between">
+                        <span class="card-fecha">Fecha de publicacion: <br> {{option.fecha_publicacion}}</span>
+                        <button class="card-boton" mat-button>
+                        Ver detalles
+                        </button>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+
+    </div>
+
+
+</div>

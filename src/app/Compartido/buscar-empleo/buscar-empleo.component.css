@@ -1,0 +1,65 @@
+.buscador{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('src/assets/backgrounds/background-01.jpg');
+    background-color: #142f3f;
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: cover;
+    height:auto;
+    margin: 0px;
+    padding: 0px;
+}
+.buscador-box{
+    padding:3%
+}
+.buscador-boton{
+    background-color: #33bbd1;
+    margin-left: 10%;
+    height: 70px;
+    color: white;
+    border-radius: 15px;
+}
+.buscador-box-formulario{
+    border-radius: 15px;
+    background-color: white;
+    width: 1080px;
+}
+.buscador-box-formulario-input {
+    width: 540px;
+}
+
+.lista-empleos{
+    background-color: black;
+}
+.lista-empleos-card{
+    box-shadow:   5px 5px 50px rgba(163, 163, 163, 0.158);
+    background-color: #2b2b2b;
+    margin-bottom: 100px;
+    max-width: 600px;
+    margin: 50px;
+}
+
+.lista-empleos-card-image{
+    height: 150px;
+    width: 500px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:cover;
+}
+.card-titulo{
+    color: white;
+    font-size: 28px;
+    font-weight: bolder;
+}
+.card-subtitulo{
+    color: white;
+    font-size: 22px;
+}
+.card-fecha{
+    color: #33bbd1;
+    font-size: 15px;
+}
+.card-boton{
+    background-color:#142f3f;
+    width: 50%;
+    color: white;
+}
