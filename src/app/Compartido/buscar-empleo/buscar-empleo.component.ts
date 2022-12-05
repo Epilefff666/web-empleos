@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ofertas_recientesDTO } from '../interfaces/compartido.interfaces';
+import { ofertas_recientesDTO, todas_las_ofertasDTO } from '../interfaces/compartido.interfaces';
 import { CompartidosService } from '../servicios/compartidos.service';
 
 @Component({
@@ -11,14 +11,14 @@ import { CompartidosService } from '../servicios/compartidos.service';
 export class BuscarEmpleoComponent implements OnInit {
 
   options: string[]=['ingenieria','ventas','administración'];
-  Ofertas_recientes1: ofertas_recientesDTO[] = [] ;
-  Ofertas_recientes2: ofertas_recientesDTO[] = [] ;
+  Ofertas_recientes1: todas_las_ofertasDTO[] = [] ;
+  Ofertas_recientes2: todas_las_ofertasDTO[] = [] ;
 
   constructor(private compartidosService:CompartidosService,private router:Router) { }
 
   ngOnInit(): void {
 
-    this.compartidosService.Obtener_ofertas_recientes()
+    this.compartidosService.Obtener_todas_las_ofertas()
     .subscribe( ofertas_recientes => {
       for( let i=0 ; i< ofertas_recientes.length ; i++){
         console.log(ofertas_recientes[i])

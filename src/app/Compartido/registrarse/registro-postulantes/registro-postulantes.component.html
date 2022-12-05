@@ -1,0 +1,49 @@
+
+
+<div class="registro-contenedor" fxLayoutRows="center">
+    <div>
+        <h1 class="registro-contenedor-titulo">Registro de postulantes</h1>
+     </div>
+     
+        <div class="registro-contenedor-formulario">
+            <form (submit)="guardarCambios()" [formGroup]="form">
+
+                <mat-form-field  appearance="fill" class="formulario-inputs">
+                    <mat-label >Nombre completo</mat-label>
+                    <input formControlName="nombre" matInput>
+                    <mat-error  *ngIf="form.invalid">{{obtenerError()}}</mat-error>
+                </mat-form-field><br>
+
+                <mat-form-field appearance="fill" class="formulario-inputs">
+                    <mat-label>Correo Electronico</mat-label>
+                    <input formControlName="correo" matInput>
+                    <mat-error *ngIf="form.invalid">{{obtenerErrorCorreo()}}</mat-error>
+                </mat-form-field><br>
+
+                <mat-form-field appearance="fill" class="formulario-inputs">
+                    <mat-label>Contraseña</mat-label>
+                    <input formControlName="contraseña" matInput type="password">
+                    <mat-error *ngIf="form.invalid">{{obtenerErrorContrasenia()}}</mat-error>
+                </mat-form-field><br>
+
+                <mat-form-field appearance="fill" class="formulario-inputs">
+                    <mat-label>Confirmar Contraseña</mat-label>
+                    <input formControlName="confirmar_contraseña" matInput type="password" >
+                    <mat-error *ngIf="form.invalid">{{obtenerErrorConfirmacionContrasenia()}}</mat-error>
+                </mat-form-field>
+                
+                <div>
+                    <button  class="boton-cancelar" mat-button routerLink="['/']">
+                        Cancelar
+                    </button>
+
+                    <button  class="boton-registro" mat-button [disabled]="form.invalid" >
+                        Enviar registro
+                    </button>
+                </div>
+
+            </form>
+        </div>
+     
+      
+</div> 

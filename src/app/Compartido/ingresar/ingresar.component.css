@@ -1,0 +1,29 @@
+.registro-contenedor{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('src/assets/backgrounds/background-01.jpg');
+    background-color: #142f3f;
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: cover;
+    height:auto ;
+    margin: 0px;
+    padding: 0px;
+}
+.registro-contenedor-titulo{
+    color: white;
+    font-size: 50px;
+    line-height: 70px;
+    padding: 5% 5% 0% 5%;
+    text-decoration:underline;
+    text-align: center;
+}
+.registro-contenedor-formulario{
+    text-align: center;
+    padding: 0% 10% 20% 10%;
+}
+.formulario-inputs{
+    width: 50%;
+    border-radius:15px ;
+    background-color: white;
+    color: #142f3f;
+    margin: 10px;
+}

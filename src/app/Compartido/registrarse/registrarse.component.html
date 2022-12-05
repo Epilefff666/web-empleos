@@ -1,1 +1,29 @@
-<p>registrarse works!</p>
+
+<div class="registro-contenedor">
+    <div fxLayoutAlign="center">
+        <h1  class="registro-contenedor-titulo">Si estas en busca de empleo debes registrarte como postulante o si buscas ofertar un empleo registrate como una empresa.</h1>
+    </div>
+    <div fxLayoutAlign="center">
+        <h2 class="registro-contenedor-pregunta">¿Qué eres?</h2>
+    </div>
+
+    <div fxLayoutAlign="center">
+        <mat-card class="registro-contenedor-card" [routerLink]="['/registrarse/registro-empresas']">
+            <img mat-card-image class ="registro-contenedor-card-image" src="assets\logos\Empresas_Mesa de trabajo 1.png" >
+            <mat-card-content>
+                <mat-card-title class="card-titulo">
+                    Empresa
+                </mat-card-title>
+            </mat-card-content>
+        </mat-card>
+        
+        <mat-card class="registro-contenedor-card" [routerLink]="['/registrarse/registro-postulantes']" >
+            <img mat-card-image class ="registro-contenedor-card-image" src="assets\logos\Persona_Mesa de trabajo 1.png" >
+            <mat-card-content>
+                <mat-card-title class="card-titulo">
+                    Postulante
+                </mat-card-title>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

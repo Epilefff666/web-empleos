@@ -1,0 +1,39 @@
+<div class="detalle-empleo">
+    <div fxLayout="row" class="detalle-empleo-cabecera">
+        <div fxLayoutAlignRows="center">
+            <img class="detalle-empleo-imagen" src="https://png.pngtree.com/template/20191014/ourlarge/pngtree-real-estate-business-logo-template-building-property-development-and-construction-logo-image_317796.jpg" alt="">
+        </div>
+        <div fxLayoutColumns="center" class=" detalle-empleo-cabecera-descripcion">
+            <h2 class="detalle-empleo-cabecera-titulo">{{detalle_empleo.nombre_empresa}}</h2>
+            <h3 class="detalle-empleo-cabecera-subtitulo">{{detalle_empleo.puesto_empleo}}</h3>
+            <p>
+                <span class="detalle-empleo-cabecera-subtitulo2">Descripcion del la empresa:</span><br>
+                {{detalle_empleo.descripcion_empresa}}
+            </p>
+            <p>
+                <span class="detalle-empleo-cabecera-subtitulo2">Feha Publicacion:</span> 
+                {{detalle_empleo.fecha_publicacion}} &nbsp; &nbsp;
+                <span class="detalle-empleo-cabecera-subtitulo2">Fecha de vencimiento:</span>
+                {{detalle_empleo.fecha_vencimiento}}
+            </p>
+        </div>
+    </div>
+
+    <div class="detalle-empleo-contenido">
+        <span class="detalle-empleo-contenido-subtitulo">DESCRIPCION DEL EMPLEO:</span><br>
+        <p class="detalle-empleo-contenido-descripcion">
+            
+            {{detalle_empleo.descripcion_empleo}}
+        </p>
+        <span class="detalle-empleo-contenido-subtitulo">REQUISITOS DEL EMPLEO:</span><br>
+        <p class="detalle-empleo-contenido-descripcion">
+           
+            {{detalle_empleo.requisitos_empleo}}
+        </p>
+        <div fxLayoutAlign="end">
+            <button class ="detalle-empleo-boton"mat-button>Postular al empleo</button>
+        </div>
+        
+    </div>
+    
+</div>

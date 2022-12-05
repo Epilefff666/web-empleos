@@ -24,7 +24,6 @@ export class HomeComponent implements OnInit {
     this.compartidosService.Obtener_ofertas_recientes()
     .subscribe( ofertas_recientes => {
       for( let i=0 ; i< ofertas_recientes.length ; i++){
-        console.log(ofertas_recientes[i])
         if(i%2 == 0){
          this.Ofertas_recientes1.push(ofertas_recientes[i]) 
         }

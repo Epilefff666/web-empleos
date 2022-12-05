@@ -57,7 +57,7 @@
                     </mat-card-subtitle>
                     <div fxLayoutAlign="space-between">
                         <span class="card-fecha">Fecha de publicacion: <br> {{option.fecha_publicacion}}</span>
-                        <button class="card-boton" mat-button>
+                        <button class="card-boton" mat-button [routerLink]="['/detalle-empleo',option.id_empleo_publicado]">
                         Ver detalles
                         </button>
                     </div>
@@ -80,7 +80,7 @@
                     </mat-card-subtitle>
                     <div fxLayoutAlign="space-between">
                         <span class="card-fecha">Fecha de publicacion: <br> {{option.fecha_publicacion}}</span>
-                        <button class="card-boton" mat-button>
+                        <button class="card-boton" mat-button [routerLink]="['/detalle-empleo',option.id_empleo_publicado]">
                         Ver detalles
                         </button>
                     </div>

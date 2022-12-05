@@ -1,0 +1,68 @@
+.detalle-empleo{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('src/assets/backgrounds/blue minimalist wallpaper.jfif');
+    background-color: #142f3f;
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: cover;
+    height:auto;
+    margin: 0px;
+    padding: 0px;
+}
+.detalle-empleo-cabecera{
+    color: white;
+    padding: 5%;
+}
+.detalle-empleo-imagen{
+    width:300px;
+    border-radius:15px ;
+}
+.detalle-empleo-cabecera-descripcion{
+    margin-left: 5%;
+    margin-top:2% ;
+}
+
+.detalle-empleo-cabecera-titulo{
+    font-weight : bolder;
+    font-size: 50px;
+    color: white;
+}
+.detalle-empleo-cabecera-subtitulo{
+    margin-top: 10%;
+    font-weight : bolder;
+    font-size: 30px;
+    color: white;
+}
+
+.detalle-empleo-cabecera-subtitulo2{
+    font-weight : bolder;
+    font-size: 20px;
+    color: white;
+}
+.detalle-empleo-contenido{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('src/assets/backgrounds/background-02-01.jpg');
+/*     background-color: #313131; */
+    padding: 5%;
+}
+
+.detalle-empleo-contenido-subtitulo{
+    margin-left: 5%;
+    font-weight : bolder;
+    font-size: 27px;
+    color: white;
+}
+
+.detalle-empleo-contenido-descripcion{
+    margin-left:5%;
+    margin-bottom: 5%;
+    color: white;
+    font-size: 20px;
+}
+
+.detalle-empleo-boton{
+    background-color: #33bbd1;
+    margin-left: 10%;
+    height: 70px;
+    color: white;
+    border-radius: 15px;
+    width: 500px;
+}

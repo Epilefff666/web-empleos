@@ -1,0 +1,44 @@
+.registro-contenedor{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('src/assets/backgrounds/blue minimalist wallpaper.jfif');
+    background-color: #142f3f;
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: cover;
+    height:auto;
+    margin: 0px;
+    padding: 0px;
+}
+.registro-contenedor-titulo{
+    color: white;
+    font-size: 40px;
+    line-height: 70px;
+    padding:2% 5% 2% 5%;
+}
+.registro-contenedor-pregunta{
+    color: white;
+    font-size: 35px;
+    line-height: 70px;   
+}
+
+.registro-contenedor-card{
+    
+    box-shadow:   5px 5px 50px rgba(163, 163, 163, 0.158);
+    background-color: #2b2b2b;
+    margin-bottom: 100px;
+    max-width: 600px;
+    margin: 50px;
+}
+.registro-contenedor-card-image{
+    background-color: white;
+    height: 220px;
+    width: 300px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:cover;
+}
+.card-titulo{
+    text-align: center;
+    color: white;
+    font-size: 28px;
+    /* font-weight: bolder; */
+}
