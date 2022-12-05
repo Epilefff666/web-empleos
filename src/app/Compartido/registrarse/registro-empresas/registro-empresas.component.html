@@ -3,35 +3,35 @@
     <div>
         <h1 class="registro-contenedor-titulo">Registro de Empresas</h1>
      </div>
-     
+     <app-mostrar-errores [errores]="errores"></app-mostrar-errores>
     <div class="registro-contenedor-formulario">
 
-        <form (submit)="guardarCambios()"  [formGroup]="form">
+        <form (submit)="registrar(form.value)"  [formGroup]="form">
 
             <mat-form-field appearance="fill" class="formulario-inputs">
                 <mat-label>Nombre de la empresa</mat-label>
-                <input matInput formControlName="nombre">
+                <input matInput formControlName="userName">
                 <mat-error>{{obtenerError()}}</mat-error>
             </mat-form-field><br>
 
 
             <mat-form-field appearance="fill" class="formulario-inputs">
                 <mat-label>Correo Electronico</mat-label>
-                <input matInput formControlName="correo">
+                <input matInput formControlName="email">
                 <mat-error>{{obtenerErrorCorreo()}}</mat-error>
             </mat-form-field><br>
 
 
             <mat-form-field appearance="fill" class="formulario-inputs">
                 <mat-label>Contraseña</mat-label>
-                <input matInput formControlName="contraseña" type="password">
+                <input matInput formControlName="password" type="password">
                 <mat-error>{{obtenerErrorContrasenia()}}</mat-error>
             </mat-form-field><br>
 
 
             <mat-form-field appearance="fill" class="formulario-inputs">
                 <mat-label>Confirmar Contraseña</mat-label>
-                <input matInput formControlName="confirmar_contraseña" type="password">
+                <input matInput formControlName="passwordConfirm" type="password">
                 <mat-error>{{obtenerErrorConfirmacionContrasenia()}}</mat-error>
             </mat-form-field>
 

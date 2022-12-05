@@ -55,6 +55,7 @@ export interface detalle_empleoDTO{
 }
 
 export interface credencialesUsuario{
+    userName:string;
     email:string;
     password:string;
 }

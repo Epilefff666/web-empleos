@@ -1,7 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { MustMatch, ValidadorContraseña } from 'src/app/utilidades/primeraLetraMayuscula';
+import { MustMatch, parsearErroresAPI, ValidadorContraseña } from 'src/app/utilidades/Utilidades';
 import { credencialesUsuario } from '../../interfaces/compartido.interfaces';
+import { SeguridadService } from '../../../seguridad/servicios/seguridad.service';
 
 @Component({
   selector: 'app-registro-empresas',
@@ -10,35 +11,43 @@ import { credencialesUsuario } from '../../interfaces/compartido.interfaces';
 })
 export class RegistroEmpresasComponent implements OnInit {
 
-  constructor( private formBuilder:FormBuilder) { }
+  constructor( private formBuilder:FormBuilder, private seguridadService:SeguridadService) { }
 
   form!: FormGroup;
   
   ngOnInit(): void {
     this.form = this.formBuilder.group({
 
-      nombre:['',{ 
+      userName:['',{ 
         validators:[Validators.required]
       }],
-      correo:['',{ 
+      email:['',{ 
         validators:[Validators.required, Validators.email]
       }],
-      contraseña:['',{ 
+      password:['',{ 
         validators:[Validators.required,ValidadorContraseña() ]
       }],
-      confirmar_contraseña:['',{ 
+      passwordConfirm:['',{ 
         validators:[Validators.required ]
       }]
 
-    },{validators: MustMatch('contraseña','confirmar_contraseña')})
-
-  }
-
-  guardarCambios(){
+    },{validators: MustMatch('password','passwordConfirm')})
     
+
   }
+
+  errores:string[]=[];
+  registrar(credenciales:credencialesUsuario){
+    console.log(credenciales)
+    this.seguridadService.registrar(credenciales)
+    .subscribe( respuesta =>{
+      console.log(respuesta);
+    },errores => this.errores = parsearErroresAPI(errores));
+  }
+
+
   obtenerError(){
-    var nombre = this.form.get('nombre');
+    var nombre = this.form.get('userName');
     
     if(nombre?.hasError('required') ){
       return 'El campo es requerido';
@@ -49,7 +58,7 @@ export class RegistroEmpresasComponent implements OnInit {
   }
 
   obtenerErrorCorreo(){
-    var correo = this.form.get('correo');
+    var correo = this.form.get('email');
     if(correo!.hasError('required')){
       return 'El campo es requerido'
     }
@@ -61,7 +70,7 @@ export class RegistroEmpresasComponent implements OnInit {
   }
 
   obtenerErrorContrasenia(){
-    var contraseña = this.form.get('contraseña');
+    var contraseña = this.form.get('password');
     if(contraseña!.hasError('required')){
       return 'El campo es requerido'
     }
@@ -73,7 +82,7 @@ export class RegistroEmpresasComponent implements OnInit {
   }
   
   obtenerErrorConfirmacionContrasenia(){
-    var contraseña = this.form.get('confirmar_contraseña');
+    var contraseña = this.form.get('passwordConfirm');
     if(contraseña!.hasError('required')){
       return 'El campo es requerido'
     }

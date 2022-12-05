@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { validateBasis } from '@angular/flex-layout';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { primeraLetraMayuscula, MustMatch, ValidadorContraseña } from '../../../utilidades/primeraLetraMayuscula';
+import { primeraLetraMayuscula, MustMatch, ValidadorContraseña } from '../../../utilidades/Utilidades';
 
 @Component({
   selector: 'app-registro-postulantes',

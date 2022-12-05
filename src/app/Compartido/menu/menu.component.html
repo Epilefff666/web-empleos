@@ -19,11 +19,16 @@
 
         <app-autorizado [rol]="' '" >
           <ng-container Autorizado>
-            <button class="toolbar-boton" mat-button (click)="navegar('')">Inicio</button>
+            <div fxLayout="row"> 
+              <button class="toolbar-boton" mat-button (click)="navegar('')">Inicio</button>
 
-            <button class="toolbar-boton" mat-button (click)="navegar('ingresar')">Ingresar</button>
+              <button class="toolbar-boton" mat-button (click)="navegar('ingresar')">Ingresar</button>
 
-            <button class="toolbar-boton" mat-button (click)="navegar('registrarse')">Registrarse</button>
+              <button class="toolbar-boton" mat-button (click)="navegar('registrarse')">Registrarse</button>
+
+            </div>
+            
+            
           </ng-container>
         </app-autorizado >
 
@@ -31,6 +36,7 @@
 
         <app-autorizado [rol]="'empresas'">
           <ng-container Autorizado>
+            <div fxLayout="row">
             <button class="toolbar-boton" mat-button (click)="navegar('empresas/publicar-empleo')">Publicar Empleo</button>
 
             <button class="toolbar-boton" mat-button (click)="navegar('empresas/postulantes')">Postulantes</button>
@@ -38,12 +44,18 @@
             <button class="toolbar-boton" mat-button (click)="navegar('empresas/empleos-publicados')">Empleos Publicados</button>
 
             <button class="toolbar-boton" mat-button (click)="navegar('empresas/perfil')">Perfil</button>
+
+            <img src="https://media.revistagq.com/photos/5ca5e76ac4b7fb5a2aba7800/master/w_1280%2Cc_limit/los_50_hombres_mas_elegantes_de_2015_346935171.jpg" alt="" class="avatar2">
+
+            </div>
           </ng-container>
         </app-autorizado >
 
         <!-- postulantes -->
         <app-autorizado [rol]="'postulantes'">
           <ng-container Autorizado>
+
+            <div fxLayout="row"> 
 
             <button class="toolbar-boton" mat-button (click)="navegar('buscar-empleo')">Buscar empleo</button>
 
@@ -53,13 +65,16 @@
 
             <button class="toolbar-boton" mat-button (click)="navegar('postulantes/perfil')">Perfil</button>
 
+            <img src="https://media.revistagq.com/photos/5ca5e76ac4b7fb5a2aba7800/master/w_1280%2Cc_limit/los_50_hombres_mas_elegantes_de_2015_346935171.jpg" alt="" class="avatar2">
+
+            </div>
           </ng-container>
         </app-autorizado>
         
         <!-- administrador -->
         <app-autorizado [rol]="'administrador'">
           <ng-container Autorizado>
-
+            <div fxLayout="row"> 
             <button class="toolbar-boton" mat-button (click)="navegar('administrador/administrar-usuarios')">usuarios</button>
 
             <button class="toolbar-boton" mat-button (click)="navegar('administrador/administrar-publicaciones')">publicaciones</button>
@@ -68,6 +83,9 @@
 
             <button class="toolbar-boton" mat-button (click)="navegar('administrador/informe-de-datos')">informe de datos</button>
 
+            <img src="https://media.revistagq.com/photos/5ca5e76ac4b7fb5a2aba7800/master/w_1280%2Cc_limit/los_50_hombres_mas_elegantes_de_2015_346935171.jpg" alt="" class="avatar2">
+
+            </div>
           </ng-container>
         </app-autorizado>
 

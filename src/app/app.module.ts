@@ -19,6 +19,7 @@ import { RegistroEmpresasComponent } from './Compartido/registrarse/registro-emp
 import { RegistroPostulantesComponent } from './Compartido/registrarse/registro-postulantes/registro-postulantes.component';
 import { PieDePaginaComponent } from './Compartido/pie-de-pagina/pie-de-pagina.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MostrarErroresComponent } from './Compartido/mostrar-errores/mostrar-errores.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     RegistroEmpresasComponent,
     RegistroPostulantesComponent,
     PieDePaginaComponent,
+    MostrarErroresComponent,
     
   ],
   imports: [
