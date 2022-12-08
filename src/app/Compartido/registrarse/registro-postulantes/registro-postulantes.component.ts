@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { validateBasis } from '@angular/flex-layout';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { primeraLetraMayuscula, MustMatch, ValidadorContraseña } from '../../../utilidades/Utilidades';
+import { MustMatch, ValidadorContraseña, parsearErroresAPI } from '../../../utilidades/Utilidades';
+import { credencialesUsuario } from '../../interfaces/compartido.interfaces';
+import { SeguridadService } from '../../../seguridad/servicios/seguridad.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registro-postulantes',
@@ -10,34 +12,47 @@ import { primeraLetraMayuscula, MustMatch, ValidadorContraseña } from '../../..
 })
 export class RegistroPostulantesComponent implements OnInit {
 
-  constructor(private formBuilder:FormBuilder) { }
+  constructor(private formBuilder:FormBuilder, 
+    private seguridadService:SeguridadService,
+    private router:Router) { }
 
   form!: FormGroup;
 
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-        nombre:['',{
+        /* userName:['',{
           validators:[Validators.required]
-        }],
-        correo:['',{
+        }], */
+        email:['',{
           validators:[Validators.required, Validators.email]
         }],
-        contraseña:['',{
+        password:['',{
           validators:[Validators.required, ValidadorContraseña()]
         }],
-        confirmar_contraseña:['',{
+        passwordConfirm:['',{
           validators:[Validators.required]
-        }]
-    },{validators: MustMatch('contraseña','confirmar_contraseña')})
+        }],
+        role:['postulante']
+    },{validators: MustMatch('password','passwordConfirm')})
   }
 
-  guardarCambios(){
-    
+  errores:string[]=[];
+  registrar(credenciales:credencialesUsuario){
+    console.log(credenciales)
+    this.seguridadService.registrar(credenciales)
+    .subscribe( respuesta =>{
+      this.seguridadService.guardarToken(respuesta);
+      
+      this.router.navigate(['/']);
+      location.reload();
+      /* console.log(respuesta); */
+    },errores => this.errores = parsearErroresAPI(errores));
   }
+
 
   obtenerError(){
-    var nombre = this.form.get('nombre');
+    var nombre = this.form.get('userName');
     
     if(nombre?.hasError('required') ){
       return 'El campo es requerido';
@@ -48,7 +63,7 @@ export class RegistroPostulantesComponent implements OnInit {
   }
 
   obtenerErrorCorreo(){
-    var correo = this.form.get('correo');
+    var correo = this.form.get('email');
     if(correo!.hasError('required')){
       return 'El campo es requerido'
     }
@@ -60,7 +75,7 @@ export class RegistroPostulantesComponent implements OnInit {
   }
 
   obtenerErrorContrasenia(){
-    var contraseña = this.form.get('contraseña');
+    var contraseña = this.form.get('password');
     if(contraseña!.hasError('required')){
       return 'El campo es requerido'
     }
@@ -72,7 +87,7 @@ export class RegistroPostulantesComponent implements OnInit {
   }
   
   obtenerErrorConfirmacionContrasenia(){
-    var contraseña = this.form.get('confirmar_contraseña');
+    var contraseña = this.form.get('passwordConfirm');
     if(contraseña!.hasError('required')){
       return 'El campo es requerido'
     }

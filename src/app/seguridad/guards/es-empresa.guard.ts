@@ -16,7 +16,7 @@ export class EsEmpresaGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-      if(this.seguridadService.obtenerRol()=== 'empresas'){
+      if(this.seguridadService.obtenerRol() === 'empresa'){
         return true;
       }
       else

@@ -3,16 +3,28 @@
     <div>
         <h1 class="registro-contenedor-titulo">Iniciar sesión</h1>
      </div>
+     <app-mostrar-errores [errores]="errores"></app-mostrar-errores>
     <div class="registro-contenedor-formulario">
-        <form action="">
+        <form (submit)="ingresar(form.value)" [formGroup]="form">
             <mat-form-field appearance="fill" class="formulario-inputs">
                 <mat-label>Correo</mat-label>
-                <input matInput>
+                <input formControlName="email" matInput>
+                <mat-error>{{obtenerErrorCorreo()}}</mat-error>
             </mat-form-field><br>
             <mat-form-field appearance="fill" class="formulario-inputs">
                 <mat-label>Contraseña</mat-label>
-                <input matInput type="password">
-            </mat-form-field><br>     
+                <input formControlName="password" matInput type="password">
+                <mat-error>{{obtenerErrorContrasenia()}}</mat-error>
+            </mat-form-field><br>
+            <div>
+                <button  class="boton-registrar"  mat-button routerLink="/registrarse">
+                    Registrar un cuenta
+                </button>
+                <button  class="boton-ingresar" mat-button [disabled]="form.invalid" >
+                    Ingresar
+                </button>
+                
+            </div>     
         </form>
     </div> 
 </div> 

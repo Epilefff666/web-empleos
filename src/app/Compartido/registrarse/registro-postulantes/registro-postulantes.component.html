@@ -4,31 +4,31 @@
     <div>
         <h1 class="registro-contenedor-titulo">Registro de postulantes</h1>
      </div>
-     
+     <app-mostrar-errores [errores]="errores"></app-mostrar-errores>
         <div class="registro-contenedor-formulario">
-            <form (submit)="guardarCambios()" [formGroup]="form">
+            <form (submit)="registrar(form.value)" [formGroup]="form">
 
-                <mat-form-field  appearance="fill" class="formulario-inputs">
-                    <mat-label >Nombre completo</mat-label>
-                    <input formControlName="nombre" matInput>
+                <!-- <mat-form-field  appearance="fill" class="formulario-inputs">
+                    <mat-label >userName</mat-label>
+                    <input formControlName="userName" matInput>
                     <mat-error  *ngIf="form.invalid">{{obtenerError()}}</mat-error>
-                </mat-form-field><br>
+                </mat-form-field><br> -->
 
                 <mat-form-field appearance="fill" class="formulario-inputs">
                     <mat-label>Correo Electronico</mat-label>
-                    <input formControlName="correo" matInput>
+                    <input formControlName="email" matInput>
                     <mat-error *ngIf="form.invalid">{{obtenerErrorCorreo()}}</mat-error>
                 </mat-form-field><br>
 
                 <mat-form-field appearance="fill" class="formulario-inputs">
                     <mat-label>Contraseña</mat-label>
-                    <input formControlName="contraseña" matInput type="password">
+                    <input formControlName="password" matInput type="password">
                     <mat-error *ngIf="form.invalid">{{obtenerErrorContrasenia()}}</mat-error>
                 </mat-form-field><br>
 
                 <mat-form-field appearance="fill" class="formulario-inputs">
                     <mat-label>Confirmar Contraseña</mat-label>
-                    <input formControlName="confirmar_contraseña" matInput type="password" >
+                    <input formControlName="passwordConfirm" matInput type="password" >
                     <mat-error *ngIf="form.invalid">{{obtenerErrorConfirmacionContrasenia()}}</mat-error>
                 </mat-form-field>
                 

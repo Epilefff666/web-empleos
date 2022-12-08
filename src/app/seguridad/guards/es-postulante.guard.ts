@@ -15,7 +15,7 @@ export class EsPostulanteGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     
-      if(this.seguridadService.obtenerRol()=== 'postulantes'){
+      if(this.seguridadService.obtenerRol()=== 'postulante'){
         return true;
       }
       else

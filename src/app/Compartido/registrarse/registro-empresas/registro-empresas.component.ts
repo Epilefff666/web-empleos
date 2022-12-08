@@ -1,8 +1,9 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, OnInit,} from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { MustMatch, parsearErroresAPI, ValidadorContraseña } from 'src/app/utilidades/Utilidades';
 import { credencialesUsuario } from '../../interfaces/compartido.interfaces';
 import { SeguridadService } from '../../../seguridad/servicios/seguridad.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registro-empresas',
@@ -11,16 +12,18 @@ import { SeguridadService } from '../../../seguridad/servicios/seguridad.service
 })
 export class RegistroEmpresasComponent implements OnInit {
 
-  constructor( private formBuilder:FormBuilder, private seguridadService:SeguridadService) { }
+  constructor( private formBuilder:FormBuilder,
+     private seguridadService:SeguridadService,
+     private router:Router) { }
 
   form!: FormGroup;
   
   ngOnInit(): void {
     this.form = this.formBuilder.group({
 
-      userName:['',{ 
+      /* userName:['',{ 
         validators:[Validators.required]
-      }],
+      }], */
       email:['',{ 
         validators:[Validators.required, Validators.email]
       }],
@@ -29,7 +32,8 @@ export class RegistroEmpresasComponent implements OnInit {
       }],
       passwordConfirm:['',{ 
         validators:[Validators.required ]
-      }]
+      }],
+      role:['empresa']
 
     },{validators: MustMatch('password','passwordConfirm')})
     
@@ -42,6 +46,10 @@ export class RegistroEmpresasComponent implements OnInit {
     this.seguridadService.registrar(credenciales)
     .subscribe( respuesta =>{
       console.log(respuesta);
+      this.seguridadService.guardarToken(respuesta);
+      this.router.navigate(['/']);
+      location.reload();
+      /* console.log(respuesta); */
     },errores => this.errores = parsearErroresAPI(errores));
   }
 

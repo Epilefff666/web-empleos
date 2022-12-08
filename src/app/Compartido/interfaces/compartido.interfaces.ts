@@ -54,10 +54,11 @@ export interface detalle_empleoDTO{
     tiktok :string;
 }
 
+
 export interface credencialesUsuario{
-    userName:string;
     email:string;
     password:string;
+    
 }
 export interface respuestaAutenticacion{
     token:string;

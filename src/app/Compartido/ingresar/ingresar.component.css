@@ -27,3 +27,19 @@
     color: #142f3f;
     margin: 10px;
 }
+.boton-ingresar{
+    background-color: #33bbd1;
+    color: white;
+    font-size: 20px;
+    padding: 1%;
+    width: 24%;
+    margin: 10px;
+}
+.boton-registrar{
+    background-color: #142f3f;
+    color: white;
+    font-size: 20px;
+    padding: 1%;
+    width: 24%;
+    margin: 10px;
+}

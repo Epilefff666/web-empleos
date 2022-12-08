@@ -17,8 +17,8 @@
 
         <!-- sin logear -->
 
-        <app-autorizado [rol]="' '" >
-          <ng-container Autorizado>
+        <app-autorizado [rol]="''">
+          <ng-container noAutorizado>
             <div fxLayout="row"> 
               <button class="toolbar-boton" mat-button (click)="navegar('')">Inicio</button>
 
@@ -27,14 +27,12 @@
               <button class="toolbar-boton" mat-button (click)="navegar('registrarse')">Registrarse</button>
 
             </div>
-            
-            
           </ng-container>
         </app-autorizado >
 
         <!-- empresas -->
 
-        <app-autorizado [rol]="'empresas'">
+        <app-autorizado [rol]="'empresa'">
           <ng-container Autorizado>
             <div fxLayout="row">
             <button class="toolbar-boton" mat-button (click)="navegar('empresas/publicar-empleo')">Publicar Empleo</button>
@@ -45,14 +43,12 @@
 
             <button class="toolbar-boton" mat-button (click)="navegar('empresas/perfil')">Perfil</button>
 
-            <img src="https://media.revistagq.com/photos/5ca5e76ac4b7fb5a2aba7800/master/w_1280%2Cc_limit/los_50_hombres_mas_elegantes_de_2015_346935171.jpg" alt="" class="avatar2">
-
             </div>
           </ng-container>
         </app-autorizado >
 
         <!-- postulantes -->
-        <app-autorizado [rol]="'postulantes'">
+        <app-autorizado [rol]="'postulante'">
           <ng-container Autorizado>
 
             <div fxLayout="row"> 
@@ -64,8 +60,6 @@
             <button class="toolbar-boton" mat-button (click)="navegar('postulantes/empleos-guardados')">Empleos guardados</button>
 
             <button class="toolbar-boton" mat-button (click)="navegar('postulantes/perfil')">Perfil</button>
-
-            <img src="https://media.revistagq.com/photos/5ca5e76ac4b7fb5a2aba7800/master/w_1280%2Cc_limit/los_50_hombres_mas_elegantes_de_2015_346935171.jpg" alt="" class="avatar2">
 
             </div>
           </ng-container>
@@ -83,11 +77,22 @@
 
             <button class="toolbar-boton" mat-button (click)="navegar('administrador/informe-de-datos')">informe de datos</button>
 
-            <img src="https://media.revistagq.com/photos/5ca5e76ac4b7fb5a2aba7800/master/w_1280%2Cc_limit/los_50_hombres_mas_elegantes_de_2015_346935171.jpg" alt="" class="avatar2">
-
-            </div>
+          </div>
           </ng-container>
         </app-autorizado>
+          
+
+        <app-autorizado>
+          <ng-container Autorizado>
+            <div fxLayout="row">
+              <span class="username">{{nombre}}</span>
+              <img src="https://media.revistagq.com/photos/5ca5e76ac4b7fb5a2aba7800/master/w_1280%2Cc_limit/los_50_hombres_mas_elegantes_de_2015_346935171.jpg" alt="" class="avatar2">
+            <button class="toolbar-boton" mat-button (click)="logOut()">Salir</button>
+            </div>
+            
+          </ng-container>
+        </app-autorizado>
+        
 
       </div>
      
