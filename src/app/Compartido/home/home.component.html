@@ -2,6 +2,12 @@
 <div class="buscador">
     <div  fxLayoutAlign="space-around" >
         <div>
+            <app-autorizado>
+                <ng-container Autorizado>
+                    <p style="color: white;">Bienvenido {{nombre}}</p>
+                </ng-container>
+                
+            </app-autorizado>
             <div class="buscador-descripcion" ><h1 class="buscador-descripcion-texto">Busca y encuentra todas las ofertas de empleo en Chuquisaca</h1></div>
             <div class="buscador-box">
                 <form class="buscador-box-formulario">
@@ -57,7 +63,7 @@
         <h1 class="ofertas-recientes-titulo">Ofertas Recientes</h1>
     </div >
     <div fxLayout="row" fxLayoutAlign="center">
-        <div fxLayout="column" >
+        <!-- <div fxLayout="column" >
             <mat-card class="ofertas-recientes-card"  *ngFor="let option of Ofertas_recientes1">
                 <img mat-card-image class ="ofertas-recientes-card-image" src="https://material.angular.io/assets/img/examples/shiba2.jpg" >
                 <mat-card-content>
@@ -77,8 +83,8 @@
                 </mat-card-content>
             </mat-card>
             
-        </div>
-        <div fxLayout="column" >
+        </div> -->
+        <!-- <div fxLayout="column" >
             <mat-card class="ofertas-recientes-card" *ngFor="let option of Ofertas_recientes2">
                 <img mat-card-image class ="ofertas-recientes-card-image" src="https://material.angular.io/assets/img/examples/shiba2.jpg" >
                 <mat-card-content>
@@ -91,6 +97,46 @@
                     </mat-card-subtitle>
                     <div fxLayoutAlign="space-between">
                         <span class="card-fecha">Fecha de publicacion: <br> {{option.fecha_publicacion}}</span>
+                        <button class="card-boton" mat-button [routerLink]="['/detalle-empleo',option.id_empleo_publicado]">
+                        Ver detalles
+                        </button>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div> -->
+        <div fxLayout="column" >
+            <mat-card class="ofertas-recientes-card" *ngFor="let option of prueba">
+                <img mat-card-image class ="ofertas-recientes-card-image" src="..\..\assets\imagenes\bitrix.jpg" >
+                <mat-card-content>
+                    <mat-card-title class="card-titulo">
+                        Puesto empleo
+                    </mat-card-title>
+                    <br>
+                    <mat-card-subtitle class="card-subtitulo">
+                        Nombre empresa
+                    </mat-card-subtitle>
+                    <div fxLayoutAlign="space-between">
+                        <span class="card-fecha">Fecha de publicacion: <br> 11/12/2022</span>
+                        <button class="card-boton" mat-button [routerLink]="['/detalle-empleo',option.id_empleo_publicado]">
+                        Ver detalles
+                        </button>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div fxLayout="column" >
+            <mat-card class="ofertas-recientes-card" *ngFor="let option of prueba2">
+                <img mat-card-image class ="ofertas-recientes-card-image" src="..\..\assets\imagenes\bitrix.jpg" >
+                <mat-card-content>
+                    <mat-card-title class="card-titulo">
+                        Puesto empleo
+                    </mat-card-title>
+                    <br>
+                    <mat-card-subtitle class="card-subtitulo">
+                        Nombre empresa
+                    </mat-card-subtitle>
+                    <div fxLayoutAlign="space-between">
+                        <span class="card-fecha">Fecha de publicacion: <br> 11/12/2022</span>
                         <button class="card-boton" mat-button [routerLink]="['/detalle-empleo',option.id_empleo_publicado]">
                         Ver detalles
                         </button>

@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class EmpleosPublicadosComponent implements OnInit {
 
   constructor() { }
+  publicaciones:any[] = [1,2,3];
+  publicaciones_vencidas:any[] = [1,2,3];
 
   ngOnInit(): void {
   }

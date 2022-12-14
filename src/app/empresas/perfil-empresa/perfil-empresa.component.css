@@ -1,0 +1,66 @@
+.contenedor_perfil{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('src/assets/backgrounds/blue minimalist wallpaper.jfif');
+    background-color: #142f3f;
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: cover;
+    height:auto;
+    margin: 0px;
+    padding: 1%;
+
+}
+
+.titulo_perfil{
+    color: white;
+    font-size: 50px;
+    line-height: 70px;
+    text-decoration:underline;
+}
+
+.perfil_foto{
+    padding: 0px 3% 0px 3%;
+}
+.foto_imagen{
+    margin: 20px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: solid white;
+}
+
+.input_imagen{
+    color: white;
+    background-color: #33bbd1;
+    width: 30px;
+    margin-top: -60px;
+    border-radius: 50%;
+    padding:0%;
+}
+.guardar_cambios{
+    color: white;
+    background-color: #33bbd1;
+    margin-top:100px ;
+    padding: 10%;
+    width: 200px;
+}
+
+
+.perfil_form{
+    padding: 0px 200px 50px 200px;
+    
+}
+
+.formulario-inputs{
+
+    border-radius:15px ;
+    background-color: white;
+    color: #142f3f;
+    margin: 10px;
+}
+.formulario-inputs_telefono{
+    border-radius:15px ;
+    background-color: white;
+    color: #142f3f;
+    margin: 10px;
+    width: 50%;
+}

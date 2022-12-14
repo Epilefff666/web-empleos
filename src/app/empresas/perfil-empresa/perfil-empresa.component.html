@@ -1,1 +1,84 @@
-<p>perfil-empresa works!</p>
+<div class="contenedor_perfil" >
+    <div fxLayoutAlign="center"><h1 class="titulo_perfil">Mi perfil</h1></div>
+    <form (submit)="guardarCambios(form.value)" [formGroup]="form" >
+        
+        
+        <div   fxLayout="row" fxLayoutAlign="space-around" class="perfil_foto"  >
+            <div>
+            
+                <div fxLayout="column" >
+                    <img *ngIf="imagenBase64" class="foto_imagen" [src]="imagenBase64" alt="">
+                    <img *ngIf="!imagenBase64" class="foto_imagen" src="https://media.revistagq.com/photos/5ca5e76ac4b7fb5a2aba7800/master/w_1280%2Cc_limit/los_50_hombres_mas_elegantes_de_2015_346935171.jpg" alt="">
+                    
+                    <div fxLayoutAlign="center">
+                        <button class="input_imagen" type="button" mat-button (click)="fileInput.click()"> <mat-icon>camera_enhance</mat-icon></button>
+                        <input type="file" hidden #fileInput 
+                        (change)="change($event)">
+                    </div>
+                    
+                </div>
+                
+            </div>
+            <div >
+                <button class="guardar_cambios" type="button" mat-button (click)="guardarCambios(form.value)"> Guardar cambios <mat-icon>update</mat-icon></button>
+            </div>
+            
+        </div>
+
+
+        <div class="perfil_form">
+            <div  fxLayout="column">
+                <mat-form-field appearance="fill" class="formulario-inputs">
+                    <mat-label>Nombre Empresa</mat-label>
+                    <input formControlName="nombre_empresa" matInput>
+                    <mat-error *ngIf="form.invalid"></mat-error>
+                </mat-form-field><br>
+    
+                <mat-form-field appearance="fill" class="formulario-inputs">
+                    <mat-label>Descripcion</mat-label>
+                    <textarea formControlName="descripcion" matInput></textarea>
+                    <mat-error *ngIf="form.invalid"></mat-error>
+                </mat-form-field><br>
+    
+                <mat-form-field appearance="fill" class="formulario-inputs">
+                    <mat-label>Beneficios de trabajar con nosotros</mat-label>
+                    <textarea formControlName="beneficios"matInput></textarea>
+                    <mat-error *ngIf="form.invalid"></mat-error>
+                </mat-form-field><br>
+    
+                <mat-form-field appearance="fill" class="formulario-inputs">
+                    <mat-label>Sector</mat-label>
+                    <input formControlName="sector" matInput>
+                    <mat-error *ngIf="form.invalid"></mat-error>
+                </mat-form-field><br>
+    
+                <mat-form-field appearance="fill" class="formulario-inputs">
+                    <mat-label>Dirección</mat-label>
+                    <input formControlName="direccion" matInput>
+                    <mat-error *ngIf="form.invalid"></mat-error>
+                </mat-form-field><br>
+
+                <div fxLayout="row" fxLayoutAlign="space-between" >
+                    <mat-form-field appearance="fill" class="formulario-inputs_telefono">
+                        <mat-label>Celular</mat-label>
+                        <input type="tel"  formControlName="celular" matInput placeholder="7XXXXXXX" >
+                        <mat-error *ngIf="form.invalid"></mat-error>
+                    </mat-form-field><br>
+        
+                    <mat-form-field appearance="fill" class="formulario-inputs_telefono">
+                        <mat-label>Telefono</mat-label>
+                        <input type="tel" formControlName="telefono" matInput placeholder="64-00000">
+                        <mat-error *ngIf="form.invalid"></mat-error>
+                    </mat-form-field><br>
+                </div>
+            </div>
+            
+            
+            
+
+
+        </div>
+    </form>
+
+
+</div>

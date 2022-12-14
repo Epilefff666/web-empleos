@@ -1,1 +1,68 @@
-<p>empleos-publicados works!</p>
+<div class="contenedor_empleos_publicados">
+    <div fxLayoutAlign="center"><h1 class="titulo_empleos_publicados">Empleos publicados</h1></div>
+    <div class="contenedor-cards">
+        <div class="cards_clasificacion_titulo" fxLayoutAlign="center">
+            <h2> Publicaciones vigentes</h2>
+        </div>
+        <mat-card class="empleos_publicados_card" *ngFor="let index of publicaciones">
+<!--             <img mat-card-image class ="ofertas-recientes-card-image" src="https://material.angular.io/assets/img/examples/shiba2.jpg" >-->
+
+            <div fxLayout="row" fxLayoutAlign="space-between">
+                <div fxLayout="column">
+                    <mat-card-title>
+                        Puesto empleo
+                    </mat-card-title>
+                    
+                    <mat-card-subtitle>
+                        Fecha de publicacion
+                    </mat-card-subtitle>
+                </div>
+                <div class="card_descripcion">
+                    <mat-card-content >
+                        Descripcion del empleo Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste veniam ducimus natus accusamus dolores eos consectetur beatae dolorem voluptatum nostrum. Vel fuga iste, ullam amet assumenda illo hic unde magnam.
+                    </mat-card-content>
+                </div>
+                <div fxLayout="column">
+                    <button class="card-boton" mat-button>
+                        Ver detalles
+                    </button>
+                    <button class="card-boton" mat-button>
+                        Editar publicación:
+                    </button>
+                </div>
+            </div>
+        </mat-card>
+        <div class="cards_clasificacion_titulo" fxLayoutAlign="center">
+            <h2> Publicaciones vencidas</h2>
+        </div>
+        <mat-card class="empleos_publicados_card_vencido" *ngFor="let index of publicaciones_vencidas">
+            <!--             <img mat-card-image class ="ofertas-recientes-card-image" src="https://material.angular.io/assets/img/examples/shiba2.jpg" >-->
+            
+                        <div fxLayout="row" fxLayoutAlign="space-between">
+                            <div fxLayout="column">
+                                <mat-card-title>
+                                    Puesto empleo
+                                </mat-card-title>
+                                
+                                <mat-card-subtitle>
+                                    Fecha de publicacion:
+                                </mat-card-subtitle>
+                            </div>
+                            <div class="card_descripcion">
+                                <mat-card-content >
+                                    Descripcion del empleo Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste veniam ducimus natus accusamus dolores eos consectetur beatae dolorem voluptatum nostrum. Vel fuga iste, ullam amet assumenda illo hic unde magnam.
+                                </mat-card-content>
+                            </div>
+                            <div fxLayout="column">
+                               <!--  <button class="card-boton" mat-button>
+                                    Ver detalles
+                                </button>
+                                <button class="card-boton" mat-button>
+                                    Editar publicación
+                                </button> -->
+                            </div>
+                        </div>
+                    </mat-card>
+
+    </div>
+</div>

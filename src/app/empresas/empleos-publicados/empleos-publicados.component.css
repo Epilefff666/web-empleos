@@ -1,0 +1,61 @@
+.contenedor_empleos_publicados{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('src/assets/backgrounds/blue minimalist wallpaper.jfif');
+    background-color: #142f3f;
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: cover;
+    height:auto;
+    margin: 0px;
+    padding: 1%;
+
+}
+
+.titulo_empleos_publicados{
+    color: white;
+    font-size: 50px;
+    line-height: 70px;
+    text-decoration:underline;
+}
+.titulo_empleos_publicados{
+    color: white;
+    font-size: 50px;
+    line-height: 70px;
+    text-decoration:underline;
+}
+
+.contenedor-cards{
+    padding: 0px 200px 0px 200px;
+    margin: 2%;
+}
+
+.cards_clasificacion_titulo{
+    background-color:#33bbd1;
+    color: white;
+    padding: 1%;
+    text-decoration:underline;
+}
+.card_descripcion{
+    width: 50%;
+    /* padding: 0px 40px 0px 40px; */
+}
+.empleos_publicados_card{
+    box-shadow:   5px 5px 50px rgba(163, 163, 163, 0.158);
+    background-color: #ffffff;
+    margin-bottom: 100px;
+    max-width:auto;
+    margin:10px;
+    border-radius: 15px;
+}
+.empleos_publicados_card_vencido{
+    box-shadow:   5px 5px 50px rgba(163, 163, 163, 0.158);
+    background-color: #c4c4c4;
+    margin-bottom: 100px;
+    max-width:auto;
+    margin:10px;
+    border-radius: 15px;
+}
+.card-boton{
+    color: white;
+    background-color: #142f3f;
+    margin:3px;
+}

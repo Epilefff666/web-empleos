@@ -40,8 +40,7 @@ export class IngresarComponent implements OnInit {
       console.log(respuesta)
       this.seguridadService.guardarToken(respuesta);
       
-      location.reload( );
-      this.router.navigate(['/']);
+     this.router.navigate(['']);
     }, errores => this.errores = parsearErroresAPI(errores));
   }
 

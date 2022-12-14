@@ -45,7 +45,7 @@
 
     <div fxLayout="row" fxLayoutAlign="center">
         <div fxLayout="column" >
-            <mat-card class="lista-empleos-card"  *ngFor="let option of Ofertas_recientes1">
+            <!-- <mat-card class="lista-empleos-card"  *ngFor="let option of Ofertas_recientes1">
                 <img mat-card-image class ="lista-empleos-card-image" src="https://material.angular.io/assets/img/examples/shiba2.jpg" >
                 <mat-card-content>
                     <mat-card-title class="card-titulo">
@@ -62,13 +62,31 @@
                         </button>
                     </div>
                 </mat-card-content>
+            </mat-card> -->
+            <mat-card class="lista-empleos-card"  *ngFor="let option of prueba1">
+                <img mat-card-image class ="lista-empleos-card-image" src="..\..\assets\imagenes\bitrix.jpg" >
+                <mat-card-content>
+                    <mat-card-title class="card-titulo">
+                        Puesto empleo
+                    </mat-card-title>
+                    <br>
+                    <mat-card-subtitle class="card-subtitulo">
+                        Nombre empresa
+                    </mat-card-subtitle>
+                    <div fxLayoutAlign="space-between">
+                        <span class="card-fecha">Fecha de publicacion: <br> 11/12/2022</span>
+                        <button class="card-boton" mat-button [routerLink]="['/detalle-empleo',option.id_empleo_publicado]">
+                        Ver detalles
+                        </button>
+                    </div>
+                </mat-card-content>
             </mat-card>
             
         </div>
 
 
         <div fxLayout="column" >
-            <mat-card class="lista-empleos-card" *ngFor="let option of Ofertas_recientes2">
+            <!-- <mat-card class="lista-empleos-card" *ngFor="let option of Ofertas_recientes2">
                 <img mat-card-image class ="lista-empleos-card-image" src="https://material.angular.io/assets/img/examples/shiba2.jpg" >
                 <mat-card-content>
                     <mat-card-title class="card-titulo">
@@ -80,6 +98,24 @@
                     </mat-card-subtitle>
                     <div fxLayoutAlign="space-between">
                         <span class="card-fecha">Fecha de publicacion: <br> {{option.fecha_publicacion}}</span>
+                        <button class="card-boton" mat-button [routerLink]="['/detalle-empleo',option.id_empleo_publicado]">
+                        Ver detalles
+                        </button>
+                    </div>
+                </mat-card-content>
+            </mat-card> -->
+            <mat-card class="lista-empleos-card"  *ngFor="let option of prueba2">
+                <img mat-card-image class ="lista-empleos-card-image" src="..\..\assets\imagenes\bitrix.jpg" >
+                <mat-card-content>
+                    <mat-card-title class="card-titulo">
+                        Puesto empleo
+                    </mat-card-title>
+                    <br>
+                    <mat-card-subtitle class="card-subtitulo">
+                        Nombre empresa
+                    </mat-card-subtitle>
+                    <div fxLayoutAlign="space-between">
+                        <span class="card-fecha">Fecha de publicacion: <br> 12/11/2022</span>
                         <button class="card-boton" mat-button [routerLink]="['/detalle-empleo',option.id_empleo_publicado]">
                         Ver detalles
                         </button>

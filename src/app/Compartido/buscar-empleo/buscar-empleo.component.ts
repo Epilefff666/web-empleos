@@ -10,6 +10,9 @@ import { CompartidosService } from '../servicios/compartidos.service';
 })
 export class BuscarEmpleoComponent implements OnInit {
 
+  prueba1:any[]=[1,2,3]
+  prueba2:any[]=[1,2,3]
+
   options: string[]=['ingenieria','ventas','administración'];
   Ofertas_recientes1: todas_las_ofertasDTO[] = [] ;
   Ofertas_recientes2: todas_las_ofertasDTO[] = [] ;
