@@ -1,6 +1,11 @@
 <div class="contenedor_perfil" >
     <div fxLayoutAlign="center"><h1 class="titulo_perfil">Mi perfil</h1></div>
-    <form (submit)="guardarCambios(form.value)" [formGroup]="form" >
+    <div>
+        <ul *ngIf="errores.length > 0">
+            <li *ngFor="let error of errores">{{ error }}</li>
+        </ul>
+    </div>
+    <form  [formGroup]="form" >
         
         
         <div   fxLayout="row" fxLayoutAlign="space-around" class="perfil_foto"  >
@@ -11,7 +16,7 @@
                     <img *ngIf="!imagenBase64" class="foto_imagen" src="../../../assets/logos/Persona_Mesa de trabajo 1.png" alt="">
                     
                     <div fxLayoutAlign="center">
-                        <button class="input_imagen" type="button" mat-button (click)="fileInput.click()"> <mat-icon>camera_enhance</mat-icon></button>
+                        <button class="input_imagen"  mat-button (click)="fileInput.click()"> <mat-icon>camera_enhance</mat-icon></button>
                         <input type="file" hidden #fileInput 
                         (change)="change($event)">
                     </div>
@@ -20,7 +25,7 @@
                 
             </div>
             <div >
-                <button class="guardar_cambios" type="button" mat-button (click)="guardarprueba(form.value)" [disabled]="form.invalid"> Guardar cambios <mat-icon>update</mat-icon></button>
+                <button class="guardar_cambios" (click)="guardarCambios(form.value)" mat-button [disabled]="form.invalid"> Guardar cambios <mat-icon>update</mat-icon></button>
             </div>
             
         </div>
@@ -36,14 +41,14 @@
     
                 <mat-form-field appearance="fill" class="formulario-inputs">
                     <mat-label>Descripcion</mat-label>
-                    <textarea formControlName="descripcion" matInput></textarea>
+                    <textarea formControlName="descripcion_empresa" matInput></textarea>
                     <mat-error *ngIf="form.invalid">{{obtenerError()}}</mat-error>
                 </mat-form-field><br>
     
                 <mat-form-field appearance="fill" class="formulario-inputs">
                     <mat-label>Beneficios de trabajar con nosotros</mat-label>
                     <textarea formControlName="beneficios"matInput></textarea>
-                    <mat-error *ngIf="form.invalid"></mat-error>
+                    <mat-error *ngIf="form.invalid">{{obtenerError()}}</mat-error>
                 </mat-form-field><br>
     
                 <mat-form-field appearance="fill" class="formulario-inputs">
@@ -67,13 +72,40 @@
                 <div fxLayout="row" fxLayoutAlign="space-between" >
                     <mat-form-field appearance="fill" class="formulario-inputs_telefono">
                         <mat-label>Celular</mat-label>
-                        <input type="number"  formControlName="celular" matInput placeholder="7XXXXXXX" >
+                        <input   formControlName="celular" matInput placeholder="7XXXXXXX" >
                         <mat-error *ngIf="form.invalid">{{obtenerErrorCelular()}}</mat-error>
                     </mat-form-field><br>
         
                     <mat-form-field appearance="fill" class="formulario-inputs_telefono">
                         <mat-label>Telefono</mat-label>
-                        <input type="number" formControlName="telefono" matInput placeholder="64-00000">
+                        <input  formControlName="telefono" matInput placeholder="64-00000">
+                        <mat-error *ngIf="form.invalid"></mat-error>
+                    </mat-form-field><br>
+                </div>
+                <h2 fxLayoutAlign="center" style="color:white; margin:5px;" >Agrega tus redes sociales</h2>
+                <div fxLayout="row" fxLayoutAlign="space-between" >
+                    <mat-form-field appearance="fill" class="formulario-inputs_telefono">
+                        <mat-label>Facebook</mat-label>
+                        <input   formControlName="facebook" matInput>
+                        <mat-error *ngIf="form.invalid"></mat-error>
+                    </mat-form-field><br>
+        
+                    <mat-form-field appearance="fill" class="formulario-inputs_telefono">
+                        <mat-label>Instagram</mat-label>
+                        <input  formControlName="instagram" matInput >
+                        <mat-error *ngIf="form.invalid"></mat-error>
+                    </mat-form-field><br>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-between" >
+                    <mat-form-field appearance="fill" class="formulario-inputs_telefono">
+                        <mat-label>LinkedIn</mat-label>
+                        <input  formControlName="linkedin" matInput  >
+                        <mat-error *ngIf="form.invalid"></mat-error>
+                    </mat-form-field><br>
+        
+                    <mat-form-field appearance="fill" class="formulario-inputs_telefono">
+                        <mat-label>TikTok</mat-label>
+                        <input  formControlName="tiktok" matInput >
                         <mat-error *ngIf="form.invalid"></mat-error>
                     </mat-form-field><br>
                 </div>

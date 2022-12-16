@@ -15,7 +15,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     PublicarEmpleoComponent,
     PostulantesComponent,
     EmpleosPublicadosComponent,
-    PerfilEmpresaComponent
+    PerfilEmpresaComponent,
   ],
   imports: [
     CommonModule,
@@ -24,6 +24,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     FormsModule,
     MaterialModule,
     FlexLayoutModule,
+    
   ]
 })
 export class EmpresasModule { }

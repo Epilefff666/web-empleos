@@ -1,23 +1,40 @@
 export interface perfil_empresaDTO{
 
-    nombre:string;
+    nombre_empresa:string;
     direccion:string;
     celular:string;
     telefono:string;
-    descripcion:string;
+    descripcion_empresa:string;
     foto_perfil:string;
+    correo:string;
+    facebook:string;
+    instagram:string;
+    linkedin:string;
+    tiktok:string;
+    beneficios:string;
+    sector:string;
+
     banActivo:boolean;
     userId:string;
 }
 
 export interface perfil_empresa_creacionDTO{
 
-    nombre:string;
+    nombre_empresa:string;
     direccion:string;
     celular:string;
     telefono:string;
-    descripcion:string;
-    foto_perfil:File;
+    correo:string;
+    descripcion_empresa:string;
+    beneficios:string;
+    foto_perfil:string;
+    sector:string;
+    facebook:string;
+    instagram:string;
+    linkedin:string;
+    tiktok:string;
+    
+
     banActivo:boolean;
     userId:string;
 }

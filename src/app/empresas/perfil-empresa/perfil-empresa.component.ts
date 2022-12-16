@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { perfil_empresaDTO } from '../interfaces/empresas.interfaces';
+import { perfil_empresaDTO, perfil_empresa_creacionDTO } from '../interfaces/empresas.interfaces';
 import { EmpresasService } from '../servicios/empresas.service';
-import { Router } from '@angular/router';
+import { Router, Params } from '@angular/router';
 import { parsearErroresAPI, toBase64 } from '../../utilidades/Utilidades';
 import { FormGroup, FormBuilder, Validators, ValidatorFn } from '@angular/forms';
+import { SeguridadService } from '../../seguridad/servicios/seguridad.service';
 
 @Component({
   selector: 'app-perfil-empresa',
@@ -14,12 +15,21 @@ export class PerfilEmpresaComponent implements OnInit {
 
   constructor(private empresasService:EmpresasService,
     private router:Router,
-    private formBuilder:FormBuilder) { }
+    private formBuilder:FormBuilder,
+    private seguridadService:SeguridadService) { }
 
   imagenBase64!:string;
-  form!:FormGroup;  
+  form!:FormGroup; 
+/*   prueba:any = 'Epistore'  */
+
+ /*  modelo:any = {
+    nombre_empresa:this.prueba
+  } */
+  id:string='';
 
   ngOnInit(): void {
+     this.id = this.seguridadService.obtenerCampoJWT('email')
+    console.log(this.id)
     this.form = this.formBuilder.group({
       nombre_empresa:['',{
         validators:[Validators.required]
@@ -27,27 +37,35 @@ export class PerfilEmpresaComponent implements OnInit {
       direccion:['',{
         validators:[Validators.required]
       }],
-      correo:['',{
-        validators:[Validators.required, Validators.email]
-      }],
       celular:['',{
         validators:[Validators.required,]
+      }],
+      correo:['',{
+        validators:[Validators.required, Validators.email]
       }],
       telefono:[''],
       sector:['',{
         validators:[Validators.required]
       }],
       beneficios:['',{
-        validator:[Validators.required]
+        validators:[Validators.required]
       }],
-      descripcion:['',{
+      descripcion_empresa:['',{
         validators:[Validators.required]
       }],
       foto_perfil:[''],
-
-      banActivo:[''],
-
-    }) 
+      facebook:[''],
+      instagram:[''],
+      linkedin:[''],
+      tiktok:[''],
+      banActivo:[true],
+      userId:[this.id]
+    });
+    
+    /* if(this.modelo !== undefined){
+      this.form.patchValue(this.modelo);
+    } */
+    
   }
 
 
@@ -56,30 +74,36 @@ export class PerfilEmpresaComponent implements OnInit {
       const file:File = event.target.files[0];
       toBase64(file).then( (value:any) => this.imagenBase64 = value)
       .catch(error => console.log(error));
-      console.log(this.imagenBase64)
+      /* console.log(this.imagenBase64)  */
+      this.setFile(file)
     }
   }
 
-  guardarprueba(valor:any){
-    console.log("formulario enviado")
-    console.log(valor)
+  setFile(file:File){
+    this.form.get('foto_perfil')?.setValue(file);
   }
 
+ /*  guardarprueba(valor:perfil_empresa_creacionDTO){
+    console.log("formulario enviado")
+    console.log(valor)
+  } */
+
   errores:any=[];
-  guardarCambios(perfil_empresa : perfil_empresaDTO){
-    this.empresasService.CrearEmpresa(perfil_empresa)
-    .subscribe(()=>{
-      this.router.navigate(['']);
+  guardarCambios(perfil_empresa : perfil_empresa_creacionDTO){
+    console.log(perfil_empresa)
+    this.empresasService.CrearEmpresa(perfil_empresa).subscribe( () => {
+      console.log("se regsitro con exito")
     },errores => this.errores = parsearErroresAPI(errores))
   }
 
   obtenerError(){
     const nombre = this.form.get('nombre_empresa');
-    const descripcion = this.form.get('descripcion');
+    const descripcion = this.form.get('descripcion_empresa');
     const sector = this.form.get('sector');
     const direccion = this.form.get('direccion');
+    const beneficios = this.form.get('beneficios');
     
-    if(nombre?.hasError('required') || descripcion?.hasError('required') || sector?.hasError('required') || direccion?.hasError('required') ){
+    if(nombre?.hasError('required') || descripcion?.hasError('required') || sector?.hasError('required') || direccion?.hasError('required') || beneficios?.hasError('required')){
       return 'El campo es requerido';
     }    
     else{

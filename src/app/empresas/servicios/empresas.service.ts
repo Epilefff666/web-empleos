@@ -1,17 +1,20 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../../../environments/environment.prod';
-import { perfil_empresaDTO } from '../interfaces/empresas.interfaces';
+import { perfil_empresaDTO, perfil_empresa_creacionDTO } from '../interfaces/empresas.interfaces';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmpresasService {
 
-  private apiURL = environment.apiURL + 'empresas';
+  
   constructor( private http: HttpClient) { }
 
-  public CrearEmpresa( perfil_empresa:perfil_empresaDTO){
-    return this.http.post(this.apiURL, perfil_empresa);
+  private apiURL = environment.apiURL+'empresas';
+
+
+  public CrearEmpresa( perfil_empresa:perfil_empresa_creacionDTO){
+    return this.http.post( this.apiURL +'/crear', perfil_empresa);
   }
 }
