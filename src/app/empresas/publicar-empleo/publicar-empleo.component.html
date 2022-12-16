@@ -1,1 +1,48 @@
-<p>publicar-empleo works!</p>
+<div class="contenedor_publicar_empleo">
+    <div fxLayoutAlign="center">
+        <h1 class="publicar_empleo_titulo">Publicar empleo</h1>
+    </div>
+    <div class="contenedor_formulario" fxLayout="column">
+        <form (submit)="publicarEmpleo(form.value)" [formGroup]="form">
+
+            <mat-form-field appearance="fill" class="formulario-inputs" >
+                <mat-label>Puesto empleo</mat-label>
+                <input formControlName="puesto_empleo" matInput>
+                <mat-error ></mat-error>
+            </mat-form-field><br>
+
+            <mat-form-field appearance="fill" class="formulario-inputs" >
+                <mat-label>Salario</mat-label>
+                <input formControlName="salario" matInput>
+                <mat-error ></mat-error>
+            </mat-form-field><br>
+
+            <mat-form-field appearance="fill" class="formulario-inputs" >
+                <mat-label>Descripcion del empleo</mat-label>
+                <textarea formControlName="descripcion" matInput></textarea>
+                <mat-error ></mat-error>
+            </mat-form-field><br>
+
+            <mat-form-field appearance="fill" class="formulario-inputs" >
+                <mat-label>Requisitos del empleo</mat-label>
+                <textarea formControlName="requisitos" matInput></textarea>
+                <mat-error ></mat-error>
+            </mat-form-field><br>
+
+            <mat-form-field appearance="fill" class="formulario-inputs" >
+                <mat-label>fecha de vencimiento de publicación</mat-label>
+                <input type="date" formControlName="fecha_vencimiento" matInput>
+                <mat-error ></mat-error>
+            </mat-form-field><br>
+
+            <div fxLayoutAlign="center">
+                <button mat-button class="boton_publicar" [disabled]="form.invalid">
+                    Publicar empleo
+                </button>
+            </div>
+            
+
+        </form>
+
+    </div>
+</div>

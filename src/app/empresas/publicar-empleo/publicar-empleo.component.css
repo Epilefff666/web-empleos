@@ -1,0 +1,36 @@
+.contenedor_publicar_empleo{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('src/assets/backgrounds/blue minimalist wallpaper.jfif');
+    background-color: #142f3f;
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: cover;
+    height:auto;
+    margin: 0px;
+    padding: 1%;
+}
+.publicar_empleo_titulo{
+    color: white;
+    font-size: 50px;
+    line-height: 70px;
+    text-decoration:underline;
+}
+
+.contenedor_formulario{
+    padding: 0% 20% 0% 20%;
+}
+.formulario-inputs{
+    border-radius:15px ;
+    background-color: white;
+    color: #142f3f;
+    margin: 10px;
+    width: 100%;
+}
+.boton_publicar{
+    background-color: #33bbd1;
+    color: white;
+    font-size: 20px;
+    padding: 1%;
+    width: 24%;
+    margin: 10px;
+}
+

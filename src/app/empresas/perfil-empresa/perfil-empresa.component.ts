@@ -3,7 +3,7 @@ import { perfil_empresaDTO } from '../interfaces/empresas.interfaces';
 import { EmpresasService } from '../servicios/empresas.service';
 import { Router } from '@angular/router';
 import { parsearErroresAPI, toBase64 } from '../../utilidades/Utilidades';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, ValidatorFn } from '@angular/forms';
 
 @Component({
   selector: 'app-perfil-empresa',
@@ -27,8 +27,11 @@ export class PerfilEmpresaComponent implements OnInit {
       direccion:['',{
         validators:[Validators.required]
       }],
+      correo:['',{
+        validators:[Validators.required, Validators.email]
+      }],
       celular:['',{
-        validators:[Validators.required]
+        validators:[Validators.required,]
       }],
       telefono:[''],
       sector:['',{
@@ -57,6 +60,11 @@ export class PerfilEmpresaComponent implements OnInit {
     }
   }
 
+  guardarprueba(valor:any){
+    console.log("formulario enviado")
+    console.log(valor)
+  }
+
   errores:any=[];
   guardarCambios(perfil_empresa : perfil_empresaDTO){
     this.empresasService.CrearEmpresa(perfil_empresa)
@@ -64,4 +72,51 @@ export class PerfilEmpresaComponent implements OnInit {
       this.router.navigate(['']);
     },errores => this.errores = parsearErroresAPI(errores))
   }
+
+  obtenerError(){
+    const nombre = this.form.get('nombre_empresa');
+    const descripcion = this.form.get('descripcion');
+    const sector = this.form.get('sector');
+    const direccion = this.form.get('direccion');
+    
+    if(nombre?.hasError('required') || descripcion?.hasError('required') || sector?.hasError('required') || direccion?.hasError('required') ){
+      return 'El campo es requerido';
+    }    
+    else{
+      return '';
+    }
+  }
+
+  obtenerErrorCelular(){
+    const celular = this.form.get('celular');
+    if(celular?.hasError('required')){
+      return 'El campo es requerido';
+    }
+    if(celular?.hasError('minlength') ){
+      return 'El campo esta mal escrito';
+    } 
+    else{
+      return '';
+    }
+  }
+  
+  obtenerErrorCorreo(){
+    const correo = this.form.get('correo');
+
+    if(correo!.hasError('required')  ){
+      return 'El campo es requerido';
+    }
+    if(correo!.hasError('email')){
+      return 'El campo esta mal escrito';
+    }    
+    else{
+      return '';
+    }
+  }
+
+
+
+
+
+
 }
