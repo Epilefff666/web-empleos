@@ -35,14 +35,19 @@
         <app-autorizado [rol]="'empresa'">
           <ng-container Autorizado>
             <div fxLayout="row">
-
-              <button class="toolbar-boton" mat-button (click)="navegar('')">Inicio</button>
+            <div *ngIf="!modelo">
+              <h1 style="color: white; padding-top: 34px;">Por favor antes de empezar registra tu perfil <mat-icon>forward</mat-icon> </h1>
+            </div>
+            <div *ngIf="modelo">
+            <button class="toolbar-boton" mat-button (click)="navegar('')">Inicio</button>
 
             <button class="toolbar-boton" mat-button (click)="navegar('empresas/publicar-empleo')">Publicar Empleo</button>
 
             <button class="toolbar-boton" mat-button (click)="navegar('empresas/postulantes')">Postulantes</button>
   
             <button class="toolbar-boton" mat-button (click)="navegar('empresas/empleos-publicados')">Empleos Publicados</button>
+            </div>  
+            
               
             <button class="toolbar-boton" mat-button (click)="navegar('empresas/perfil')">Perfil</button>
 
@@ -53,16 +58,24 @@
         <!-- postulantes -->
         <app-autorizado [rol]="'postulante'">
           <ng-container Autorizado>
-
+            
             <div fxLayout="row"> 
-            <button class="toolbar-boton" mat-button (click)="navegar('')">Inicio</button>
+              
+              <div *ngIf="!modelo">
+                <h1 style="color: white; padding-top: 34px;">Por favor antes de empezar registra tu perfil <mat-icon>forward</mat-icon> </h1>
+              </div>
+
+              <div *ngIf="modelo">
+                <button class="toolbar-boton" mat-button (click)="navegar('')">Inicio</button>
   
 
-            <button class="toolbar-boton" mat-button (click)="navegar('buscar-empleo')">Buscar empleo</button>
+                <button class="toolbar-boton" mat-button (click)="navegar('buscar-empleo')">Buscar empleo</button>
 
-            <button class="toolbar-boton" mat-button (click)="navegar('postulantes/postulaciones')">postulaciones</button>
+                <button class="toolbar-boton" mat-button (click)="navegar('postulantes/postulaciones')">postulaciones</button>
 
-            <button class="toolbar-boton" mat-button (click)="navegar('postulantes/empleos-guardados')">Empleos guardados</button>
+                <button class="toolbar-boton" mat-button (click)="navegar('postulantes/empleos-guardados')">Empleos guardados</button>
+              </div>
+            
 
             <button class="toolbar-boton" mat-button (click)="navegar('postulantes/perfil')">Perfil</button>
 

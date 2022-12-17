@@ -25,7 +25,8 @@
                 
             </div>
             <div >
-                <button class="guardar_cambios" (click)="guardarCambios(form.value)" mat-button [disabled]="form.invalid"> Guardar cambios <mat-icon>update</mat-icon></button>
+                <button class="guardar_cambios" *ngIf="!modelo" (click)="registrarPerfil(form.value)" mat-button [disabled]="form.invalid"> Registrar perfil <mat-icon>update</mat-icon></button>
+                <button class="guardar_cambios" *ngIf="modelo"(click)="guardarCambios(form.value)" mat-button [disabled]="form.invalid"> Guardar cambios <mat-icon>update</mat-icon></button>
             </div>
             
         </div>
@@ -35,7 +36,7 @@
             <div  fxLayout="column">
                 <mat-form-field appearance="fill" class="formulario-inputs">
                     <mat-label>Nombre Empresa</mat-label>
-                    <input formControlName="nombre_empresa" matInput>
+                    <input  formControlName="nombre_empresa" matInput>
                     <mat-error *ngIf="form.invalid">{{obtenerError()}}</mat-error>
                 </mat-form-field><br>
     

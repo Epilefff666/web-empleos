@@ -6,6 +6,7 @@ import { parsearErroresAPI, toBase64 } from '../../utilidades/Utilidades';
 import { FormGroup, FormBuilder, Validators, ValidatorFn } from '@angular/forms';
 import { SeguridadService } from '../../seguridad/servicios/seguridad.service';
 
+
 @Component({
   selector: 'app-perfil-empresa',
   templateUrl: './perfil-empresa.component.html',
@@ -22,14 +23,14 @@ export class PerfilEmpresaComponent implements OnInit {
   form!:FormGroup; 
 /*   prueba:any = 'Epistore'  */
 
- /*  modelo:any = {
-    nombre_empresa:this.prueba
-  } */
-  id:string='';
+  modelo:any;
+  email!:string;
+  id!:number;
 
   ngOnInit(): void {
-     this.id = this.seguridadService.obtenerCampoJWT('email')
-    console.log(this.id)
+    
+    this.email = this.seguridadService.obtenerCampoJWT('email')
+
     this.form = this.formBuilder.group({
       nombre_empresa:['',{
         validators:[Validators.required]
@@ -59,12 +60,16 @@ export class PerfilEmpresaComponent implements OnInit {
       linkedin:[''],
       tiktok:[''],
       banActivo:[true],
-      userId:[this.id]
+      userId:[this.email]
     });
-    
-    /* if(this.modelo !== undefined){
-      this.form.patchValue(this.modelo);
-    } */
+
+    this.empresasService.obtenerEmpresaId(this.email)
+    .subscribe((modelo)=>{
+      this.modelo= modelo
+      if(this.modelo !== undefined){
+         this.form.patchValue(this.modelo);
+      }
+    })
     
   }
 
@@ -74,7 +79,6 @@ export class PerfilEmpresaComponent implements OnInit {
       const file:File = event.target.files[0];
       toBase64(file).then( (value:any) => this.imagenBase64 = value)
       .catch(error => console.log(error));
-      /* console.log(this.imagenBase64)  */
       this.setFile(file)
     }
   }
@@ -83,17 +87,20 @@ export class PerfilEmpresaComponent implements OnInit {
     this.form.get('foto_perfil')?.setValue(file);
   }
 
- /*  guardarprueba(valor:perfil_empresa_creacionDTO){
-    console.log("formulario enviado")
-    console.log(valor)
-  } */
 
   errores:any=[];
-  guardarCambios(perfil_empresa : perfil_empresa_creacionDTO){
-    console.log(perfil_empresa)
+  registrarPerfil(perfil_empresa : perfil_empresa_creacionDTO){
+    
     this.empresasService.CrearEmpresa(perfil_empresa).subscribe( () => {
       console.log("se regsitro con exito")
     },errores => this.errores = parsearErroresAPI(errores))
+  }
+
+  guardarCambios(perfil_empresa : perfil_empresa_creacionDTO){
+    this.empresasService.actualizarEmpresaId(this.modelo.id,perfil_empresa)
+    .subscribe(()=>{
+      console.log("perfil actualizado")
+    })
   }
 
   obtenerError(){

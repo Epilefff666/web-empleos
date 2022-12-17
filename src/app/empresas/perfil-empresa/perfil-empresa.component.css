@@ -57,6 +57,9 @@
     color: #142f3f;
     margin: 10px;
 }
+textarea{
+    height:100px ;
+}
 .formulario-inputs_telefono{
     border-radius:15px ;
     background-color: white;
