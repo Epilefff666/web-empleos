@@ -16,14 +16,16 @@ export class MenuComponent implements OnInit {
 
   modelo:any;
   nombre:string = ''; 
+  foto:any;
   ngOnInit(): void {
    this.nombre= this.seguridadService.obtenerCampoJWT('email'); 
    this.empresasService.obtenerEmpresaId(this.nombre)
    .subscribe((modelo)=>{ 
-    this.modelo=modelo  
+    this.modelo=modelo 
+    this.foto = modelo.foto_perfil; 
     this.router.navigate(['inicio']);
   });
-   console.log(this.modelo)
+   
   }
 
   navegar(url:string){

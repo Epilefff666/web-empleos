@@ -12,8 +12,9 @@
             <div>
             
                 <div fxLayout="column" >
+                    <img *ngIf="foto && !imagenBase64" class="foto_imagen" [src]="foto" alt="">
                     <img *ngIf="imagenBase64" class="foto_imagen" [src]="imagenBase64" alt="">
-                    <img *ngIf="!imagenBase64" class="foto_imagen" src="../../../assets/logos/Persona_Mesa de trabajo 1.png" alt="">
+                    <img *ngIf="!imagenBase64 && !foto" class="foto_imagen" src="../../../assets/logos/Persona_Mesa de trabajo 1.png" alt="">
                     
                     <div fxLayoutAlign="center">
                         <button class="input_imagen"  mat-button (click)="fileInput.click()"> <mat-icon>camera_enhance</mat-icon></button>

@@ -27,7 +27,7 @@ export interface perfil_empresa_creacionDTO{
     correo:string;
     descripcion_empresa:string;
     beneficios:string;
-    foto_perfil:string;
+    foto_perfil:File;
     sector:string;
     facebook:string;
     instagram:string;
@@ -35,6 +35,6 @@ export interface perfil_empresa_creacionDTO{
     tiktok:string;
     
 
-    banActivo:boolean;
+    /* banActivo:boolean; */
     userId:string;
 }

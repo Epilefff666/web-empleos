@@ -24,6 +24,7 @@ export class PerfilEmpresaComponent implements OnInit {
 /*   prueba:any = 'Epistore'  */
 
   modelo:any;
+  foto:any;
   email!:string;
   id!:number;
 
@@ -59,7 +60,7 @@ export class PerfilEmpresaComponent implements OnInit {
       instagram:[''],
       linkedin:[''],
       tiktok:[''],
-      banActivo:[true],
+      /* banActivo:[true], */
       userId:[this.email]
     });
 
@@ -68,6 +69,7 @@ export class PerfilEmpresaComponent implements OnInit {
       this.modelo= modelo
       if(this.modelo !== undefined){
          this.form.patchValue(this.modelo);
+         this.foto = modelo.foto_perfil;
       }
     })
     
@@ -90,9 +92,9 @@ export class PerfilEmpresaComponent implements OnInit {
 
   errores:any=[];
   registrarPerfil(perfil_empresa : perfil_empresa_creacionDTO){
-    
     this.empresasService.CrearEmpresa(perfil_empresa).subscribe( () => {
       console.log("se regsitro con exito")
+      window.location.reload()
     },errores => this.errores = parsearErroresAPI(errores))
   }
 
@@ -100,6 +102,7 @@ export class PerfilEmpresaComponent implements OnInit {
     this.empresasService.actualizarEmpresaId(this.modelo.id,perfil_empresa)
     .subscribe(()=>{
       console.log("perfil actualizado")
+      window.location.reload()
     })
   }
 
