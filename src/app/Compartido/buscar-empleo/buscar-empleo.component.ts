@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ofertas_recientesDTO, todas_las_ofertasDTO } from '../interfaces/compartido.interfaces';
 import { CompartidosService } from '../servicios/compartidos.service';
+import { categoriasDTO, ofertas_publicadasDTO } from '../interfaces/compartido.interfaces';
 
 @Component({
   selector: 'app-buscar-empleo',
@@ -13,23 +13,26 @@ export class BuscarEmpleoComponent implements OnInit {
   prueba1:any[]=[1,2,3]
   prueba2:any[]=[1,2,3]
 
-  options: string[]=['ingenieria','ventas','administración'];
-  Ofertas_recientes1: todas_las_ofertasDTO[] = [] ;
-  Ofertas_recientes2: todas_las_ofertasDTO[] = [] ;
+  categorias:categoriasDTO[]=[];
+  Ofertas1: ofertas_publicadasDTO[] = [] ;
+  Ofertas2: ofertas_publicadasDTO[] = [] ;
 
   constructor(private compartidosService:CompartidosService,private router:Router) { }
 
   ngOnInit(): void {
-
-    this.compartidosService.Obtener_todas_las_ofertas()
-    .subscribe( ofertas_recientes => {
-      for( let i=0 ; i< ofertas_recientes.length ; i++){
-        console.log(ofertas_recientes[i])
+    this.compartidosService.Obtener_categorias()
+    .subscribe((categorias)=>{
+      this.categorias=categorias;
+    })
+    this.compartidosService.Obtener_ofertas()
+    .subscribe( ofertas => {
+      for( let i=0 ; i< ofertas.length ; i++){
+        console.log(ofertas[i])
         if(i%2 == 0){
-         this.Ofertas_recientes1.push(ofertas_recientes[i]) 
+         this.Ofertas1.push(ofertas[i]) 
         }
         else{
-          this.Ofertas_recientes2.push(ofertas_recientes[i])
+          this.Ofertas2.push(ofertas[i])
         }
       }
     }, error => console.error(error));

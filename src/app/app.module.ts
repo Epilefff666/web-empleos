@@ -20,6 +20,7 @@ import { RegistroPostulantesComponent } from './Compartido/registrarse/registro-
 import { PieDePaginaComponent } from './Compartido/pie-de-pagina/pie-de-pagina.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MostrarErroresComponent } from './Compartido/mostrar-errores/mostrar-errores.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { MostrarErroresComponent } from './Compartido/mostrar-errores/mostrar-er
     BrowserAnimationsModule,
     MaterialModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

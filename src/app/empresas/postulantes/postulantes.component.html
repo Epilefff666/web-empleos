@@ -1,23 +1,28 @@
 <div class="contenedor_postulantes">
     <div fxLayoutAlign="center"><h1 class="postulantes_titulo"> Mis Postulantes</h1></div>
-
-    <div class="contenedor_cards_postulantes" fxLayout="row">
+    <div>
+        <ul *ngIf="errores.length > 0">
+            <li *ngFor="let error of errores">{{ error }}</li>
+        </ul>
+    </div>
+    <div class="contenedor_cards_postulantes" fxLayout="row" fxLayoutAlign="space-around">
         <div fxLayout="column" >
             <mat-card class="card_postulante" *ngFor="let item of postulantes1">
                 <div fxLayout="row">
                     <div >
-                        <img class="card_imagen" src="http://www.nosotros-los-ingenieros.com/wp-content/uploads/2020/06/cooper.jpg" alt="">
+                        <!-- <img class="card_imagen" src="http://www.nosotros-los-ingenieros.com/wp-content/uploads/2020/06/cooper.jpg" alt=""> -->
+                        <img class="card_imagen" [src]="item.foto_perfil" alt="">
                     </div>
                     <div class="card_contenido" fxLayout="column">
                         <mat-card-title >
-                            <h3 class="card_nombre">Marcos Ramirez Loayza</h3>
+                            <h3 class="card_nombre">{{item.nombres}} {{item.apellidos}}</h3>
                         </mat-card-title>
                         <mat-card-subtitle>
-                            <h3 class="card_cargo">Ingeniero de sistemas</h3>
+                            <h3 class="card_cargo">{{item.profesion_ocupacion}}</h3>
                         </mat-card-subtitle>
                         <mat-card-content >
                             <div class="contenido_descripcion">
-                                <span>Postulado para:</span>   <br> <p>Encargado de Gestion de redes y TI </p> 
+                                <span>Postulado para:</span>   <br> <p>{{item.puesto_empleo}}</p> 
                             </div>
                             
                         </mat-card-content>
@@ -27,7 +32,7 @@
                 </div>
                 <div  fxLayout="rows" fxLayoutAlign="center">
                     <button class="card_boton" mat-button>Ver perfil</button>
-                    <button class="card_boton" mat-button>Descargar CV</button>
+                    <button class="card_boton" mat-button (click)="verPDF(item.cv)" >Revisar CV</button>
                     <button class="card_boton" mat-button>descartar</button>
                 </div>
             </mat-card>
@@ -36,18 +41,19 @@
             <mat-card class="card_postulante" *ngFor="let item of postulantes2">
                 <div fxLayout="row">
                     <div >
-                        <img class="card_imagen" src="http://www.nosotros-los-ingenieros.com/wp-content/uploads/2020/06/cooper.jpg" alt="">
+<!--                         <img class="card_imagen" src="http://www.nosotros-los-ingenieros.com/wp-content/uploads/2020/06/cooper.jpg" alt="">
+ -->                        <img class="card_imagen" [src]="item.foto_perfil" alt="">
                     </div>
                     <div class="card_contenido" fxLayout="column">
                         <mat-card-title >
-                            <h3 class="card_nombre">Marcos Ramirez Loayza</h3>
+                            <h3 class="card_nombre">{{item.nombres}} {{item.apellidos}}</h3>
                         </mat-card-title>
                         <mat-card-subtitle>
-                            <h3 class="card_cargo">Ingeniero de sistemas</h3>
+                            <h3 class="card_cargo">{{item.profesion_ocupacion}}</h3>
                         </mat-card-subtitle>
                         <mat-card-content >
                             <div class="contenido_descripcion">
-                                <span>Postulado para:</span>   <br> <p>Encargado de Gestion de redes y TI </p> 
+                                <span>Postulado para:</span>   <br> <p>{{item.puesto_empleo}} </p> 
                             </div>
                             
                         </mat-card-content>
@@ -57,7 +63,7 @@
                 </div>
                 <div  fxLayout="rows" fxLayoutAlign="center">
                     <button class="card_boton" mat-button>Ver perfil</button>
-                    <button class="card_boton" mat-button>Descargar CV</button>
+                    <button class="card_boton" mat-button (click)="verPDF(item.cv)">Revisar CV</button>
                     <button class="card_boton" mat-button>descartar</button>
                 </div>
             </mat-card>

@@ -38,3 +38,52 @@ export interface perfil_empresa_creacionDTO{
     /* banActivo:boolean; */
     userId:string;
 }
+
+export interface publicar_empleoDTO{
+    puesto_empleo:string;
+    descripcion:string;
+    requisitos:string;
+    fecha_publicacion:Date
+    fecha_vencimiento:Date;
+    perfil_empresaId:number;
+    categoriasId:number;
+    estadoId:number;
+}
+
+export interface publicar_empleo_creacionDTO{
+    puesto_empleo:string;
+    descripcion:string;
+    requisitos:string;
+    fecha_vencimiento:Date;
+    perfil_empresaId:number;
+    categoriasId:number;
+    estadoId:number;
+}
+
+export interface postulantes_empresaDTO{
+    empresaId: number;
+
+    perfil_postulanteId:number;
+
+    publicacionesId:number;
+
+    fecha_postulacion:Date;
+        
+    estadosId:number;
+
+    banactivo:boolean;
+
+    puesto_empleo:string;
+
+    fecha_vencimiento:Date;
+
+    nombres:string;
+
+    apellidos:string;
+
+    cv:string;
+
+    foto_perfil:string;
+
+    profesion_ocupacion:string;
+}

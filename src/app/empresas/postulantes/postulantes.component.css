@@ -22,7 +22,7 @@
 .card_postulante{
     box-shadow:   5px 5px 50px rgba(99, 99, 99, 0.158);
     background-color: #2b2b2b;
-    max-width: 500px;
+    width: 500px;
     max-height: 300px;
     border-radius: 15px;
     margin:30px ;

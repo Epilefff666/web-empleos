@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { CompartidosService } from '../servicios/compartidos.service';
-import { ofertas_recientesDTO } from '../interfaces/compartido.interfaces';
 import { Router} from '@angular/router';
 import { SeguridadService } from '../../seguridad/servicios/seguridad.service';
+import { ofertas_publicadasDTO, categoriasDTO } from '../interfaces/compartido.interfaces';
 
 @Component({
   selector: 'app-home',
@@ -13,12 +13,11 @@ import { SeguridadService } from '../../seguridad/servicios/seguridad.service';
 })
 export class HomeComponent implements OnInit {
   
-  prueba:any[]=[1,2,3,4,5];
-  prueba2:any[]=[1,2,3,4,5];
+
   nombre:string = '';
-  options: string[]=['ingenieria','ventas','administración'];
-  Ofertas_recientes1: ofertas_recientesDTO[] = [] ;
-  Ofertas_recientes2: ofertas_recientesDTO[] = [] ;
+  categorias:categoriasDTO[]=[];
+  Ofertas1: ofertas_publicadasDTO[] = [] ;
+  Ofertas2: ofertas_publicadasDTO[] = [] ;
 
 
   constructor(private compartidosService : CompartidosService, 
@@ -28,19 +27,23 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
 
     this.nombre = this.seguridadService.obtenerCampoJWT('email');
-
-    this.compartidosService.Obtener_ofertas_recientes()
-    .subscribe( ofertas_recientes => {
-      for( let i=0 ; i< ofertas_recientes.length ; i++){
+    this.compartidosService.Obtener_categorias()
+    .subscribe((categorias)=>{
+      this.categorias = categorias;
+    })
+    this.compartidosService.Obtener_ofertas()
+    .subscribe( ofertas => {
+      console.log(ofertas)
+      for( let i=0 ; i< 6 ; i++){
         if(i%2 == 0){
-         this.Ofertas_recientes1.push(ofertas_recientes[i]) 
+         this.Ofertas1.push(ofertas[i]) 
         }
         else{
-          this.Ofertas_recientes2.push(ofertas_recientes[i])
+          this.Ofertas2.push(ofertas[i])
         }
       }
     }, error => console.error(error));
-
+ 
     } 
 
 

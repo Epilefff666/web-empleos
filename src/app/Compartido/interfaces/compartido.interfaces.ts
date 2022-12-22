@@ -1,11 +1,15 @@
 
-export interface ofertas_recientesDTO {
-    id_empleo_publicado : number;
+export interface ofertas_publicadasDTO {
+    id : number;
+    foto_perfil:string;
     puesto_empleo : string;
     nombre_empresa : string;
     fecha_publicacion : Date;
-    id_perfil_empresa : number;
-    id_estado : number;
+    estado:string;
+    categoria:string;
+    empresaId:number;
+    categoriaId:number;
+    estadoId:number;
 }
 export interface todas_las_ofertasDTO{
     
@@ -54,6 +58,10 @@ export interface detalle_empleoDTO{
     tiktok :string;
 }
 
+export interface categoriasDTO{
+    id:number;
+    nombre:string;
+}
 
 export interface credencialesUsuario{
     email:string;

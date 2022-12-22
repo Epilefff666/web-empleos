@@ -1,33 +1,50 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router, Params } from '@angular/router';
+import { CompartidosService } from 'src/app/Compartido/servicios/compartidos.service';
+import { SeguridadService } from 'src/app/seguridad/servicios/seguridad.service';
 import { EmpresasService } from '../servicios/empresas.service';
-import { CompartidosService } from '../../Compartido/servicios/compartidos.service';
-import { SeguridadService } from '../../seguridad/servicios/seguridad.service';
-import { Router } from '@angular/router';
+import { publicar_empleo_creacionDTO, publicar_empleoDTO } from '../interfaces/empresas.interfaces';
 
 @Component({
-  selector: 'app-publicar-empleo',
-  templateUrl: './publicar-empleo.component.html',
-  styleUrls: ['./publicar-empleo.component.css']
+  selector: 'app-editar-publicacion',
+  templateUrl: './editar-publicacion.component.html',
+  styleUrls: ['./editar-publicacion.component.css']
 })
-export class PublicarEmpleoComponent implements OnInit {
+export class EditarPublicacionComponent implements OnInit {
 
-  constructor( private formBuilder:FormBuilder,
+  constructor(private formBuilder:FormBuilder,
     private router:Router,
+    private activatedRoute:ActivatedRoute,
     private empresasService:EmpresasService,
     private compartidosService:CompartidosService,
     private seguridadService:SeguridadService) { }
 
-    form!:FormGroup
-    empresaId!:number;
-    categorias:any[]=[];
 
+    form!:FormGroup
+    modelo!:publicar_empleoDTO;
+    empresaId!:number
+    categorias:any[]=[];
+    empleoId!:number
   ngOnInit(): void {
-    this.empresaId =Number(localStorage.getItem('perfilID')) 
+
+    this.empresaId=Number(localStorage.getItem('perfilID'))
+    this.activatedRoute.params
+    .subscribe((params:Params)=>{
+      this.empleoId = params['id'];
+      this.empresasService.obtnerEmpleoId(params['id'])
+      .subscribe((value)=>{
+        this.modelo=value
+        this.form.patchValue(this.modelo)
+        
+      })
+    })
+
     this.compartidosService.Obtener_categorias()
     .subscribe((categorias)=>{
       this.categorias = categorias;
     });
+    
 
     this.form = this.formBuilder.group({
       puesto_empleo :['',{
@@ -53,16 +70,14 @@ export class PublicarEmpleoComponent implements OnInit {
     
   }
 
-  publicarEmpleo(value:any){
-    console.log(value);
-    this.empresasService.publicarEmpleo(value)
+  editarEmpleo(id:number,value:publicar_empleo_creacionDTO){
+    
+    this.empresasService.editarEmpleo(id,value)
     .subscribe(()=>{
-      console.log("empleo publicado")
-      this.router.navigate(['empresas/empleos-publicados']);
-      /* window.location.reload(); */
+      console.log('empleo editado')
+      this.router.navigate(['/detalle-empleo',this.empleoId])
     })
   }
-
 
   obtenerError(){
     const puesto_empleo = this.form.get('puesto_empleo')

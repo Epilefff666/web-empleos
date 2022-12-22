@@ -1,9 +1,9 @@
 <div class="contenedor_publicar_empleo">
     <div fxLayoutAlign="center">
-        <h1 class="publicar_empleo_titulo">Publicar empleo</h1>
+        <h1 class="publicar_empleo_titulo">Editar empleo</h1>
     </div>
     <div class="contenedor_formulario" fxLayout="column">
-        <form (submit)="publicarEmpleo(form.value)" [formGroup]="form">
+        <form (submit)="editarEmpleo( empleoId ,form.value)" [formGroup]="form">
 
             <mat-form-field appearance="fill" class="formulario-inputs" >
                 <mat-label>Puesto empleo</mat-label>
@@ -47,7 +47,7 @@
 
             <div fxLayoutAlign="center">
                 <button mat-button class="boton_publicar" [disabled]="form.invalid">
-                    Publicar empleo
+                    Guardar cambios
                 </button>
             </div>
             
@@ -56,3 +56,4 @@
 
     </div>
 </div>
+

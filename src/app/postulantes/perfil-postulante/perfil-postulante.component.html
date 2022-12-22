@@ -1,1 +1,251 @@
-<p>perfil-postulante works!</p>
+<div class="contenedor_perfil">
+    <div fxLayoutAlign="center"><h1 class="titulo_perfil">Mi perfil</h1></div>
+    <div>
+        <ul *ngIf="errores.length > 0">
+            <li *ngFor="let error of errores">{{ error }}</li>
+        </ul>
+    </div>
+    <form [formGroup]="form">
+        <div fxLayout="row" fxLayoutAlign="space-around" class="perfil-foto">
+            <div>
+                <div fxLayout="column" >
+                    <img *ngIf="foto && !imagenBase64" class="foto_imagen" [src]="foto" alt="">
+                    <img *ngIf="imagenBase64" class="foto_imagen" [src]="imagenBase64" alt="">
+                    <img *ngIf="!imagenBase64 && !foto" class="foto_imagen" src="../../../assets/logos/Persona_Mesa de trabajo 1.png" alt="">
+
+                    <div fxLayoutAlign="center">
+                        <button class="input_imagen"  mat-button (click)="fileInput.click()"> <mat-icon>camera_enhance</mat-icon></button>
+                        <input type="file" hidden #fileInput 
+                        (change)="changeFoto($event)">
+                    </div>
+                    
+                </div>
+            </div>
+            <div fxLayout="column" fxLayoutAlign="center">
+                
+                <label style="color:white; text-align: center; font-size: 25px;" >Agrega tu Cv en formato PDF</label><br>
+                <input class="input_cv" type="file"  (change)="changeCv($event)" accept="application/pdf"  ><br>
+                <button class="boton_cv" *ngIf="modelo" mat-button (click)="abrirPdf(modelo.cv)"> Ver CV actual</button>
+            </div>
+            <div>
+                <button class="guardar_cambios" *ngIf="!modelo" (click)="registrarPerfil(form.value)" mat-button [disabled]="form.invalid"> Registrar perfil <mat-icon>update</mat-icon></button>
+                <button class="guardar_cambios" *ngIf="modelo"(click)="guardarCambios(form.value)" mat-button [disabled]="form.invalid"> Guardar cambios <mat-icon>update</mat-icon></button>
+            </div>
+        </div>
+
+
+        <div class="perfil_form">
+            <div fxLayout="column">
+                <div fxLayout="row" fxLayoutAlign="space-between">
+                    <mat-form-field appearance="fill" class="formulario-inputs_mediano">
+                        <mat-label>Nombres postulante</mat-label>
+                        <input  formControlName="nombres" matInput>
+                        <mat-error *ngIf="form.invalid"></mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" class="formulario-inputs_mediano">
+                        <mat-label>Apellidos</mat-label>
+                        <input  formControlName="apellidos" matInput>
+                        <mat-error *ngIf="form.invalid"></mat-error>
+                    </mat-form-field>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-between">
+                    <mat-form-field appearance="fill" class="formulario-inputs_mediano">
+                        <mat-label>Numero CI</mat-label>
+                        <input  formControlName="numero_documento" matInput>
+                        <mat-error *ngIf="form.invalid"></mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="formulario-inputs_mediano" appearance="fill" >
+                        <mat-label>Sexo</mat-label>
+                        <mat-select formControlName="sexo" >
+                          <mat-option *ngFor="let option of sexo" [value]="option">
+                            {{option}}
+                          </mat-option>
+                        </mat-select>
+                        
+                    </mat-form-field>
+                    
+                </div>
+                <mat-form-field appearance="fill" class="formulario-inputs">
+                    <mat-label>Fecha Nacimiento</mat-label>
+                    <div fxLayout="row">
+                        <input matInput [matDatepicker]="picker" formControlName="fecha_nacimiento">
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    </div>
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker #picker></mat-datepicker>
+                    <mat-error *ngIf="form.invalid"></mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill" class="formulario-inputs">
+                    <mat-label>Profesion u ocupacion</mat-label>
+                    <input  formControlName="profesion_ocupacion" matInput>
+                    <mat-error *ngIf="form.invalid"></mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill" class="formulario-inputs">
+                    <mat-label>Descripcion postulante</mat-label>
+                    <textarea formControlName="descripcion_postulante"matInput></textarea>
+                    <mat-error *ngIf="form.invalid"></mat-error>
+                </mat-form-field>
+
+               <!-- --------------------- habilidades-------------------------------- -->
+
+               <h2 fxLayoutAlign="center" style="color:white; margin:5px;" >Selecciona tus habilidades tecnicas y blandas</h2>
+                
+               <div fxLayout="row" fxLayoutAlign="space-between">
+                    <mat-form-field class="formulario-inputs_mediano" appearance="fill" >
+                        <mat-label>Hablidad tecnica 1</mat-label>
+                        <mat-select formControlName="habilidad_tecnica1"  >
+                          <mat-option *ngFor="let option of habilidades_tecnicas" [value]="option" >
+                            {{option}}
+                          </mat-option>
+                        </mat-select>
+                        
+                    </mat-form-field>
+                    <mat-form-field class="formulario-inputs_mediano" appearance="fill" >
+                        <mat-label>Habilida blanda 1</mat-label>
+                        <mat-select formControlName="habilidad_blanda1">
+                          <mat-option *ngFor="let option of habilidades_blandas" [value]="option">
+                            {{option}}
+                          </mat-option>
+                        </mat-select>
+                        
+                    </mat-form-field>
+                    
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-between">
+                    <mat-form-field class="formulario-inputs_mediano" appearance="fill" >
+                        <mat-label>Hablidad tecnica 2</mat-label>
+                        <mat-select formControlName="habilidad_tecnica2" >
+                          <mat-option *ngFor="let option of habilidades_tecnicas" [value]="option">
+                            {{option}}
+                          </mat-option>
+                        </mat-select>
+                        
+                    </mat-form-field>
+                    <mat-form-field class="formulario-inputs_mediano" appearance="fill" >
+                        <mat-label>Habilida blanda 2</mat-label>
+                        <mat-select formControlName="habilidad_blanda2" >
+                          <mat-option *ngFor="let option of habilidades_blandas" [value]="option">
+                            {{option}}
+                          </mat-option>
+                        </mat-select>
+                        
+                    </mat-form-field>
+                    
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-between">
+                    <mat-form-field class="formulario-inputs_mediano" appearance="fill" >
+                        <mat-label>Hablidad tecnica 3</mat-label>
+                        <mat-select formControlName="habilidad_tecnica3" >
+                          <mat-option *ngFor="let option of habilidades_tecnicas" [value]="option">
+                            {{option}}
+                          </mat-option>
+                        </mat-select>
+                        
+                    </mat-form-field>
+                    <mat-form-field class="formulario-inputs_mediano" appearance="fill" >
+                        <mat-label>Habilida blanda 3</mat-label>
+                        <mat-select formControlName="habilidad_blanda3" >
+                          <mat-option *ngFor="let option of habilidades_blandas" [value]="option">
+                            {{option}}
+                          </mat-option>
+                        </mat-select>
+                        
+                    </mat-form-field>
+                    
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-between">
+                    <mat-form-field class="formulario-inputs_mediano" appearance="fill" >
+                        <mat-label>Hablidad tecnica 4</mat-label>
+                        <mat-select formControlName="habilidad_tecnica4" >
+                          <mat-option *ngFor="let option of habilidades_tecnicas" [value]="option">
+                            {{option}}
+                          </mat-option>
+                        </mat-select>
+                        
+                    </mat-form-field>
+                    <mat-form-field class="formulario-inputs_mediano" appearance="fill" >
+                        <mat-label>Habilida blanda 4</mat-label>
+                        <mat-select formControlName="habilidad_blanda4" >
+                          <mat-option *ngFor="let option of habilidades_blandas" [value]="option">
+                            {{option}}
+                          </mat-option>
+                        </mat-select>
+                        
+                    </mat-form-field>
+                    
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-between">
+                    <mat-form-field class="formulario-inputs_mediano" appearance="fill" >
+                        <mat-label>Hablidad tecnica 5</mat-label>
+                        <mat-select formControlName="habilidad_tecnica5" >
+                          <mat-option *ngFor="let option of habilidades_tecnicas" [value]="option">
+                            {{option}}
+                          </mat-option>
+                        </mat-select>
+                        
+                    </mat-form-field>
+                    <mat-form-field class="formulario-inputs_mediano" appearance="fill" >
+                        <mat-label>Habilida blanda 5</mat-label>
+                        <mat-select formControlName="habilidad_blanda5" >
+                          <mat-option *ngFor="let option of habilidades_blandas" [value]="option">
+                            {{option}}
+                          </mat-option>
+                        </mat-select>
+
+                    </mat-form-field>
+                    
+                </div>
+                <!-- --------------------- contacto y redes sociales-------------------------------- -->
+
+               <h2 fxLayoutAlign="center" style="color:white; margin:5px;" >Agrega tus datos de contacto y redes sociales</h2>
+
+                <div fxLayout="row" fxLayoutAlign="space-between">
+                    <mat-form-field appearance="fill" class="formulario-inputs_mediano">
+                        <mat-label>Celular</mat-label>
+                        <input  formControlName="celular" matInput>
+                        <mat-error *ngIf="form.invalid"></mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" class="formulario-inputs_mediano">
+                        <mat-label>Correo</mat-label>
+                        <input  formControlName="correo" matInput>
+                        <mat-error *ngIf="form.invalid"></mat-error>
+                    </mat-form-field>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-between">
+                    <mat-form-field appearance="fill" class="formulario-inputs_mediano">
+                        <mat-label>Facebook</mat-label>
+                        <input  formControlName="facebook" matInput>
+                        <mat-error *ngIf="form.invalid"></mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" class="formulario-inputs_mediano">
+                        <mat-label>Instagram</mat-label>
+                        <input  formControlName="instagram" matInput>
+                        <mat-error *ngIf="form.invalid"></mat-error>
+                    </mat-form-field>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-between">
+                    <mat-form-field appearance="fill" class="formulario-inputs_mediano">
+                        <mat-label>LinkedIn</mat-label>
+                        <input  formControlName="linkedin" matInput>
+                        <mat-error *ngIf="form.invalid"></mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" class="formulario-inputs_mediano">
+                        <mat-label>TikTok</mat-label>
+                        <input  formControlName="tiktok" matInput>
+                        <mat-error *ngIf="form.invalid"></mat-error>
+                    </mat-form-field>
+                </div>
+
+
+
+
+
+
+            </div>
+        </div>
+    </form>
+</div>
+
+

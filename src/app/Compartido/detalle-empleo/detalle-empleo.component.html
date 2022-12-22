@@ -1,14 +1,14 @@
-<div class="detalle-empleo">
+<div class="detalle-empleo" *ngIf="detalle_empleo && empresa">
     <div fxLayout="row" class="detalle-empleo-cabecera">
         <div fxLayoutAlignRows="center">
-            <img class="detalle-empleo-imagen" src="https://png.pngtree.com/template/20191014/ourlarge/pngtree-real-estate-business-logo-template-building-property-development-and-construction-logo-image_317796.jpg" alt="">
-        </div>
-        <div fxLayoutColumns="center" class=" detalle-empleo-cabecera-descripcion">
-            <h2 class="detalle-empleo-cabecera-titulo">{{detalle_empleo.nombre_empresa}}</h2>
-            <h3 class="detalle-empleo-cabecera-subtitulo">{{detalle_empleo.puesto_empleo}}</h3>
+            <img class="detalle-empleo-imagen" [src]="empresa.foto_perfil" alt="">
+<!--   -->        </div>
+        <div fxLayoutColumns="center" class=" detalle-empleo-cabecera-descripcion"  >
+            <h2 class="detalle-empleo-cabecera-titulo">{{ detalle_empleo.puesto_empleo}}</h2>
+            <h3 class="detalle-empleo-cabecera-subtitulo"> {{ empresa.nombre_empresa}} </h3>
             <p>
-                <span class="detalle-empleo-cabecera-subtitulo2">Descripcion del la empresa:</span><br>
-                {{detalle_empleo.descripcion_empresa}}
+                <span class="detalle-empleo-cabecera-subtitulo2">Descripcion del la empresa:  </span><br>
+                {{ empresa.descripcion_empresa }}
             </p>
             <p>
                 <span class="detalle-empleo-cabecera-subtitulo2">Feha Publicacion:</span> 
@@ -23,16 +23,41 @@
         <span class="detalle-empleo-contenido-subtitulo">DESCRIPCION DEL EMPLEO:</span><br>
         <p class="detalle-empleo-contenido-descripcion">
             
-            {{detalle_empleo.descripcion_empleo}}
+            {{detalle_empleo.descripcion}}
         </p>
         <span class="detalle-empleo-contenido-subtitulo">REQUISITOS DEL EMPLEO:</span><br>
         <p class="detalle-empleo-contenido-descripcion">
            
-            {{detalle_empleo.requisitos_empleo}}
+            {{detalle_empleo.requisitos}}
         </p>
-        <div fxLayoutAlign="end">
-            <button class ="detalle-empleo-boton"mat-button>Postular al empleo</button>
+        <strong class="detalle-empleo-contenido-descripcion">Sector empresarial:</strong>
+        <p class="detalle-empleo-contenido-descripcion">{{empresa.sector}}</p>
+
+        <strong class="detalle-empleo-contenido-descripcion">Redes sociales y contacto:</strong><br>
+        <p class="detalle-empleo-contenido-descripcion">
+            <span *ngIf="empresa.celular"><strong>Celular:</strong>{{empresa.celular}}</span>&nbsp; &nbsp;
+            <span *ngIf="empresa.telefono"><strong>telefono:</strong>{{empresa.telefono}}</span>&nbsp; &nbsp;
+            <span *ngIf="empresa.facebook"><strong>Facebook:</strong> {{empresa.facebook}}</span>&nbsp; &nbsp;
+            <span *ngIf="empresa.instagram"><strong>Instagram:</strong> {{empresa.instagram}}</span>&nbsp; &nbsp;
+            <span *ngIf="empresa.linkedin"><strong>Linkedin:</strong> {{empresa.linkedin}}</span>&nbsp; &nbsp;
+            <span *ngIf="empresa.tiktok"><strong>Tiktok:</strong> {{empresa.tiktok}}</span>
+        </p>
+
+        <div>
+            <ul *ngIf="errores.length > 0">
+                <li *ngFor="let error of errores">{{ error }}</li>
+            </ul>
         </div>
+        
+        <app-autorizado [rol]="'postulante'">
+            <ng-container Autorizado >
+                <div fxLayoutAlign="end">
+                    <button class ="detalle-empleo-boton"mat-button (click)="postular()">Postular al empleo</button>
+                </div>
+            </ng-container>
+        </app-autorizado>
+
+        
         
     </div>
     

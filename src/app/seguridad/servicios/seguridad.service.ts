@@ -19,6 +19,7 @@ export class SeguridadService {
   private readonly llaveToken='token';
   private readonly llaveExpiracion='token-expiracion';
   private readonly campoRol = 'role';
+  private readonly perfilID = 'perfilID';
 
   estaLogueado():boolean{
     const token = localStorage.getItem(this.llaveToken)
@@ -38,7 +39,7 @@ export class SeguridadService {
   logOut(){
     localStorage.removeItem(this.llaveToken );
     localStorage.removeItem(this.llaveExpiracion);
-    
+    localStorage.removeItem(this.perfilID);
     
   }
   obtenerRol():string{

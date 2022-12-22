@@ -8,6 +8,8 @@ import { EmpresasRoutingModule } from './empresas-routing.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MaterialModule } from '../material/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { EditarPublicacionComponent } from './editar-publicacion/editar-publicacion.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -16,6 +18,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     PostulantesComponent,
     EmpleosPublicadosComponent,
     PerfilEmpresaComponent,
+    EditarPublicacionComponent,
+
   ],
   imports: [
     CommonModule,
@@ -24,6 +28,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     FormsModule,
     MaterialModule,
     FlexLayoutModule,
+    RouterModule,
     
   ]
 })

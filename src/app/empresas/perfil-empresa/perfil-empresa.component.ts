@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { perfil_empresaDTO, perfil_empresa_creacionDTO } from '../interfaces/empresas.interfaces';
+import { perfil_empresa_creacionDTO } from '../interfaces/empresas.interfaces';
 import { EmpresasService } from '../servicios/empresas.service';
 import { Router, Params } from '@angular/router';
 import { parsearErroresAPI, toBase64 } from '../../utilidades/Utilidades';
@@ -31,7 +31,6 @@ export class PerfilEmpresaComponent implements OnInit {
   ngOnInit(): void {
     
     this.email = this.seguridadService.obtenerCampoJWT('email')
-
     this.form = this.formBuilder.group({
       nombre_empresa:['',{
         validators:[Validators.required]
@@ -60,16 +59,16 @@ export class PerfilEmpresaComponent implements OnInit {
       instagram:[''],
       linkedin:[''],
       tiktok:[''],
-      /* banActivo:[true], */
       userId:[this.email]
     });
 
-    this.empresasService.obtenerEmpresaId(this.email)
+    this.empresasService.obtenerEmpresaEmail(this.email)
     .subscribe((modelo)=>{
       this.modelo= modelo
       if(this.modelo !== undefined){
          this.form.patchValue(this.modelo);
          this.foto = modelo.foto_perfil;
+         
       }
     })
     
@@ -105,6 +104,8 @@ export class PerfilEmpresaComponent implements OnInit {
       window.location.reload()
     })
   }
+
+        /* errores */
 
   obtenerError(){
     const nombre = this.form.get('nombre_empresa');

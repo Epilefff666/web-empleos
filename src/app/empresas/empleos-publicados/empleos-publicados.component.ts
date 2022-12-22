@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { EmpresasService } from '../servicios/empresas.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-empleos-publicados',
@@ -7,11 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmpleosPublicadosComponent implements OnInit {
 
-  constructor() { }
-  publicaciones:any[] = [1,2,3];
+  constructor( private empresasService:EmpresasService,
+    private router:Router) { }
+  publicaciones!:any[] 
   publicaciones_vencidas:any[] = [1,2,3];
+  id_empresa = Number(localStorage.getItem('perfilID')) 
 
   ngOnInit(): void {
+
+    this.empresasService.obtenerEmpleosEmpresa(this.id_empresa)
+    .subscribe( valor => {
+      this.publicaciones = valor;
+      console.log(this.publicaciones)
+    })
   }
+
 
 }

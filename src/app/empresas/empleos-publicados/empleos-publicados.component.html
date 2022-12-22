@@ -4,30 +4,30 @@
         <div class="cards_clasificacion_titulo" fxLayoutAlign="center">
             <h2> Publicaciones vigentes</h2>
         </div>
-        <mat-card class="empleos_publicados_card" *ngFor="let index of publicaciones">
+        <mat-card class="empleos_publicados_card" *ngFor="let item of publicaciones">
 <!--             <img mat-card-image class ="ofertas-recientes-card-image" src="https://material.angular.io/assets/img/examples/shiba2.jpg" >-->
 
             <div fxLayout="row" fxLayoutAlign="space-between">
                 <div fxLayout="column">
                     <mat-card-title>
-                        Puesto empleo
+                        {{item.puesto_empleo}}
                     </mat-card-title>
                     
                     <mat-card-subtitle>
-                        Fecha de publicacion
+                        <strong>Fecha de publicacion:</strong><br>  {{item.fecha_publicacion}}
                     </mat-card-subtitle>
                 </div>
                 <div class="card_descripcion">
                     <mat-card-content >
-                        Descripcion del empleo Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste veniam ducimus natus accusamus dolores eos consectetur beatae dolorem voluptatum nostrum. Vel fuga iste, ullam amet assumenda illo hic unde magnam.
+                        {{item.descripcion}}
                     </mat-card-content>
                 </div>
                 <div fxLayout="column">
-                    <button class="card-boton" mat-button>
+                    <button class="card-boton" mat-button [routerLink]="['/detalle-empleo',item.id]">
                         Ver detalles
                     </button>
-                    <button class="card-boton" mat-button>
-                        Editar publicación:
+                    <button class="card-boton" mat-button [routerLink]="['/empresas/editar-publicacion',item.id]">
+                        Editar publicación
                     </button>
                 </div>
             </div>
@@ -66,3 +66,4 @@
 
     </div>
 </div>
+

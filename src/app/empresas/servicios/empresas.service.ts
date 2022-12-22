@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { perfil_empresaDTO, perfil_empresa_creacionDTO } from '../interfaces/empresas.interfaces';
+import { perfil_empresaDTO, perfil_empresa_creacionDTO, publicar_empleoDTO, publicar_empleo_creacionDTO, postulantes_empresaDTO } from '../interfaces/empresas.interfaces';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
@@ -14,21 +14,58 @@ export class EmpresasService {
 
   private apiURL = environment.apiURL+'empresas';
 
+  /*  servicios perfil empresa   */
 
   public CrearEmpresa( perfil_empresa:perfil_empresa_creacionDTO){
     const formData = this.construirFormData(perfil_empresa)
-    
     return this.http.post( this.apiURL +'/crear', formData);
   }
 
-  public obtenerEmpresaId( email :string ): Observable<perfil_empresaDTO> {
+  public obtenerEmpresaEmail( email :string ): Observable<perfil_empresaDTO> {
     return  this.http.get<perfil_empresaDTO>(`${this.apiURL}/${email}`);
+  }
+
+  public obtenerEmpresaId( id :number ): Observable<perfil_empresaDTO> {
+    return  this.http.get<perfil_empresaDTO>(`${this.apiURL}/perfil/${id}`);
   }
 
   public actualizarEmpresaId(id:number, perfil_empresa: perfil_empresa_creacionDTO){
     const formData = this.construirFormData(perfil_empresa)
     return this.http.put(`${this.apiURL}/${id}`,formData);
   }
+
+ /* servicios publicar empleo */
+
+ private apiURLpublicar = environment.apiURL+'publicaciones'
+
+  public obtnerEmpleoId(id:number):Observable<publicar_empleoDTO>{
+    return this.http.get<publicar_empleoDTO>(`${this.apiURLpublicar}/${id}`);
+  }
+
+  public obtenerEmpleosEmpresa(id:number):Observable<publicar_empleoDTO[]>{
+    return this.http.get<publicar_empleoDTO[]>(`${this.apiURLpublicar}/${'empresa'}/${id}`);
+  }
+
+  public publicarEmpleo(publicar_empleo:publicar_empleo_creacionDTO){
+    return this.http.post(this.apiURLpublicar+'/crear',publicar_empleo);
+  } 
+
+  public editarEmpleo(id:number,publicar_empleo:publicar_empleo_creacionDTO){
+    return this.http.put(`${this.apiURLpublicar}/${'editar'}/${id}`,publicar_empleo);
+  } 
+
+/*   servicios postulantes */
+  
+ private apiURLpostulantes = environment.apiURL+'postulantesEmpresa';
+
+ public obtenerPostulantesEmpresa(id:number):Observable<postulantes_empresaDTO[]>{
+    return this.http.get<postulantes_empresaDTO[]>(`${this.apiURLpostulantes}/${id}`);
+ }
+
+
+
+
+
 
   private construirFormData(perfil_empresa: perfil_empresa_creacionDTO): FormData{
 
