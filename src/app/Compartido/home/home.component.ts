@@ -37,7 +37,8 @@ export class HomeComponent implements OnInit {
     
     this.form = this.formBuilder.group({
       categoria:'',
-      palabraClave:''
+      palabraClave:'',
+      nombre_empresa:'',
     })
 
     this.compartidosService.Obtener_categorias()
@@ -45,7 +46,7 @@ export class HomeComponent implements OnInit {
       this.categorias = categorias;
     })
 
-    this.compartidosService.Obtener_ofertas(0,0)
+    this.compartidosService.Obtener_ofertas(0,0,'','','')
     .subscribe( (respuesta:HttpResponse<ofertas_publicadasDTO[]>) => {
      /*  console.log(ofertas) */
      this.ofertas =  respuesta.body;
@@ -65,7 +66,7 @@ export class HomeComponent implements OnInit {
 
     enviarFormulario(formulario:any){
       this.compartidosService.enviarForm(formulario);
-      this.router.navigate(['buscar-empleo'],{queryParams:{categoria:formulario.categoria ,palabraClave:formulario.palabraClave}})
+      this.router.navigate(['buscar-empleo'],{queryParams:{categoria:formulario.categoria ,palabraClave:formulario.palabraClave,nombre_empresa:formulario.nombre_empresa}})
     }
   }
 

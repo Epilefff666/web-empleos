@@ -9,24 +9,37 @@
                 <mat-form-field class="buscador-box-formulario-input" appearance="fill">
                     <mat-label>Categoria</mat-label>
                             <mat-select formControlName="categoria" >
-                              <mat-option *ngFor="let option of categorias" [value]="option.nombre">
-                                {{option.nombre}}
-                              </mat-option>
+                                <mat-option [value]="''" >
+                                    No seleccionado
+                                </mat-option>
+                                <mat-option *ngFor="let option of categorias" [value]="option.nombre">
+                                    {{option.nombre}}
+                                </mat-option>
                             </mat-select>
+                </mat-form-field>
+                <mat-form-field class="buscador-box-formulario-input" appearance="fill">
+                    <mat-label>Empresa</mat-label>
+                    <input matInput formControlName="nombre_empresa" >
+                         
                 </mat-form-field>
             </div>
 
             <div>
+                
                 <mat-form-field class="buscador-box-formulario-input" appearance="fill">
                     <mat-label>Palabra clave</mat-label>
                     <input matInput formControlName="palabraClave" >
                          
                 </mat-form-field>
+                
             </div>
     
             <div>
                 <button class="buscador-boton" mat-button (click)="limpiar()" >
                     Limpiar
+                </button>
+                <button class="buscador-boton" mat-button (click)="buscar(form.value)" >
+                    buscar
                 </button>
                 
             </div>
@@ -102,7 +115,7 @@
 
 
 
-<mat-paginator [pageSizeOptions]="[1,2,20,50]" showFirstLastButtons
+<mat-paginator [pageSizeOptions]="[1,2,4,8]" showFirstLastButtons
 [length]="cantidadTotalRegistros" [pageSize]="cantidadRegistrosAMostrar"
 (page)="actualizarPaginacion($event)"
 >

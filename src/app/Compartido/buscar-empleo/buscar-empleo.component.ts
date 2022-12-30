@@ -18,10 +18,11 @@ export class BuscarEmpleoComponent implements OnInit {
   /* Ofertas!: ofertas_publicadasDTO[]; */
   Ofertas:any;
   OfertasOriginal: ofertas_publicadasDTO[] = [];
-  resultados= true;
+  resultados= false;
   formularioOriginal = {
     categoria:'',
     palabraClave:'',
+    nombre_empresa:'',
   }
   form!:FormGroup;
   valorRecibido:any;
@@ -45,9 +46,9 @@ export class BuscarEmpleoComponent implements OnInit {
     .subscribe((categorias)=>{
       this.categorias=categorias;
     })
-
-    this.cargarRegistros(this.paginaActual,this.cantidadRegistrosAMostrar);
     
+    this.leerValoresUrl();
+   
     /* this.compartidosService.Obtener_ofertas()
     .subscribe( ofertas => {
       this.Ofertas = ofertas;
@@ -57,16 +58,15 @@ export class BuscarEmpleoComponent implements OnInit {
       this.buscarOfertas(this.valorRecibido);
     }, error => console.error(error)); */
 
-    this.form.valueChanges
+    /* this.form.valueChanges
     .subscribe(valores =>{
       this.Ofertas = this.OfertasOriginal;
       this.resultados=true;
       this.buscarOfertas(valores);
       this.escribirParametrosBusquedaEnUrl();
-    })
+    }) */
+
   }
-
-
 
   private leerValoresUrl(){
     this.activatedRouter.queryParams
@@ -78,8 +78,12 @@ export class BuscarEmpleoComponent implements OnInit {
       if(params['categoria']){
         objeto.categoria = params['categoria'];
       }
+      if(params['nombre_empresa']){
+        objeto.nombre_empresa = params['nombre_empresa'];
+      }
       this.form.patchValue(objeto);
-
+      let formulario = this.form.value
+      this.cargarRegistros(this.paginaActual,this.cantidadRegistrosAMostrar,formulario.palabraClave,formulario.categoria,formulario.nombre_empresa);
     })
   }
 
@@ -94,6 +98,9 @@ export class BuscarEmpleoComponent implements OnInit {
     if(valoresFormulario.categoria){
       queryStrings.push(`categoria=${valoresFormulario.categoria}`);
     }
+    if(valoresFormulario.nombre_empresa){
+      queryStrings.push(`nombre_empresa=${valoresFormulario.nombre_empresa}`);
+    }
 
     this.location.replaceState('buscar-empleo',queryStrings.join('&'));
   }
@@ -104,10 +111,10 @@ export class BuscarEmpleoComponent implements OnInit {
     this.router.navigate([url]);
   }
 
-  buscarOfertas(valores:any){
+  /* buscarOfertas(valores:any){
     if(valores.palabraClave ){
-      
-      this.Ofertas = this.Ofertas.filter( (x: { puesto_empleo: string | any[]; }) => x.puesto_empleo.indexOf(valores.palabraClave) !== -1)
+
+      this.Ofertas = this.Ofertas.filter( (x: { puesto_empleo : string | any[]; }) => x.puesto_empleo.indexOf(valores.palabraClave) !== -1)
       if(this.Ofertas.length == 0){
         this.resultados = false;
       }
@@ -119,30 +126,48 @@ export class BuscarEmpleoComponent implements OnInit {
       }
     }
     
-  }
+  } */
+
+  buscar(form:any){
+    this.Ofertas = this.OfertasOriginal;
+/*     this.buscarOfertas(form); */
+    this.Ofertas = this.OfertasOriginal;
+    this.escribirParametrosBusquedaEnUrl();
+    let palabraClave = form.palabraClave
+    let categoria = form.categoria
+    let nombre_empresa = form.nombre_empresa
+    this.cargarRegistros(1,4,palabraClave,categoria,nombre_empresa)
+    
+   }
 
   limpiar(){
     this.form.patchValue(this.formularioOriginal);
-    this.resultados = true
+    this.cargarRegistros(1,4,'','','')
+    /* this.resultados = true */
   }
 
-  cargarRegistros(pagina:number, cantidadRegistrosAMostrar:number){
-    this.compartidosService.Obtener_ofertas(pagina,cantidadRegistrosAMostrar)
+  cargarRegistros(pagina:number, cantidadRegistrosAMostrar:number,palabraclave:string,categoria:string,empresa:string){
+    this.compartidosService.Obtener_ofertas(pagina,cantidadRegistrosAMostrar,palabraclave,categoria,empresa)
     .subscribe( (respuesta:HttpResponse<ofertas_publicadasDTO[]>) => {
       this.Ofertas = respuesta.body;
       this.cantidadTotalRegistros = respuesta.headers.get("cantidadTotalRegistros");
       this.OfertasOriginal = this.Ofertas;
-      this.leerValoresUrl();
       this.valorRecibido=this.form.value;
-      this.buscarOfertas(this.valorRecibido);
-      console.log(this.Ofertas)
+      /* this.buscarOfertas(this.valorRecibido); */
+      /* console.log(this.Ofertas) */
+      if(respuesta.body?.length == 0 ){
+        this.resultados = false
+      }else{
+        this.resultados = true
+      }
     }, error => console.error(error));
   }
 
   actualizarPaginacion(datos: PageEvent){
     this.paginaActual = datos.pageIndex +1;
     this.cantidadRegistrosAMostrar = datos.pageSize;
-    this.cargarRegistros(this.paginaActual,this.cantidadRegistrosAMostrar); 
+    let form = this.form.value
+    this.cargarRegistros(this.paginaActual,this.cantidadRegistrosAMostrar,form.palabraClave,form.categoria,form.nombre_empresa); 
   }
 
 }

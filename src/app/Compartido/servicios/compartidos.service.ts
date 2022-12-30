@@ -20,11 +20,15 @@ export class CompartidosService {
 
   private apiURL = environment.apiURL + 'inicio';
 
-  public Obtener_ofertas(pagina:number, cantidadregistrosAMostrar:number): Observable<any>{
+  public Obtener_ofertas(pagina:number, cantidadregistrosAMostrar:number,palabraClave:string,categroia:string,empresa:string): Observable<any>{
     let params = new HttpParams();
     params = params.append('pagina', pagina.toString());
     params = params.append('recordsPorPagina', cantidadregistrosAMostrar.toString());
-    return this.http.get<ofertas_publicadasDTO[]>(this.apiURL+'/ofertas', {observe:'response',params});
+    params = params.append('palabraClave',palabraClave);
+    params = params.append('categoria',categroia);
+    params = params.append('nombre_empresa',empresa);
+
+    return this.http.get<ofertas_publicadasDTO[]>(this.apiURL+'/ofertas-filtro', {observe:'response',params});
   }
 
   public Obtener_categorias():Observable<categoriasDTO[]>{
