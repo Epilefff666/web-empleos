@@ -1,8 +1,11 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
 import { environment } from 'src/environments/environment';
 import { ofertas_publicadasDTO,  categoriasDTO } from '../interfaces/compartido.interfaces';
+import { Params } from '@angular/router';
+import { AppModule } from '../../app.module';
 
 @Injectable({
   providedIn: 'root'
@@ -11,13 +14,25 @@ export class CompartidosService {
 
   constructor(private http: HttpClient) { }
 
+  formulario:any;
+  private enviarFormSubject = new Subject<any>();
+  eniviarformObservable = this.enviarFormSubject.asObservable();
+
   private apiURL = environment.apiURL + 'inicio';
 
-  public Obtener_ofertas(): Observable<ofertas_publicadasDTO[]>{
-    return this.http.get<ofertas_publicadasDTO[]>(this.apiURL+'/ofertas');
+  public Obtener_ofertas(pagina:number, cantidadregistrosAMostrar:number): Observable<any>{
+    let params = new HttpParams();
+    params = params.append('pagina', pagina.toString());
+    params = params.append('recordsPorPagina', cantidadregistrosAMostrar.toString());
+    return this.http.get<ofertas_publicadasDTO[]>(this.apiURL+'/ofertas', {observe:'response',params});
   }
 
   public Obtener_categorias():Observable<categoriasDTO[]>{
     return this.http.get<categoriasDTO[]>(this.apiURL+'/categorias');
+  }
+
+  public enviarForm(formulario:any){
+    this.formulario = formulario;
+    this.enviarFormSubject.next(formulario);
   }
 }

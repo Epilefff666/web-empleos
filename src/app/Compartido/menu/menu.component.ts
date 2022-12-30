@@ -21,24 +21,27 @@ export class MenuComponent implements OnInit {
   foto:any;
   ngOnInit(): void {
    this.nombre= this.seguridadService.obtenerCampoJWT('email'); 
-   this.empresasService.obtenerEmpresaEmail(this.nombre)
-   .subscribe((modelo)=>{ 
-    if(modelo !== null) {
-      this.modelo=modelo 
-      this.foto =modelo.foto_perfil; 
-      localStorage.setItem("perfilID",this.modelo.id)
-      this.router.navigate(['inicio']);
-    }else{
-      this.postulantesService.obtenerPerfilEmail(this.nombre)
-      .subscribe((modelo)=>{
+   if(this.nombre){
+    this.empresasService.obtenerEmpresaEmail(this.nombre)
+    .subscribe((modelo)=>{ 
+      if(modelo !== null) {
         this.modelo=modelo 
         this.foto =modelo.foto_perfil; 
         localStorage.setItem("perfilID",this.modelo.id)
         this.router.navigate(['inicio']);
-      })
-    }
-    
-  });
+      }else{
+        this.postulantesService.obtenerPerfilEmail(this.nombre)
+        .subscribe((modelo)=>{
+        
+          this.modelo=modelo 
+          this.foto =modelo.foto_perfil; 
+          localStorage.setItem("perfilID",this.modelo.id)
+          this.router.navigate(['inicio']); 
+        })
+      }
+    });
+  }
+   
 
      
   }

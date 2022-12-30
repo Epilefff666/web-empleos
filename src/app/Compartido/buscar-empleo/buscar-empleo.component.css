@@ -29,6 +29,7 @@
 
 .lista-empleos{
     background-color: black;
+    min-height: 500px;
 }
 .lista-empleos-card{
     box-shadow:   5px 5px 50px rgba(163, 163, 163, 0.158);

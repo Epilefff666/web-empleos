@@ -10,14 +10,14 @@
             </app-autorizado>
             <div class="buscador-descripcion" ><h1 class="buscador-descripcion-texto">Busca y encuentra todas las ofertas de empleo en Chuquisaca</h1></div>
             <div class="buscador-box">
-                <form class="buscador-box-formulario">
+                <form class="buscador-box-formulario" [formGroup]="form">
                     <div fxLayoutAlign="row">
                     <div>
                         
                         <mat-form-field class="buscador-box-formulario-input" appearance="fill" >
                             <mat-label>Categoria</mat-label>
-                            <mat-select  >
-                              <mat-option *ngFor="let option of categorias" [value]="option.id">
+                            <mat-select formControlName="categoria" >
+                              <mat-option *ngFor="let option of categorias" [value]="option.nombre">
                                 {{option.nombre}}
                               </mat-option>
                             </mat-select>
@@ -28,9 +28,7 @@
                     <div>
                         <mat-form-field class="buscador-box-formulario-input" appearance="fill">
                             <mat-label>Palabra clave</mat-label>
-                            <input type="text"
-                                 matInput
-                                 aria-label="Categoria">
+                            <input matInput formControlName="palabraClave">
                                  <!-- [matAutocomplete]="auto"> -->
                            <!--  <mat-autocomplete #auto="matAutocomplete">
                                 <mat-option *ngFor="let option of options" [value]="option">
@@ -40,7 +38,7 @@
                         </mat-form-field>
                     </div>
                     <div>
-                        <button class="buscador-boton" mat-button (click)="navegar('buscar-empleo')">
+                        <button class="buscador-boton" mat-button (click)="enviarFormulario(form.value)">
                             Buscar
                         </button>
                     </div>
