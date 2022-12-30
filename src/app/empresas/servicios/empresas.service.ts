@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { perfil_empresaDTO, perfil_empresa_creacionDTO, publicar_empleoDTO, publicar_empleo_creacionDTO, postulantes_empresaDTO } from '../interfaces/empresas.interfaces';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 
@@ -42,9 +42,23 @@ export class EmpresasService {
     return this.http.get<publicar_empleoDTO>(`${this.apiURLpublicar}/${id}`);
   }
 
-  public obtenerEmpleosEmpresa(id:number):Observable<publicar_empleoDTO[]>{
-    return this.http.get<publicar_empleoDTO[]>(`${this.apiURLpublicar}/${'empresa'}/${id}`);
+
+
+  public obtenerEmpleosEmpresa(id:number,pagina:number, cantidadregistrosAMostrar:number):Observable<any>{
+    let params = new HttpParams();
+    params = params.append('pagina', pagina.toString());
+    params = params.append('recordsPorPagina', cantidadregistrosAMostrar.toString());
+    return this.http.get<publicar_empleoDTO[]>(`${this.apiURLpublicar}/${'empresa'}/${id}`,{observe:'response',params});
   }
+
+  public obtenerEmpleosVencidosEmpresa(id:number,pagina:number, cantidadregistrosAMostrar:number):Observable<any>{
+    let params = new HttpParams();
+    params = params.append('pagina', pagina.toString());
+    params = params.append('recordsPorPagina', cantidadregistrosAMostrar.toString());
+    return this.http.get<publicar_empleoDTO[]>(`${this.apiURLpublicar}/${'vencidas/empresa'}/${id}`,{observe:'response',params});
+  }
+
+
 
   public publicarEmpleo(publicar_empleo:publicar_empleo_creacionDTO){
     return this.http.post(this.apiURLpublicar+'/crear',publicar_empleo);
@@ -58,8 +72,11 @@ export class EmpresasService {
   
  private apiURLpostulantes = environment.apiURL+'postulantesEmpresa';
 
- public obtenerPostulantesEmpresa(id:number):Observable<postulantes_empresaDTO[]>{
-    return this.http.get<postulantes_empresaDTO[]>(`${this.apiURLpostulantes}/${id}`);
+ public obtenerPostulantesEmpresa(id:number,pagina:number,cantidadregistrosAMostrar:number):Observable<any>{
+  let params = new HttpParams();
+  params = params.append('pagina', pagina.toString());
+  params = params.append('recordsPorPagina', cantidadregistrosAMostrar.toString());
+    return this.http.get<postulantes_empresaDTO[]>(`${this.apiURLpostulantes}/${id}`,{observe:'response',params});
  }
 
 

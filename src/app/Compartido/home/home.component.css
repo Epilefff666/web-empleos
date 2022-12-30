@@ -11,7 +11,7 @@
 }
 .buscador-descripcion{
     padding-left: 80px;
-    padding-top: 200px;
+    padding-top: 130px;
 }
 .buscador-descripcion-texto{
     color: white;
@@ -30,7 +30,9 @@
 
 .buscador-boton{
     background-color: #33bbd1;
-    margin-left: 10%;
+    margin-left: 25%;
+    margin-bottom: 10px;
+    width: 50%;
     height: 70px;
     color: white;
     border-radius: 15px;
@@ -43,6 +45,9 @@
   }
   
 .buscador-box-formulario-input {
+    width: 350px;
+  }
+  .buscador-box-formulario-input2 {
     width: 350px;
   }
 

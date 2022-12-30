@@ -1,5 +1,5 @@
  <div class="buscador" >
-    <div class="buscador-box" >
+    <div class="buscador-box" fxLayoutAlign="center" >
 
 
         <form class="buscador-box-formulario" [formGroup]="form" >
@@ -31,16 +31,23 @@
                     <input matInput formControlName="palabraClave" >
                          
                 </mat-form-field>
+                <button class="buscador-boton" mat-button (click)="buscar(form.value)" >
+                    Buscar
+                </button>
+                <button class="buscador-boton2" mat-button (click)="limpiar()" >
+                    Limpiar filtros
+                </button>
+                
                 
             </div>
     
             <div>
-                <button class="buscador-boton" mat-button (click)="limpiar()" >
+                <!-- <button class="buscador-boton" mat-button (click)="limpiar()" >
                     Limpiar
                 </button>
                 <button class="buscador-boton" mat-button (click)="buscar(form.value)" >
                     buscar
-                </button>
+                </button> -->
                 
             </div>
             </div>
@@ -117,6 +124,6 @@
 
 <mat-paginator [pageSizeOptions]="[1,2,4,8]" showFirstLastButtons
 [length]="cantidadTotalRegistros" [pageSize]="cantidadRegistrosAMostrar"
-(page)="actualizarPaginacion($event)"
+(page)="actualizarPaginacion($event)" class="paginador" 
 >
 </mat-paginator>

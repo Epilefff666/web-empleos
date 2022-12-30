@@ -33,19 +33,16 @@
                         <mat-form-field class="buscador-box-formulario-input" appearance="fill">
                             <mat-label>Palabra clave</mat-label>
                             <input matInput formControlName="palabraClave">
-                                 <!-- [matAutocomplete]="auto"> -->
-                           <!--  <mat-autocomplete #auto="matAutocomplete">
-                                <mat-option *ngFor="let option of options" [value]="option">
-                                    {{option}}
-                                </mat-option>
-                             </mat-autocomplete>   -->
                         </mat-form-field>
-                    </div>
-                    <div>
-                        <button class="buscador-boton" mat-button (click)="enviarFormulario(form.value)">
+                        <button  class="buscador-boton" mat-button (click)="enviarFormulario(form.value)">
                             Buscar
                         </button>
                     </div>
+                    <!-- <div>
+                        <button class="buscador-boton" mat-button (click)="enviarFormulario(form.value)">
+                            Buscar
+                        </button>
+                    </div> -->
                     </div>
                 </form>
             </div>

@@ -46,9 +46,8 @@ export class HomeComponent implements OnInit {
       this.categorias = categorias;
     })
 
-    this.compartidosService.Obtener_ofertas(0,0,'','','')
+    this.compartidosService.Obtener_ofertas(1,6,'','','')
     .subscribe( (respuesta:HttpResponse<ofertas_publicadasDTO[]>) => {
-     /*  console.log(ofertas) */
      this.ofertas =  respuesta.body;
       for( let i=0 ; i< 6 ; i++){
         if(i%2 == 0){

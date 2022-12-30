@@ -43,6 +43,7 @@
     background-color: #ffffff;
     margin-bottom: 100px;
     max-width:auto;
+    height: 100px;
     margin:10px;
     border-radius: 15px;
 }
@@ -51,6 +52,7 @@
     background-color: #c4c4c4;
     margin-bottom: 100px;
     max-width:auto;
+    height: 100px;
     margin:10px;
     border-radius: 15px;
 }

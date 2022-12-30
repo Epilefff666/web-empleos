@@ -19,7 +19,7 @@
                 </div>
                 <div class="card_descripcion">
                     <mat-card-content >
-                        {{item.descripcion}}
+                        {{item.descripcion.substring(0,200)}}...
                     </mat-card-content>
                 </div>
                 <div fxLayout="column">
@@ -32,25 +32,31 @@
                 </div>
             </div>
         </mat-card>
+        <mat-paginator [pageSizeOptions]="[1,2,4,8]" showFirstLastButtons
+        [length]="cantidadTotalRegistros1" [pageSize]="cantidadRegistrosAMostrar1"
+        (page)="actualizarPaginacion1($event)" class="paginador" >
+        </mat-paginator><br>
+
+
         <div class="cards_clasificacion_titulo" fxLayoutAlign="center">
             <h2> Publicaciones vencidas</h2>
         </div>
-        <mat-card class="empleos_publicados_card_vencido" *ngFor="let index of publicaciones_vencidas">
+            <mat-card class="empleos_publicados_card_vencido" *ngFor="let item of publicaciones_vencidas">
             <!--             <img mat-card-image class ="ofertas-recientes-card-image" src="https://material.angular.io/assets/img/examples/shiba2.jpg" >-->
             
                         <div fxLayout="row" fxLayoutAlign="space-between">
                             <div fxLayout="column">
                                 <mat-card-title>
-                                    Puesto empleo
+                                    {{item.puesto_empleo}}
                                 </mat-card-title>
                                 
                                 <mat-card-subtitle>
-                                    Fecha de publicacion:
+                                    Fecha de publicacion:{{item.fecha_publicacion}}
                                 </mat-card-subtitle>
                             </div>
                             <div class="card_descripcion">
                                 <mat-card-content >
-                                    Descripcion del empleo Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste veniam ducimus natus accusamus dolores eos consectetur beatae dolorem voluptatum nostrum. Vel fuga iste, ullam amet assumenda illo hic unde magnam.
+                                    {{item.descripcion.substring(0,200)}}...
                                 </mat-card-content>
                             </div>
                             <div fxLayout="column">
@@ -62,7 +68,12 @@
                                 </button> -->
                             </div>
                         </div>
-                    </mat-card>
+            </mat-card>
+            <mat-paginator [pageSizeOptions]="[1,2,4,8]" showFirstLastButtons
+            [length]="cantidadTotalRegistros2" [pageSize]="cantidadRegistrosAMostrar2"
+            (page)="actualizarPaginacion2($event)" class="paginador" >
+    
+            </mat-paginator>    
 
     </div>
 </div>
