@@ -1,0 +1,47 @@
+.contenedor-postulaciones{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('src/assets/backgrounds/blue minimalist wallpaper.jfif');
+    background-color: #142f3f;
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: cover;
+    height:auto;
+    margin: 0px;
+    padding: 1%;
+}
+
+.contenedor-cards{
+    min-height: 400px;
+}
+.titulo_perfil{
+    color: white;
+    font-size: 50px;
+    line-height: 70px;
+    text-decoration:underline;
+}
+.card-postulaciones{
+    background-color: white;
+    color: #142f3f;
+    border-radius: 15px;
+    margin: 2%;
+    height: 150px;
+}
+
+.card-contenido{
+    width: 80%;
+}
+.card-botones{
+    width: 20%;
+}
+.boton-detalle{
+    background-color: #142f3f;
+    color: white;
+    margin: 10px;
+}
+.boton-eliminar{
+    background-color: #ff6200;
+    color: white;
+    margin: 10px;
+}
+.contenido-fecha{
+    color: #33bbd1;
+}

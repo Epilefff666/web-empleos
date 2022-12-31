@@ -43,20 +43,31 @@
             <span *ngIf="empresa.tiktok"><strong>Tiktok:</strong> {{empresa.tiktok}}</span>
         </p>
 
-        <div>
-            <ul *ngIf="errores.length > 0">
+        <div style="color:red">
+            <ul *ngIf="errores.length > 0 ">
                 <li *ngFor="let error of errores">{{ error }}</li>
             </ul>
         </div>
         
         <app-autorizado [rol]="'postulante'">
             <ng-container Autorizado >
-                <div fxLayoutAlign="end">
-                    <button class ="detalle-empleo-boton"mat-button (click)="postular()">Postular al empleo</button>
+                <div fxLayoutAlign="end" *ngIf="postulado == false">
+<!--                     <button class ="detalle-empleo-boton"mat-button (click)="postular()">Postular al empleo</button>
+ -->                    <button class ="detalle-empleo-boton"mat-button (click)="openDialog()">Postular al empleo</button>
+                </div>
+                <div *ngIf="postulado == true" class="contenedor-mensaje-postulado" fxLayoutAlign="center">
+                    <h2 class="mensaje-postulado"   >Usted postulo a este empleo</h2>
                 </div>
             </ng-container>
         </app-autorizado>
-
+        <app-autorizado>
+            <ng-container noAutorizado>
+                <div fxLayoutAlign="end" *ngIf="postulado == false">
+                    <button class ="detalle-empleo-boton"mat-button [routerLink]="['/registrarse']">Postular empleo</button>
+                </div>
+            </ng-container>
+            
+        </app-autorizado>
         
         
     </div>

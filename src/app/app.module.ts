@@ -21,6 +21,8 @@ import { PieDePaginaComponent } from './Compartido/pie-de-pagina/pie-de-pagina.c
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MostrarErroresComponent } from './Compartido/mostrar-errores/mostrar-errores.component';
 import { RouterModule } from '@angular/router';
+import { ConfirmarPostulacionComponent } from './Compartido/confirmar-postulacion/confirmar-postulacion.component';
+import { MensajePostuladoComponent } from './Compartido/mensaje-postulado/mensaje-postulado.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,8 @@ import { RouterModule } from '@angular/router';
     RegistroPostulantesComponent,
     PieDePaginaComponent,
     MostrarErroresComponent,
+    ConfirmarPostulacionComponent,
+    MensajePostuladoComponent,
     
   ],
   imports: [
@@ -49,6 +53,7 @@ import { RouterModule } from '@angular/router';
     FormsModule,
     RouterModule
   ],
+  entryComponents:[ConfirmarPostulacionComponent], 
   providers: [],
   bootstrap: [AppComponent]
 })

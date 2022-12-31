@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { perfil_postulante_creacionDTO, perfil_postulanteDTO, postulaciones_CreacionDTO } from '../interfaces/postulantes.interfaces';
+import { perfil_postulante_creacionDTO, perfil_postulanteDTO, postulaciones_CreacionDTO, postulacionesDTO } from '../interfaces/postulantes.interfaces';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -14,6 +14,19 @@ export class PostulantesService {
   private apiURL = environment.apiURL+'postulantes';
   private apiURLpostulaciones = environment.apiURL+'postulaciones' 
 /* ---------------------------postulaciones ---------------------------*/
+
+  public obtenerPostulaciones(postulanteId:number,pagina:number,cantidadregistrosAMostrar:number):Observable<any>{
+    let params = new HttpParams();
+    params = params.append('pagina', pagina.toString());
+    params = params.append('recordsPorPagina', cantidadregistrosAMostrar.toString());
+    return this.http.get<any>(`${this.apiURLpostulaciones}/${postulanteId}`, {observe:'response',params})
+  }
+
+
+  public obtnerPostulacionId(publicacionId:number,postulanteId:number):Observable<postulacionesDTO>{
+    return this.http.get<postulacionesDTO>(`${this.apiURLpostulaciones}/postulado/${publicacionId}/${postulanteId}`);
+  }
+
 
   public postularEmpleo(postulacion:postulaciones_CreacionDTO){
     return this.http.post(this.apiURLpostulaciones+'/crear',postulacion);

@@ -7,6 +7,10 @@ import { publicar_empleoDTO, perfil_empresaDTO } from '../../empresas/interfaces
 import { PostulantesService } from '../../postulantes/servicios/postulantes.service';
 import { FormBuilder } from '@angular/forms';
 import { parsearErroresAPI } from 'src/app/utilidades/Utilidades';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmarPostulacionComponent } from '../confirmar-postulacion/confirmar-postulacion.component';
+import { DialogRef } from '@angular/cdk/dialog';
+import { MensajePostuladoComponent } from '../mensaje-postulado/mensaje-postulado.component';
 
 @Component({
   selector: 'app-detalle-empleo',
@@ -21,13 +25,15 @@ export class DetalleEmpleoComponent implements OnInit {
   form!:any;
   id:any;
   publicacionId!:number;
+  postulado = false;
   
 
   constructor( private compartidosService: CompartidosService, 
     private activatedRoute:ActivatedRoute, 
     private empresasService:EmpresasService,
     private postulantesService:PostulantesService,
-    private formBuilder:FormBuilder) { }
+    private formBuilder:FormBuilder,
+    public dialog : MatDialog) { }
 
   ngOnInit(): void {
     
@@ -36,7 +42,6 @@ export class DetalleEmpleoComponent implements OnInit {
       this.publicacionId =Number(params['id_empleo']); 
       this.empresasService.obtnerEmpleoId(params['id_empleo'])
       .subscribe( (valor)=>{
-        
         this.detalle_empleo = valor;
         this.empresaId = valor.perfil_empresaId;
         this.empresasService.obtenerEmpresaId(this.empresaId)
@@ -49,7 +54,6 @@ export class DetalleEmpleoComponent implements OnInit {
 
     this.id =Number(localStorage.getItem('perfilID')); 
     this.form = this.formBuilder.group({
-
       perfil_postulanteId:[this.id],
       publicacionesId:[this.publicacionId],
       fecha_postulacion:[new Date()],
@@ -57,9 +61,16 @@ export class DetalleEmpleoComponent implements OnInit {
 
     });
 
-    
-    
+    this.postulantesService.obtnerPostulacionId(this.publicacionId,this.id)
+    .subscribe(response=>{
+      if(response){
+        this.postulado = true
+      }
+      
+    })
+
   }
+
 
   errores:any[]=[];
   postular(){
@@ -67,7 +78,31 @@ export class DetalleEmpleoComponent implements OnInit {
     this.postulantesService.postularEmpleo(valor)
     .subscribe(()=>{
     console.log('postulacion realizada');
-  },errores => this.errores = parsearErroresAPI(errores))
+    this.openDialogPostulacionExitosa()
     
+  },errores => this.errores = parsearErroresAPI(errores)
+   
+  )
+  
+}
+
+  openDialog():void{
+    const dialogRef = this.dialog.open(ConfirmarPostulacionComponent,{
+      width:'350px',
+      data:'¿Está seguro que desea postular a este empleo?'
+    });
+    dialogRef.afterClosed()
+    .subscribe( response =>{
+      if(response){
+        this.postular();
+      }
+    })
+  }
+
+  openDialogPostulacionExitosa():void{
+    this.dialog.open(MensajePostuladoComponent,{
+      width:'350px',
+      data:'Postulacion exitosa'
+    });
   }
 }

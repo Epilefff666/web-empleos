@@ -67,3 +67,11 @@
     border-radius: 15px;
     width: 500px;
 }
+
+.contenedor-mensaje-postulado{
+    border:solid #33bbd1; 
+    border-radius: 15px;
+}
+.mensaje-postulado{
+    color: white;
+}

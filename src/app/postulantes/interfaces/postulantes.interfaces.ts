@@ -5,6 +5,14 @@ export interface postulaciones_CreacionDTO{
     estadosId:number;
 }
 
+export interface postulacionesDTO{
+    perfil_postulanteId:number;
+    publicacionesId:number;
+    fecha_postulacion:Date;
+    banActivo:boolean;
+    estadosId:number;
+}
+
 
 export interface perfil_postulanteDTO {
     

@@ -24,7 +24,8 @@
 }
 
 .contenedor-cards{
-    padding: 0px 200px 0px 200px;
+   /*  padding: 0px 200px 0px 200px; */
+   background-color:rgba(0, 0, 0, 0.2);
     margin: 2%;
 }
 
