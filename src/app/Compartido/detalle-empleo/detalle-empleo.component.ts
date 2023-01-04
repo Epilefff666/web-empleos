@@ -11,6 +11,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ConfirmarPostulacionComponent } from '../confirmar-postulacion/confirmar-postulacion.component';
 import { DialogRef } from '@angular/cdk/dialog';
 import { MensajePostuladoComponent } from '../mensaje-postulado/mensaje-postulado.component';
+import { ConfirmarGuardarComponent } from '../confirmar-guardar/confirmar-guardar.component';
 
 @Component({
   selector: 'app-detalle-empleo',
@@ -25,7 +26,9 @@ export class DetalleEmpleoComponent implements OnInit {
   form!:any;
   id:any;
   publicacionId!:number;
-  postulado = false;
+  postulado:boolean = false;
+  guardado:boolean = false ; 
+  data:any[]=[];
   
 
   constructor( private compartidosService: CompartidosService, 
@@ -43,6 +46,7 @@ export class DetalleEmpleoComponent implements OnInit {
       this.empresasService.obtnerEmpleoId(params['id_empleo'])
       .subscribe( (valor)=>{
         this.detalle_empleo = valor;
+        /* console.log(this.detalle_empleo) */
         this.empresaId = valor.perfil_empresaId;
         this.empresasService.obtenerEmpresaId(this.empresaId)
         .subscribe( (valor)=>{
@@ -69,6 +73,18 @@ export class DetalleEmpleoComponent implements OnInit {
       
     })
 
+    let empleosGuardados:any =  localStorage.getItem(this.id)
+    let ObjetoGuardado = JSON.parse(empleosGuardados)
+    if(ObjetoGuardado !== null ){
+      for(let i=0 ; i < ObjetoGuardado.length; i++ ){
+        
+        if(ObjetoGuardado[i].id == this.publicacionId){
+          this.guardado= true;
+          console.log(ObjetoGuardado[i].id)
+        }
+      }
+    }
+    
   }
 
 
@@ -79,6 +95,7 @@ export class DetalleEmpleoComponent implements OnInit {
     .subscribe(()=>{
     console.log('postulacion realizada');
     this.openDialogPostulacionExitosa()
+    this.postulado = true
     
   },errores => this.errores = parsearErroresAPI(errores)
    
@@ -104,5 +121,38 @@ export class DetalleEmpleoComponent implements OnInit {
       width:'350px',
       data:'Postulacion exitosa'
     });
+  }
+  
+
+  openDialogGuardar(){
+    const dialogRef = this.dialog.open(ConfirmarGuardarComponent,{
+      width:'350px',
+      data:'¿Está seguro que desea guardar este empleo?'
+    });
+    dialogRef.afterClosed()
+    .subscribe( response =>{
+      if(response){
+        this.guardarlocalStorage();
+      }
+    })
+  }
+
+
+
+  guardarlocalStorage(){
+    let valor1 = [this.detalle_empleo];
+    let data = localStorage.getItem(this.id)
+    if(data == null){
+      localStorage.setItem(this.id,JSON.stringify(valor1))
+      this.guardado = true
+    }
+    else
+    {
+      let datarecuperado = JSON.parse(data)
+      datarecuperado.push(this.detalle_empleo)
+      localStorage.setItem(this.id,JSON.stringify(datarecuperado))
+      this.guardado = true
+    }
+    
   }
 }

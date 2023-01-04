@@ -33,7 +33,7 @@ export class PostulacionesComponent implements OnInit {
     .subscribe( postulaciones =>{
       this.postulaciones =postulaciones.body
       this.cantidadTotalRegistros = postulaciones.headers.get("cantidadTotalRegistros")
-      console.log(this.postulaciones)
+      /* console.log(this.postulaciones) */
     }, errores => this.errores = parsearErroresAPI(errores) )
   }
 

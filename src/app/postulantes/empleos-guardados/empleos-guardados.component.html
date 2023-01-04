@@ -1,1 +1,27 @@
-<p>empleos-guardados works!</p>
+<div class="contenedor-postulaciones">
+    <div fxLayoutAlign="center"><h1 class="titulo_perfil">Empleos Guardados</h1></div>
+    <div class="contenedor-cards">
+        <mat-card class="card-postulaciones" *ngFor="let item of empleosGuardados" fxLayout="row">
+            <div fxLayout="column" class="card-contenido">
+                <mat-card-title>{{item.puesto_empleo}}</mat-card-title>
+                <mat-card-subtitle class="contenido-fecha">Fecha publicacion: {{item.fecha_publicacion}}</mat-card-subtitle>
+                <mat-card-content>
+                    {{item.descripcion.substring(0,200)}}...
+                    <br>
+                </mat-card-content>
+            </div>
+            <div fxLayout="column" class="card-botones">
+                <button class="boton-detalle" mat-button [routerLink]="['/detalle-empleo',item.id]">Ver detalle empleo</button>
+                <button class="boton-eliminar" mat-button (click)="openDialog(item.id)">Eliminar empleo guardado</button>
+            </div>
+            
+        </mat-card>
+    </div>
+
+    <mat-paginator [pageSizeOptions]="[1,2,4,8]" showFirstLastButtons
+    [length]="cantidadTotalRegistros" [pageSize]="cantidadRegistrosAMostrar"
+    (page)="actualizarPaginacion($event)" class="paginador" >
+
+    </mat-paginator>
+</div>
+

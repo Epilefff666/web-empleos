@@ -4,7 +4,21 @@
             <img class="detalle-empleo-imagen" [src]="empresa.foto_perfil" alt="">
 <!--   -->        </div>
         <div fxLayoutColumns="center" class=" detalle-empleo-cabecera-descripcion"  >
-            <h2 class="detalle-empleo-cabecera-titulo">{{ detalle_empleo.puesto_empleo}}</h2>
+            <div fxLayout=" row" fxLayoutAlign="space-between">
+                <h2 class="detalle-empleo-cabecera-titulo">{{ detalle_empleo.puesto_empleo}}</h2><br><br>
+
+                <app-autorizado [rol]="'postulante'">
+                    <ng-container Autorizado>
+                        <button *ngIf="guardado == false" mat-button class="guardar-empleo" (click)="openDialogGuardar()"> Guardar empleo</button>
+                        <button *ngIf="guardado == true" mat-button class="empleo-guardado" > Empleo Guardado</button>
+                    </ng-container>
+                    
+                </app-autorizado>
+                
+
+
+            </div>
+            
             <h3 class="detalle-empleo-cabecera-subtitulo"> {{ empresa.nombre_empresa}} </h3>
             <p>
                 <span class="detalle-empleo-cabecera-subtitulo2">Descripcion del la empresa:  </span><br>

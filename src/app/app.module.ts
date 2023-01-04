@@ -23,6 +23,7 @@ import { MostrarErroresComponent } from './Compartido/mostrar-errores/mostrar-er
 import { RouterModule } from '@angular/router';
 import { ConfirmarPostulacionComponent } from './Compartido/confirmar-postulacion/confirmar-postulacion.component';
 import { MensajePostuladoComponent } from './Compartido/mensaje-postulado/mensaje-postulado.component';
+import { ConfirmarGuardarComponent } from './Compartido/confirmar-guardar/confirmar-guardar.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { MensajePostuladoComponent } from './Compartido/mensaje-postulado/mensaj
     MostrarErroresComponent,
     ConfirmarPostulacionComponent,
     MensajePostuladoComponent,
+    ConfirmarGuardarComponent,
     
   ],
   imports: [

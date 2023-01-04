@@ -75,3 +75,12 @@
 .mensaje-postulado{
     color: white;
 }
+.guardar-empleo{
+    background-color:  white;
+    color:#142f3f;
+}
+
+.empleo-guardado{
+     background-color:  #33bbd1;
+    color:#142f3f;
+}
