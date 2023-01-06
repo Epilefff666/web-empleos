@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { perfil_empresaDTO, perfil_empresa_creacionDTO, publicar_empleoDTO, publicar_empleo_creacionDTO, postulantes_empresaDTO } from '../interfaces/empresas.interfaces';
+import { perfil_empresaDTO, perfil_empresa_creacionDTO, publicar_empleoDTO, publicar_empleo_creacionDTO, postulantes_empresaDTO, DetallePostulanteDTO } from '../interfaces/empresas.interfaces';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
@@ -77,6 +77,9 @@ export class EmpresasService {
   params = params.append('pagina', pagina.toString());
   params = params.append('recordsPorPagina', cantidadregistrosAMostrar.toString());
     return this.http.get<postulantes_empresaDTO[]>(`${this.apiURLpostulantes}/${id}`,{observe:'response',params});
+ }
+ public obtenerDetallePostulante(postulanteId:number,publicacionId:number):Observable<DetallePostulanteDTO>{
+    return this.http.get<DetallePostulanteDTO>(`${this.apiURLpostulantes}/${'detalle-postulante'}/${postulanteId}/${publicacionId}`);
  }
 
 

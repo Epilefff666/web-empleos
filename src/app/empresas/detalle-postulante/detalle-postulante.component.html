@@ -1,0 +1,94 @@
+<div *ngIf="detallePostulante">
+    
+    <div class="contenedor-detalle-postulante-cabecera" fxLayout="row" >
+        
+        <div>
+<!--             <img class="cabecera-foto-perfil" src="https://img.freepik.com/foto-gratis/retrato-hermoso-mujer-joven-posicion-pared-gris_231208-10760.jpg?w=300" alt="">
+ -->            <img class="cabecera-foto-perfil" [src]="detallePostulante.foto_perfil" alt="">
+        </div>
+            
+        <div class="cabecera-descripcion">  
+            <h2 class="cabecera-nombres">{{detallePostulante.nombres}} </h2> 
+            <h2 class="cabecera-nombres"> {{detallePostulante.apellidos}}</h2>
+            <h3 class="cabecera-profesion">{{detallePostulante.profesion_ocupacion}}</h3>  
+            <button mat-button class="boton-cv" (click)="verPDF(detallePostulante.cv)"> Revisar CV </button><br><br>
+            <span class="cabecera-datos"><strong>Postulado para el cargo de:</strong> {{detallePostulante.puesto_empleo}}</span><br><br>
+            <span class="cabecera-datos"><strong>Fecha de postulacion:</strong> {{detallePostulante.fecha_postulacion}}</span><br><br>
+            <div fxLayout="row" class="cabecera-datos">
+                <span><strong >Fecha Nacimiento:</strong> {{detallePostulante.fecha_nacimiento}} </span>&nbsp;&nbsp;&nbsp; 
+                <span><strong >CI:</strong> {{detallePostulante.numero_documento}}</span> &nbsp;&nbsp;&nbsp;
+                <span><strong >Sexo:</strong> {{detallePostulante.sexo}}</span>&nbsp;&nbsp;&nbsp;
+            </div>
+            <div fxLayout="row" class="cabecera-datos">
+                <span><strong >Celular:</strong>{{detallePostulante.celular}}</span>&nbsp;&nbsp;&nbsp;
+                <span><strong >Correo:</strong>{{detallePostulante.correo}}</span>&nbsp;&nbsp;&nbsp;
+            </div>
+            
+        </div>
+        <button mat-button style="color: white; border: 1px solid #ffff; height: 50px;" (click)="volver()">volver</button>
+
+    </div>
+    <div class="contenedor-detalle-postulante-contenido" style="color: white;">
+        <div>
+            <strong class="contenido-subtitulo">DESCRIPCION DEL POSTULANTE:</strong>
+            <p class="contenido-descripcion">  
+                {{detallePostulante.descripcion_postulante}}
+            </p>
+        </div>
+        <strong class="contenido-subtitulo">HABILIDADES BLANDAS Y TECNICAS</strong>
+        <div fxLayout="row" fxLayoutAlign="space-around" class="contenido-descripcion" >
+            
+            <ul>
+                <li>{{detallePostulante.habilidad_blanda1}}</li>
+                <li>{{detallePostulante.habilidad_blanda2}}</li>
+                <li>{{detallePostulante.habilidad_blanda3}}</li>
+                <li>{{detallePostulante.habilidad_blanda4}}</li>
+                <li>{{detallePostulante.habilidad_blanda5}}</li>
+            </ul>
+            <ul>
+                <li>{{detallePostulante.habilidad_tecnica1}}</li>
+                <li>{{detallePostulante.habilidad_tecnica2}}</li>
+                <li>{{detallePostulante.habilidad_tecnica3}}</li>
+                <li>{{detallePostulante.habilidad_tecnica4}}</li>
+                <li>{{detallePostulante.habilidad_tecnica5}}</li>
+            </ul>
+            
+        </div>
+        
+        <strong class="contenido-subtitulo">REDES SOCIALES:</strong>
+        <div fxLayout="row"  class="contenido-descripcion">
+            <ul>
+                <li>Facebook: {{detallePostulante.facebook}}</li>
+                <li>Instagram: {{detallePostulante.instagram}}</li>
+            </ul>
+            <ul>
+                <li>LinkedIn: {{detallePostulante.linkedin}}</li>
+                <li>TikTok: {{detallePostulante.tiktok}}</li>
+            </ul>
+        </div>
+
+        <div class="contenedor-formulario-acpetacion" >
+            <form class="formulario-acpetacion" fxLayout="column">
+                <mat-form-field appearance="fill"  class="formulario-inputs">
+                    <mat-label>Mensaje de invitacion</mat-label>
+                    <textarea  matInput></textarea>
+                </mat-form-field>
+                <mat-form-field appearance="fill" class="formulario-inputs">
+                    <mat-label>Fecha de invitacion</mat-label>
+                    <div fxLayout="row">
+                        <input matInput [matDatepicker]="picker" formControlName="fecha_vencimiento">
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    </div>
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field appearance="fill"  class="formulario-inputs">
+                    <mat-label>Link de reunion virtual</mat-label>
+                    <input  matInput type="url">
+                </mat-form-field>
+            </form>
+        </div>
+
+    </div>
+</div>

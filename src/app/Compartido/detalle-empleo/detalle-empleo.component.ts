@@ -80,7 +80,7 @@ export class DetalleEmpleoComponent implements OnInit {
         
         if(ObjetoGuardado[i].id == this.publicacionId){
           this.guardado= true;
-          console.log(ObjetoGuardado[i].id)
+          /* console.log(ObjetoGuardado[i].id) */
         }
       }
     }

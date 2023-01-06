@@ -35,7 +35,7 @@
                         
                     </div>
                     <div  fxLayout="rows" fxLayoutAlign="center">
-                        <button class="card_boton" mat-button>Ver perfil</button>
+                        <button class="card_boton" mat-button [routerLink]="['detalle-postulante/',item.perfil_postulanteId,item.publicacionesId]">Ver perfil</button>
                         <button class="card_boton" mat-button (click)="verPDF(item.cv)" >Revisar CV</button>
                         <button class="card_boton" mat-button>descartar</button>
                     </div>
@@ -70,7 +70,7 @@
                         
                     </div>
                     <div  fxLayout="rows" fxLayoutAlign="center">
-                        <button class="card_boton" mat-button>Ver perfil</button>
+                        <button class="card_boton" mat-button [routerLink]="['detalle-postulante/',item.perfil_postulanteId,item.publicacionesId]">Ver perfil</button>
                         <button class="card_boton" mat-button (click)="verPDF(item.cv)">Revisar CV</button>
                         <button class="card_boton" mat-button>descartar</button>
                     </div>

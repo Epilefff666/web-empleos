@@ -105,7 +105,7 @@ export class PerfilPostulanteComponent implements OnInit {
         this.form.patchValue(this.modelo)
         
         this.foto = modelo.foto_perfil;
-        console.log(this.modelo)
+        /* console.log(this.modelo) */
       }
     })
 
@@ -136,7 +136,7 @@ export class PerfilPostulanteComponent implements OnInit {
  
   
   registrarPerfil(perfil_postulante:perfil_postulante_creacionDTO){
-    console.log(perfil_postulante)
+    /* console.log(perfil_postulante) */
     this.postulantesService.crearPostulante(perfil_postulante)
     .subscribe(()=>{
       console.log('postulante registrado');
@@ -145,8 +145,8 @@ export class PerfilPostulanteComponent implements OnInit {
   }
 
   guardarCambios(perfil:perfil_postulante_creacionDTO){
-    console.log(this.modelo.id)
-    console.log(perfil)
+    /* console.log(this.modelo.id) */
+    /* console.log(perfil) */
     this.postulantesService.EditarPostulante(this.modelo.id,perfil)
     .subscribe(()=>{
       console.log('postulante actualizado')

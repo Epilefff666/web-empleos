@@ -49,7 +49,7 @@ export class HomeComponent implements OnInit {
     this.compartidosService.Obtener_ofertas(1,6,'','','')
     .subscribe( (respuesta:HttpResponse<ofertas_publicadasDTO[]>) => {
      this.ofertas =  respuesta.body;
-      for( let i=0 ; i< 6 ; i++){
+      for( let i=0 ; i< this.ofertas.length ; i++){
         if(i%2 == 0){
          this.Ofertas1.push(this.ofertas[i]) 
         }

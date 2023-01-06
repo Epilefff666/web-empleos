@@ -50,7 +50,6 @@ export class PublicarEmpleoComponent implements OnInit {
       estadosId:[1]
     });
 
-    
   }
 
   publicarEmpleo(value:any){

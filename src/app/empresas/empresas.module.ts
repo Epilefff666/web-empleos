@@ -10,6 +10,7 @@ import { MaterialModule } from '../material/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { EditarPublicacionComponent } from './editar-publicacion/editar-publicacion.component';
 import { RouterModule } from '@angular/router';
+import { DetallePostulanteComponent } from './detalle-postulante/detalle-postulante.component';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { RouterModule } from '@angular/router';
     EmpleosPublicadosComponent,
     PerfilEmpresaComponent,
     EditarPublicacionComponent,
+    DetallePostulanteComponent,
 
   ],
   imports: [

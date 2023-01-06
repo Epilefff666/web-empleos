@@ -46,14 +46,14 @@
 }
 
 .detalle-empleo-contenido-subtitulo{
-    margin-left: 5%;
+    /* margin-left: 5%; */
     font-weight : bolder;
     font-size: 27px;
     color: white;
 }
 
 .detalle-empleo-contenido-descripcion{
-    margin-left:5%;
+    /* margin-left:5%; */
     margin-bottom: 5%;
     color: white;
     font-size: 20px;

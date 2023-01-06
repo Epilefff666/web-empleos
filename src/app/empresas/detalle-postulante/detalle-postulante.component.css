@@ -1,0 +1,75 @@
+
+.contenedor-detalle-postulante-cabecera{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('src/assets/backgrounds/blue minimalist wallpaper.jfif');
+    background-color: #142f3f;
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: cover;
+    height:auto;
+    margin: 0px;
+    padding: 5%;
+    
+}
+.cabecera-descripcion{
+    margin-left: 5%;
+    margin-top:2% ;
+}
+.cabecera-foto-perfil{
+    width: 300px;
+    height: 300px;
+    border-radius: 15px;
+}
+.boton-cv{
+    background-color:#33bbd1;
+    color: white;
+    height: 50px;
+}
+
+.cabecera-nombres{
+    color: white;
+    font-size:50px ;
+}
+
+.cabecera-profesion{
+    color: #33bbd1;
+    font-size:30px ;
+}
+.cabecera-datos{
+    color: white;
+    font-size: 20px;
+    margin-bottom: 2%;
+}
+.contenedor-detalle-postulante-contenido{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('src/assets/backgrounds/background-02-01.jpg');
+/*     background-color: #313131; */
+    padding: 5%;
+}
+
+.contenido-descripcion{
+    color: white;
+    font-size: 20px;
+    margin-bottom: 5%;
+}
+.contenido-subtitulo{
+    color: white;
+    font-size: 27px;
+    
+}
+ul{
+    width: 100%;
+}
+li{
+    margin: 5%;
+}
+
+.contenedor-formulario-acpetacion{
+    background-color:#33bbd1;
+    border-radius: 15px;
+}
+
+.formulario-inputs{
+    background-color: white;
+    color: #142f3f;
+    border-radius: 15px;
+    margin: 1rem;
+}

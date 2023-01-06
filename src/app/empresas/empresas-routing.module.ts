@@ -5,12 +5,15 @@ import { PostulantesComponent } from './postulantes/postulantes.component';
 import { EmpleosPublicadosComponent } from './empleos-publicados/empleos-publicados.component';
 import { PerfilEmpresaComponent } from './perfil-empresa/perfil-empresa.component';
 import { EditarPublicacionComponent } from './editar-publicacion/editar-publicacion.component';
+import { DetallePostulanteComponent } from './detalle-postulante/detalle-postulante.component';
 
 
 const routes: Routes =[
   {path:'publicar-empleo',component:PublicarEmpleoComponent},
 
   {path:'postulantes',component:PostulantesComponent},
+
+  {path:'postulantes/detalle-postulante/:postulanteId/:publicacionId',component:DetallePostulanteComponent},
 
   {path:'empleos-publicados',component:EmpleosPublicadosComponent},
 

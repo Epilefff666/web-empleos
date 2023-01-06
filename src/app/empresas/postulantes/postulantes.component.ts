@@ -25,6 +25,7 @@ export class PostulantesComponent implements OnInit {
 
   ngOnInit(): void {
     this.cargarPostulantes(this.idPerfil,this.PaginaActual,this.cantidadRegistrosAMostrar)
+    
   }
 
   verPDF(value:string){
@@ -36,6 +37,7 @@ export class PostulantesComponent implements OnInit {
     .subscribe( value =>{  
       this.postulantes= value.body
       this.cantidadTotalRegistros = value.headers.get("cantidadTotalRegistros")
+      console.log(this.postulantes)
     },errores => this.errores = parsearErroresAPI(errores))
   }
 
