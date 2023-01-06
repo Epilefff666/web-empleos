@@ -37,7 +37,7 @@
                     <div  fxLayout="rows" fxLayoutAlign="center">
                         <button class="card_boton" mat-button [routerLink]="['detalle-postulante/',item.perfil_postulanteId,item.publicacionesId]">Ver perfil</button>
                         <button class="card_boton" mat-button (click)="verPDF(item.cv)" >Revisar CV</button>
-                        <button class="card_boton" mat-button>descartar</button>
+                        <button class="card_boton" mat-button (click)="openDialog(item.perfil_postulanteId ,item.publicacionesId)">descartar</button>
                     </div>
                 </mat-card>
             </div>
@@ -72,7 +72,7 @@
                     <div  fxLayout="rows" fxLayoutAlign="center">
                         <button class="card_boton" mat-button [routerLink]="['detalle-postulante/',item.perfil_postulanteId,item.publicacionesId]">Ver perfil</button>
                         <button class="card_boton" mat-button (click)="verPDF(item.cv)">Revisar CV</button>
-                        <button class="card_boton" mat-button>descartar</button>
+                        <button class="card_boton" mat-button (click)="openDialog(item.perfil_postulanteId ,item.publicacionesId)" >descartar</button>
                     </div>
                 </mat-card>
             </div>

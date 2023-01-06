@@ -14,7 +14,7 @@ export class EmpresasService {
 
   private apiURL = environment.apiURL+'empresas';
 
-  /*  servicios perfil empresa   */
+  /*  ----------------------------------------------servicios perfil empresa   */
 
   public CrearEmpresa( perfil_empresa:perfil_empresa_creacionDTO){
     const formData = this.construirFormData(perfil_empresa)
@@ -34,7 +34,15 @@ export class EmpresasService {
     return this.http.put(`${this.apiURL}/${id}`,formData);
   }
 
- /* servicios publicar empleo */
+
+
+
+
+ /* ----------------------------------------servicios publicar empleo */
+
+
+
+
 
  private apiURLpublicar = environment.apiURL+'publicaciones'
 
@@ -68,7 +76,11 @@ export class EmpresasService {
     return this.http.put(`${this.apiURLpublicar}/${'editar'}/${id}`,publicar_empleo);
   } 
 
-/*   servicios postulantes */
+
+
+/* ----------------------------------------------  servicios postulantes */
+
+
   
  private apiURLpostulantes = environment.apiURL+'postulantesEmpresa';
 
@@ -82,7 +94,9 @@ export class EmpresasService {
     return this.http.get<DetallePostulanteDTO>(`${this.apiURLpostulantes}/${'detalle-postulante'}/${postulanteId}/${publicacionId}`);
  }
 
-
+  public rechazarPostulante(postulanteId:number,publicacionId:number,estadoId:number){
+    return this.http.put(`${this.apiURLpostulantes}/${'Rechazar'}/${postulanteId}/${publicacionId}`,estadoId);
+  } 
 
 
 

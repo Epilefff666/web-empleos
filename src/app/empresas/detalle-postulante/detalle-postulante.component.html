@@ -67,26 +67,47 @@
             </ul>
         </div>
 
-        <div class="contenedor-formulario-acpetacion" >
-            <form class="formulario-acpetacion" fxLayout="column">
+        <div class="contenedor-formulario-acpetacion"  >
+            <div fxLayoutAlign="center">   
+                <h3 style="color:white; margin-top:20px; font-size:27px;"> Formulario de aceptación e invitacion a entrevista </h3>
+            </div>
+            
+            
+            <form [formGroup]="form" class="formulario-acpetacion" fxLayout="column" >
                 <mat-form-field appearance="fill"  class="formulario-inputs">
-                    <mat-label>Mensaje de invitacion</mat-label>
-                    <textarea  matInput></textarea>
-                </mat-form-field>
-                <mat-form-field appearance="fill" class="formulario-inputs">
-                    <mat-label>Fecha de invitacion</mat-label>
-                    <div fxLayout="row">
-                        <input matInput [matDatepicker]="picker" formControlName="fecha_vencimiento">
-                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                    </div>
-                    <mat-hint>MM/DD/YYYY</mat-hint>
-                    
-                    <mat-datepicker #picker></mat-datepicker>
+                    <mat-label>Mensaje de invitacion a entrevista</mat-label>
+                    <textarea formControlName="descripcion"  matInput placeholder="detalla todo lo relevante sobre la entrevista"></textarea>
                 </mat-form-field>
                 <mat-form-field appearance="fill"  class="formulario-inputs">
                     <mat-label>Link de reunion virtual</mat-label>
-                    <input  matInput type="url">
+                    <input formControlName="link" matInput type="url">
                 </mat-form-field>
+                
+                <div fxLayout="row" fxLayoutalign="space-around">
+    
+                    <mat-form-field appearance="fill" class="formulario-inputs">
+                        <mat-label>Fecha </mat-label>
+                        <div fxLayout="row">
+                            <input formControlName="fecha" matInput [matDatepicker]="picker">
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        </div>
+                        <mat-hint>MM/DD/YYYY</mat-hint>
+                        
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+    
+                    <mat-form-field appearance="fill"  class="formulario-inputs">
+                        <mat-label>Hora </mat-label>
+                        <input formControlName="hora" matInput type="time">
+                    </mat-form-field>
+                    <div fxLayout="column" class="contenedor-botones">
+                        <button class="boton-formulario" mat-button (click)="aceptarEnviarInvitacion(form.value)" >Aceptar e invitar a entrevista al postulante</button>
+                        <button class="boton-formulario-rechazar" mat-button (click)="openDialog(detallePostulante.perfil_postulanteId,detallePostulante.publicacionesId)">Rechazar postulante</button>
+                    </div>
+                    
+                </div>
+                
+                
             </form>
         </div>
 
