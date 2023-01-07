@@ -101,8 +101,8 @@
                         <input formControlName="hora" matInput type="time">
                     </mat-form-field>
                     <div fxLayout="column" class="contenedor-botones">
-                        <button class="boton-formulario" mat-button (click)="aceptarEnviarInvitacion(form.value)" >Aceptar e invitar a entrevista al postulante</button>
-                        <button class="boton-formulario-rechazar" mat-button (click)="openDialog(detallePostulante.perfil_postulanteId,detallePostulante.publicacionesId)">Rechazar postulante</button>
+                        <button class="boton-formulario" mat-button (click)="openDialogAceptar(detallePostulante.perfil_postulanteId,detallePostulante.publicacionesId,form.value)" >Aceptar e invitar a entrevista al postulante</button>
+                        <button class="boton-formulario-rechazar" mat-button (click)="openDialogRechazar(detallePostulante.perfil_postulanteId,detallePostulante.publicacionesId)">Rechazar postulante</button>
                     </div>
                     
                 </div>

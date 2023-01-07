@@ -95,7 +95,12 @@ export class EmpresasService {
  }
 
   public rechazarPostulante(postulanteId:number,publicacionId:number,estadoId:number){
-    return this.http.put(`${this.apiURLpostulantes}/${'Rechazar'}/${postulanteId}/${publicacionId}`,estadoId);
+    return this.http.put(`${this.apiURLpostulantes}/${'rechazar'}/${postulanteId}/${publicacionId}`,estadoId);
+  } 
+
+  
+  public aceptarPostulante(postulanteId:number,publicacionId:number,estadoId:number){
+    return this.http.put(`${this.apiURLpostulantes}/${'aceptar'}/${postulanteId}/${publicacionId}`,estadoId);
   } 
 
 
