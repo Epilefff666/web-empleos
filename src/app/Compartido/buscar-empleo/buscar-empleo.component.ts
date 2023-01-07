@@ -81,6 +81,13 @@ export class BuscarEmpleoComponent implements OnInit {
       if(params['nombre_empresa']){
         objeto.nombre_empresa = params['nombre_empresa'];
       }
+      if(params['Pagina']){
+        this.paginaActual =Number( params['Pagina'])
+      }
+      if(params['cant']){
+        this.cantidadRegistrosAMostrar =Number( params['cant'])
+      }
+      
       this.form.patchValue(objeto);
       let formulario = this.form.value
       this.cargarRegistros(this.paginaActual,this.cantidadRegistrosAMostrar,formulario.palabraClave,formulario.categoria,formulario.nombre_empresa);
@@ -101,7 +108,13 @@ export class BuscarEmpleoComponent implements OnInit {
     if(valoresFormulario.nombre_empresa){
       queryStrings.push(`nombre_empresa=${valoresFormulario.nombre_empresa}`);
     }
-
+    if(this.paginaActual){
+      queryStrings.push(`Pagina=${this.paginaActual}`)
+    }
+    if(this.cantidadRegistrosAMostrar){
+      queryStrings.push(`cant=${this.cantidadRegistrosAMostrar}`)
+    }
+      
     this.location.replaceState('buscar-empleo',queryStrings.join('&'));
   }
 
@@ -164,10 +177,12 @@ export class BuscarEmpleoComponent implements OnInit {
   }
 
   actualizarPaginacion(datos: PageEvent){
-    this.paginaActual = datos.pageIndex +1;
+    console.log(datos.length)
+    this.paginaActual =  datos.pageIndex +1 ;
     this.cantidadRegistrosAMostrar = datos.pageSize;
     let form = this.form.value
     this.cargarRegistros(this.paginaActual,this.cantidadRegistrosAMostrar,form.palabraClave,form.categoria,form.nombre_empresa); 
+    this.escribirParametrosBusquedaEnUrl();
   }
 
 }

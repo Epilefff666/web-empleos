@@ -5,7 +5,11 @@ import { AdministrarTablasComponent } from './administrar-tablas/administrar-tab
 import { AdministrarPublicacionesComponent } from './administrar-publicaciones/administrar-publicaciones.component';
 import { InformeDeDatosComponent } from './informe-de-datos/informe-de-datos.component';
 import { AdministradorRoutingModule } from './administrador-routing.module';
-
+import { MaterialModule } from '../material/material.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -17,7 +21,12 @@ import { AdministradorRoutingModule } from './administrador-routing.module';
   ],
   imports: [
     CommonModule,
-    AdministradorRoutingModule
+    AdministradorRoutingModule,
+    MaterialModule,
+    FlexLayoutModule,
+    ReactiveFormsModule,
+    FormsModule,
+    RouterModule
   ]
 })
 export class AdministradorModule { }

@@ -1,0 +1,31 @@
+table {
+    width: 90%;
+    margin:5%;
+}
+th{
+    background-color: #142f3f;
+    color: white;
+    font-size: 20px;
+    
+}
+td{
+    color: #142f3f;
+}
+.mat-elevation-z8{
+    background-color: rgba(222, 222, 222, 0.772);
+    border-radius: 15px;
+}
+
+.contenedor-tabla-usuarios{
+  
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('src/assets/backgrounds/blue minimalist wallpaper.jfif');
+    background-color: #142f3f;
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: cover;
+    height:auto;
+    margin: 0px;
+    padding: 1%;
+    
+
+}
