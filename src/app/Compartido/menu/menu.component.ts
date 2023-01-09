@@ -32,11 +32,16 @@ export class MenuComponent implements OnInit {
       }else{
         this.postulantesService.obtenerPerfilEmail(this.nombre)
         .subscribe((modelo)=>{
-        
+        if(modelo !== null){
           this.modelo=modelo 
           this.foto =modelo.foto_perfil; 
           localStorage.setItem("perfilID",this.modelo.id)
-          this.router.navigate(['inicio']); 
+          this.router.navigate(['inicio']);
+        }
+        else{
+          this.foto = '../../../assets/logos/Persona_Mesa de trabajo 1.png'
+        }
+           
         })
       }
     });

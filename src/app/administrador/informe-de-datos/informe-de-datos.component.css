@@ -1,0 +1,54 @@
+table{
+    width: 100%;
+    background-color:#dbdbdb;
+    border-collapse: collapse;
+    border: solid 1px black;
+    
+  
+}
+th{
+    background-color: #142f3f;
+    color: white;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    font-size: 20px;
+    
+}
+td{
+    color: #142f3f;
+    border: 0px;
+    font-size: 14px;
+    padding: 24px;
+}
+tr{
+   
+    border: solid 1px #C6C6C6;
+    
+}
+.titulo{
+    color: white;
+    font-size: 50px;
+    line-height: 70px;
+    text-decoration:underline;
+}
+.contenedor-datos{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('src/assets/backgrounds/blue minimalist wallpaper.jfif');
+    background-color: #142f3f;
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: cover;
+    height:auto;
+    margin: 0px;
+    padding: 1%;
+    padding: 5% 20% 5% 20% ;
+}
+.contenedor-tabla{
+    height: 500px;
+    overflow: auto;
+}
+
+.descargar-pdf{
+    margin: 10px;
+    background-color: #33bbd1;
+    color: white;
+}

@@ -106,9 +106,9 @@
         <app-autorizado>
           <ng-container Autorizado>
             <div fxLayout="column" >
-              <div fxLayout="row">
+              <div fxLayout="row" >
                 <img *ngIf="foto" [src]="foto" alt="" class="avatar2">
-                <img *ngIf="!foto" src="../../../assets/logos/Persona_Mesa de trabajo 1.png" alt="" class="avatar2">
+                <img *ngIf="foto == null" src="../../../assets/logos/Persona_Mesa de trabajo 1.png" alt="" class="avatar2">
                 <button class="toolbar-boton" mat-button (click)="logOut()">Salir</button>
               </div>
               

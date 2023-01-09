@@ -101,9 +101,8 @@ export class PerfilPostulanteComponent implements OnInit {
     .subscribe((modelo)=>{
       /* console.log(modelo) */
       this.modelo = modelo;
-      if(this.modelo !== undefined){
+      if(this.modelo !== null){
         this.form.patchValue(this.modelo)
-        
         this.foto = modelo.foto_perfil;
         /* console.log(this.modelo) */
       }

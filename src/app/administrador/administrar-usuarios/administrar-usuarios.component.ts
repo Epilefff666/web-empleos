@@ -12,7 +12,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 export class AdministrarUsuariosComponent implements OnInit {
 
   cantidadTotalRegistros:number=0;
-  cantidadRegistrosAMostrar:number=2;
+  cantidadRegistrosAMostrar:number=10;
   PaginaActual:number =1;
   listaUsuarios!:any;
   constructor(

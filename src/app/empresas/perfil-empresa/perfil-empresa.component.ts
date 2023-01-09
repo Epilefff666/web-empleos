@@ -65,7 +65,7 @@ export class PerfilEmpresaComponent implements OnInit {
     this.empresasService.obtenerEmpresaEmail(this.email)
     .subscribe((modelo)=>{
       this.modelo= modelo
-      if(this.modelo !== undefined){
+      if(this.modelo !== null){
          this.form.patchValue(this.modelo);
          this.foto = modelo.foto_perfil;
          

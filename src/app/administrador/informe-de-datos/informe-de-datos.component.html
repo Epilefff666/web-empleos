@@ -1,1 +1,30 @@
-<p>informe-de-datos works!</p>
+<div class="contenedor-datos" >
+    <div fxLayoutAlign="center"><h1 class="titulo">Reporte de Datos</h1></div>
+    <div class="contenedor-tabla" *ngIf="datosReporte">
+        <table >
+            <tr>
+                <th> No </th><th> Detalle </th><th> Cantidad </th>
+            </tr>
+            <tr> <td> 1 </td><td>Empresas registradas</td><td> {{datosReporte.cantidad_empresas }}</td> </tr>
+            <tr> <td> 2 </td><td>Postulantes registrados</td><td> {{datosReporte.cantidad_postulantes}} </td> </tr>
+            <tr> <td> 3 </td><td>Postulaciones realizadas</td><td> {{datosReporte.cantidad_postulaciones}} </td> </tr>
+            <tr> <td> 4 </td><td>Ofertas publicadas</td><td>{{ datosReporte.cantidad_publicaciones}} </td> </tr>
+            <tr> <td> 5 </td><td>Postulantes aceptados</td><td>{{ datosReporte.cantidad_postulantes_aceptados }}</td> </tr>
+            <tr> <td> 6 </td><td>Postulantes rechazados</td><td> {{datosReporte.cantidad_postulantes_rechazados}} </td> </tr>
+            <tr> <td> 7 </td><td>Postulnates en espera</td><td> {{datosReporte.cantidad_postulantes_esperando}} </td> </tr>
+            <tr> <td> 8 </td><td>Publicaciones vigentes</td><td> {{datosReporte.cantidad_publicaciones_vigentes}} </td> </tr>
+            <tr> <td> 9 </td><td>Publicaciones vencidas </td><td> {{datosReporte.cantidad_publicaciones_caducadas}} </td> </tr>
+            <tr> <td> 10 </td><td>Postulantes varones </td><td> {{datosReporte.cantidad_postulantes_varones}} </td> </tr>
+            <tr> <td> 11 </td><td>Postulantes mujeres </td><td> {{datosReporte.cantidad_postulantes_mujeres}} </td> </tr>
+            <tr> <td> 12 </td><td>Postulantes de otro sexo </td><td> {{datosReporte.cantidad_postulantes_sexo_otro}} </td> </tr>
+        </table>
+        
+    </div>
+    <div fxLayoutAlign="end">
+        <button mat-button class="descargar-pdf" (click)="createPDF()">
+            Descargar informe Pdf
+        </button>
+    </div>
+    
+</div>
+

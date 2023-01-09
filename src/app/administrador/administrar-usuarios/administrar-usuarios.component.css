@@ -15,7 +15,16 @@ td{
     background-color: rgba(222, 222, 222, 0.772);
     border-radius: 15px;
 }
-
+.tabla-individual{
+    height: 500px;
+    overflow: auto;
+}
+.titulo{
+    color: white;
+    font-size: 50px;
+    line-height: 70px;
+    text-decoration:underline;
+}
 .contenedor-tabla-usuarios{
   
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('src/assets/backgrounds/blue minimalist wallpaper.jfif');

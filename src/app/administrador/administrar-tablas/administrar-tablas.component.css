@@ -1,0 +1,40 @@
+table {
+    width: 100%;
+    
+}
+th{
+    background-color: #142f3f;
+    color: white;
+    font-size: 20px;
+}
+td{
+    color: #142f3f;
+}
+.separador-tablas{
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.tabla-individual{
+    height: 500px;
+    overflow: auto;
+}
+.titulo{
+    color: white;
+    font-size: 50px;
+    line-height: 70px;
+    text-decoration:underline;
+}
+.mat-elevation-z8{
+    background-color: rgba(222, 222, 222, 0.772);
+    border-radius: 15px;
+}
+.contenedor-tablas{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('src/assets/backgrounds/blue minimalist wallpaper.jfif');
+    background-color: #142f3f;
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: cover;
+    height:auto;
+    margin: 0px;
+    padding: 1%;
+}
