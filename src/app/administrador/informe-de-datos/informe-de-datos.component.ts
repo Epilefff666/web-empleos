@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import * as pdfMake from "pdfmake/build/pdfmake";
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
+import { MensajePostuladoComponent } from 'src/app/Compartido/mensaje-postulado/mensaje-postulado.component';
 import { AdministradorService } from '../servicios/administrador.service';
 
 
@@ -16,7 +18,8 @@ export class InformeDeDatosComponent implements OnInit {
   pdfDefinition!:any
   fecha:any
   constructor(
-    private administradorService:AdministradorService
+    private administradorService:AdministradorService,
+    public dialog : MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -31,6 +34,22 @@ export class InformeDeDatosComponent implements OnInit {
     })
     
   }
+
+  GenerarBackup(){
+    this.administradorService.obtenerBackup()
+    .subscribe( ()=>{
+        console.log('backup generado');
+        this.openDialogbackup()
+    })
+  }
+
+  openDialogbackup():void{
+    this.dialog.open(MensajePostuladoComponent,{
+      width:'350px',
+      data:'Backup generado exitosamente ubicado en "C:/Users/Public/Downloads" de su explorador de archivos'
+    });
+  }
+
   columnas = ['No','Detalle','Cantidad'];
   createPDF(){
     const pdfDefinition:any =  {
@@ -47,7 +66,7 @@ export class InformeDeDatosComponent implements OnInit {
       content: [
         
         {text:'Fecha reporte: '+this.fecha, margin:[0,20,0,20],alignment:'right' },
-        {text:'Resporte de datos de la Web Empleos Chuquisaca', margin:[0,20,0,20],alignment:'center',decoration:'underline',bold:true },
+        {text:'Reporte de datos de la Web Empleos Chuquisaca', margin:[0,20,0,20],alignment:'center',decoration:'underline',bold:true },
         {
           
           layout: 'lightHorizontalLines', // optional

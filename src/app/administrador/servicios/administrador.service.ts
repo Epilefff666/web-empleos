@@ -48,4 +48,21 @@ export class AdministradorService {
   public obtenerReporte():Observable<any>{
     return this.http.get<any>(this.apiURLreporte)
   }
+  public obtenerReporteUsuaios(id:string,rol:string):Observable<any>{
+    return this.http.get<any>(`${this.apiURLreporte}/${'usuarios'}/${id}/${rol}`);
+  }
+  public obtenerReportePublicacion(id:number):Observable<any>{
+    return this.http.get<any>(`${this.apiURLreporte}/${'publicacion'}/${id}`);
+  }
+  public obtenerReportePostulantes(id:number):Observable<any>{
+    return this.http.get<any>(`${this.apiURLreporte}/${'postulantes'}/${id}`);
+  }
+
+  /* -------------------------------------Backups----------------------- */
+
+  private apiUrlBackup = environment.apiURL +'backup';
+
+  public obtenerBackup():any{
+    return this.http.get(this.apiUrlBackup);
+  }
 }
