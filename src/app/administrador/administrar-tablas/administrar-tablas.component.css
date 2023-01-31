@@ -11,10 +11,11 @@ td{
     color: #142f3f;
 }
 .separador-tablas{
-    margin-left: 5%;
-    margin-right: 5%;
+    /* margin-left: 5%;
+    margin-right: 5%; */
 }
 .tabla-individual{
+    
     height: 500px;
     overflow: auto;
 }
@@ -37,4 +38,19 @@ td{
     height:auto;
     margin: 0px;
     padding: 1%;
+}
+.boton-crear{
+    background-color: #33bbd1;
+    color: white;
+    margin:5px;
+}
+.boton-eliminar{
+    background-color: #FF6200;
+    color: white;
+    margin:5px;
+}
+.boton-editar{
+    background-color: #33bbd1;
+    color: white;
+    margin:5px;
 }

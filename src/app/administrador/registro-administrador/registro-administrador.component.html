@@ -1,0 +1,55 @@
+
+ <div class="registro-contenedor" fxLayoutRows="center">
+    <div>
+        <h1 class="registro-contenedor-titulo">Registro de Administradores</h1>
+     </div>
+
+     <ul *ngIf="errores.length > 0">
+        <li *ngFor="let error of errores" style="color: red;">{{ error }}</li>
+    </ul>
+    
+    <div class="registro-contenedor-formulario">
+
+        <form (submit)="registrar(form.value)"  [formGroup]="form">
+
+            <!-- <mat-form-field appearance="fill" class="formulario-inputs">
+                <mat-label>UserName de la empresa</mat-label>
+                <input matInput formControlName="userName">
+                <mat-error>{{obtenerError()}}</mat-error>
+            </mat-form-field><br> -->
+
+
+            <mat-form-field appearance="fill" class="formulario-inputs">
+                <mat-label>Correo Electronico</mat-label>
+                <input matInput formControlName="email">
+                <mat-error>{{obtenerErrorCorreo()}}</mat-error>
+            </mat-form-field><br>
+
+
+            <mat-form-field appearance="fill" class="formulario-inputs">
+                <mat-label>Contraseña</mat-label>
+                <input matInput formControlName="password" type="password">
+                <mat-error>{{obtenerErrorContrasenia()}}</mat-error>
+            </mat-form-field><br>
+
+
+            <mat-form-field appearance="fill" class="formulario-inputs">
+                <mat-label>Confirmar Contraseña</mat-label>
+                <input matInput formControlName="passwordConfirm" type="password">
+                <mat-error>{{obtenerErrorConfirmacionContrasenia()}}</mat-error>
+            </mat-form-field>
+
+            <div>
+                <button  class="boton-cancelar" mat-button routerLink="['/']">
+                    Cancelar
+                </button>
+                <button  class="boton-registro" mat-button [disabled]="form.invalid" >
+                    Enviar registro
+                </button>
+                
+            </div>
+         
+        </form>
+    </div> 
+</div> 
+

@@ -1,0 +1,36 @@
+
+ <div class="registro-contenedor" fxLayoutRows="center">
+    <div>
+        <h1 class="registro-contenedor-titulo">Registro de Categorias</h1>
+     </div>
+
+     <ul *ngIf="errores.length > 0">
+        <li *ngFor="let error of errores" style="color: red;">{{ error }}</li>
+    </ul>
+    
+    <div class="registro-contenedor-formulario">
+
+        <form    [formGroup]="form">
+
+            <mat-form-field appearance="fill" class="formulario-inputs">
+                <mat-label>Nombre Categoria</mat-label>
+                <input matInput formControlName="nombre">
+                <mat-error>{{obtenerErrorNombre()}}</mat-error>
+            </mat-form-field><br>
+
+
+            <div>
+                <button  class="boton-cancelar" mat-button [routerLink]="['administrar-tablas']">
+                    Cancelar
+                </button>
+                <button  (click)="editar(categoriaId,form.value)" class="boton-registro" mat-button [disabled]="form.invalid" >
+                    Editar
+                </button>
+                
+            </div>
+         
+        </form>
+    </div> 
+</div> 
+
+

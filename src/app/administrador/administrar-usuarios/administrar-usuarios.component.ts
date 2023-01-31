@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { AdministradorService } from '../servicios/administrador.service';
 import { Location } from '@angular/common';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import * as pdfMake from "pdfmake/build/pdfmake";
 /* import * as pdfFonts from 'pdfmake/build/vfs_fonts'; */
 import { MatDialog } from '@angular/material/dialog';
 import { MensajePostuladoComponent } from 'src/app/Compartido/mensaje-postulado/mensaje-postulado.component';
+import { ConfirmarGuardarComponent } from '../../Compartido/confirmar-guardar/confirmar-guardar.component';
 
 /* (<any>pdfMake).vfs = pdfFonts.pdfMake.vfs; */
 
@@ -27,7 +28,8 @@ export class AdministrarUsuariosComponent implements OnInit {
     private administradorService:AdministradorService,
     private location:Location,
     private activatedRouter:ActivatedRoute,
-    public dialog : MatDialog
+    public dialog : MatDialog,
+
   ) { }
 
   ngOnInit(): void {
@@ -75,6 +77,27 @@ export class AdministrarUsuariosComponent implements OnInit {
       width:'350px',
       data:'Este usuario '+rol+' no tiene su perfil registrado, por lo cual no se puede generara un reporte sobre el mismo'
     });
+  }
+
+  openDialogDarBaja(id:string){
+    const dialogRef = this.dialog.open(ConfirmarGuardarComponent,{
+      width:'350px',
+      data:'¿Está seguro que desea dar de baja a este usuario?'
+    });
+    dialogRef.afterClosed()
+    .subscribe( response =>{
+      if(response){
+        this.darDeBaja(id);
+      }
+    })
+  }
+
+  darDeBaja(id:string){
+    this.administradorService.DarDeBajaUsuario(id)
+    .subscribe( () =>{
+      console.log("usuario suspendido");
+      window.location.reload();
+    })
   }
 
   generarInforme(id:string, rol:string){

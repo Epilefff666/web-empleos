@@ -10,14 +10,21 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-
+import { RegistroAdministradorComponent } from './registro-administrador/registro-administrador.component';
+import { MostrarErroresComponent } from '../Compartido/mostrar-errores/mostrar-errores.component';
+import { CrearCategoriaComponent } from './crear-categoria/crear-categoria.component';
+import { EditarCategoriaComponent } from './editar-categoria/editar-categoria.component';
 
 @NgModule({
   declarations: [
     AdministrarUsuariosComponent,
     AdministrarTablasComponent,
     AdministrarPublicacionesComponent,
-    InformeDeDatosComponent
+    InformeDeDatosComponent,
+    RegistroAdministradorComponent,
+    CrearCategoriaComponent,
+    EditarCategoriaComponent,
+    
   ],
   imports: [
     CommonModule,
@@ -26,7 +33,7 @@ import { RouterModule } from '@angular/router';
     FlexLayoutModule,
     ReactiveFormsModule,
     FormsModule,
-    RouterModule
+    RouterModule,
   ]
 })
 export class AdministradorModule { }

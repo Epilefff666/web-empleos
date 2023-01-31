@@ -17,6 +17,15 @@
 
         <!-- sin logear -->
 
+        <app-autorizado [rol]="'suspendido'">
+          <ng-container Autorizado>
+            <div fxLayout="row"> 
+              <h1 style="color: white; padding-top: 34px;">
+                Su cuenta ha sido suspendida <mat-icon>block</mat-icon> </h1>
+            </div>
+          </ng-container>
+        </app-autorizado >
+
         <app-autorizado [rol]="''">
           <ng-container noAutorizado>
             <div fxLayout="row"> 

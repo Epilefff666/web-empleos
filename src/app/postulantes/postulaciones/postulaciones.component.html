@@ -22,7 +22,7 @@
             </div>
             <div fxLayout="column" class="card-botones">
                 <button class="boton-detalle" mat-button [routerLink]="['/detalle-empleo',item.publicacionesId]">Ver detalle empleo</button>
-                <button class="boton-eliminar" mat-button [routerLink]="['/detalle-empleo',item.publicacionesId]">Eliminar postulacion</button>
+                <button *ngIf="item.estado != 'Aceptado'" (click)="openDialog(item.perfil_postulanteId,item.publicacionesId)" class="boton-eliminar" mat-button  >Eliminar postulacion</button>
             </div>
             
         </mat-card>

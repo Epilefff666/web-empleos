@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { PostulantesService } from '../servicios/postulantes.service';
 import { parsearErroresAPI } from '../../utilidades/Utilidades';
 import { PageEvent } from '@angular/material/paginator';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmarGuardarComponent } from 'src/app/Compartido/confirmar-guardar/confirmar-guardar.component';
 
 @Component({
   selector: 'app-postulaciones',
@@ -11,7 +13,8 @@ import { PageEvent } from '@angular/material/paginator';
 export class PostulacionesComponent implements OnInit {
 
   constructor(
-    private postulantesService:PostulantesService
+    private postulantesService:PostulantesService,
+    public dialog : MatDialog,
   ) { }
     idPerfil!:number;
     postulaciones!:any[]
@@ -43,4 +46,25 @@ export class PostulacionesComponent implements OnInit {
     this.cargarpostulaciones(this.idPerfil,this.paginaActual,this.cantidadRegistrosAMostrar)
   }
 
+  openDialog(perfil_postulanteId:number,postulacionesId:number){
+    const dialogRef = this.dialog.open(ConfirmarGuardarComponent,{
+      width:'350px',
+      data:'¿Está seguro que desea eliminar esta postulación?'
+    });
+    dialogRef.afterClosed()
+    .subscribe( response =>{
+      if(response){
+        this.eliminarPostulacion(perfil_postulanteId,postulacionesId);
+      }
+    })
+
+  }
+  eliminarPostulacion(perfil_postulanteId:number,postulacionesId:number){
+    this.postulantesService.EliminarPostulacion(perfil_postulanteId,postulacionesId)
+    .subscribe( ()=>{
+      console.log('postulacion eliminada')
+      window.location.reload();
+    
+    })
+  }
 }

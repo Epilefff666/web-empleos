@@ -32,6 +32,10 @@ export class PostulantesService {
     return this.http.post(this.apiURLpostulaciones+'/crear',postulacion);
   }
 
+  public EliminarPostulacion(perfil_postulanteId:number,postulacionesId:number){
+    return this.http.delete(`${this.apiURLpostulaciones}/${'Delete'}/${perfil_postulanteId}/${postulacionesId}`)
+  }
+
 /* -------------------------  Perfil --------------------------------*/
   
   public obtenerPerfilEmail(email:string):Observable<perfil_postulanteDTO>{

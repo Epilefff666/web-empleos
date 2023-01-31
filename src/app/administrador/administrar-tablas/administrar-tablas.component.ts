@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { PageEvent } from '@angular/material/paginator';
+import { ConfirmarGuardarComponent } from 'src/app/Compartido/confirmar-guardar/confirmar-guardar.component';
 import { AdministradorService } from '../servicios/administrador.service';
 
 @Component({
@@ -22,7 +24,8 @@ export class AdministrarTablasComponent implements OnInit {
 
 
   constructor(
-    private administradorService:AdministradorService
+    private administradorService:AdministradorService,
+    public dialog : MatDialog,
   ) { }
 
   ngOnInit(): void {
@@ -46,13 +49,36 @@ export class AdministrarTablasComponent implements OnInit {
     })
   }
 
-  columnas_categorias = ['Id','Nombre'];
+  columnas_categorias = ['Id','Nombre','Opciones'];
   columnas_estados = ['Id','Nombre'];
 
   actualizarPaginacion1(evento:PageEvent){
-    
+    this.paginaActual1 = evento.pageIndex +1;
+    this.cantidadRegistrosAMostrar1 = evento.pageSize;
+    this.cargarCategorias(this.paginaActual1,this.cantidadRegistrosAMostrar1);
   }
-  actualizarPaginacion2(evento:PageEvent){
+ /*  actualizarPaginacion2(evento:PageEvent){
 
+  } */
+
+  opendDialog(id:number){
+    const dialogRef = this.dialog.open(ConfirmarGuardarComponent,{
+      width:'350px',
+      data:'¿Está seguro que desea eliminar esta categoria?'
+    });
+    dialogRef.afterClosed()
+    .subscribe( response =>{
+      if(response){
+        this.eliminarCategoria(id);
+      }
+    })
+  }
+
+  eliminarCategoria(id:number){
+    this.administradorService.eliminarCategoria(id)
+    .subscribe(()=>{
+      console.log('Categoria eliminada');
+      window.location.reload();
+    })
   }
 }

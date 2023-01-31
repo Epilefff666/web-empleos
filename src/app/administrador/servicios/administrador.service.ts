@@ -22,6 +22,13 @@ export class AdministradorService {
     params = params.append('recordsPorPagina', cantidadRegistrosAMostrar.toString());
     return this.http.get<any>(this.apiURL,{observe:'response',params})
   }
+  public DarDeBajaUsuario(id:string){
+    let object = new Object()
+    object = {
+      Id : id
+    } 
+    return this.http.put(`${this.apiURL}/${'downUser'}`,object);
+  } 
 
   /* ----------------------------------------Categorias y estados --------------------------------*/
 
@@ -65,4 +72,26 @@ export class AdministradorService {
   public obtenerBackup():any{
     return this.http.get(this.apiUrlBackup);
   }
+
+  /*--------------------------------------- tablas -----------------------------*/
+  private apiUrlTablas = environment.apiURL +'tablas';
+
+  public obtenerCategoriaId(id:number):Observable<any>{
+    return this.http.get<any>(`${this.apiUrlTablas}/${id}`)
+  }
+
+  public crearCategoria(categoria:any){
+    return this.http.post(this.apiUrlTablas+'/crear-categoria',categoria)
+  }
+
+  public editarCategoria(id:number,categoria:any){
+    
+    return this.http.put(`${this.apiUrlTablas}/${'editar-categoria'}/${id}`,categoria)
+  }
+
+  public eliminarCategoria(id:number){
+    return this.http.delete(`${this.apiUrlTablas}/${'eliminar-categoria'}/${id}`)
+  }
+  
+
 }

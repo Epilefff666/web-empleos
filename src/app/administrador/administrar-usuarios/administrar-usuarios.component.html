@@ -1,7 +1,13 @@
 
 <div class="contenedor-tabla-usuarios">
     <div fxLayoutAlign="center"><h1 class="titulo">Usuarios</h1></div>
+    <div fxLayoutAlign="end">
+        <button class="boton-registrar" mat-button [routerLink]="['registrar-administrador']" >
+            Registrar nuevo usuario administrador
+        </button>
+    </div>
     <div class="tabla-individual">
+        
         <table mat-table [dataSource]="listaUsuarios" class="mat-elevation-z8">
             <ng-container matColumnDef="No" >
                 <th mat-header-cell *matHeaderCellDef > No </th>
@@ -22,6 +28,7 @@
             <ng-container matColumnDef="Opciones">
                 <th mat-header-cell *matHeaderCellDef> Opciones </th>
                 <td mat-cell *matCellDef="let element"> 
+                    <button *ngIf="element.rol != 'administrador' && element.rol != 'suspendido' " class="boton-opciones-baja" mat-button (click)="openDialogDarBaja(element.id)">Dar de baja usuario </button>
                     <button *ngIf="element.rol != 'administrador'" class="boton-opciones" mat-button (click)="generarInforme(element.id,element.rol)">generar informe de usuario </button>
                 </td>
             </ng-container>

@@ -1,6 +1,6 @@
 table {
     width: 90%;
-    margin:5%;
+    margin:2% ;
 }
 th{
     background-color: #142f3f;
@@ -34,11 +34,22 @@ td{
     background-size: cover;
     height:auto;
     margin: 0px;
-    padding: 1%;
+    padding: 5%;
     
 
 }
 .boton-opciones{
+    background-color: #33bbd1;
+    color: white;
+    margin: 1%;
+}
+.boton-opciones-baja{
+    background-color: #FF6200;
+    color: white;
+    margin: 1%;
+}
+.boton-registrar{
+    margin-right: 10%;
     background-color: #33bbd1;
     color: white;
 }
