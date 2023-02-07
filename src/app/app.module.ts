@@ -25,6 +25,8 @@ import { ConfirmarPostulacionComponent } from './Compartido/confirmar-postulacio
 import { MensajePostuladoComponent } from './Compartido/mensaje-postulado/mensaje-postulado.component';
 import { ConfirmarGuardarComponent } from './Compartido/confirmar-guardar/confirmar-guardar.component';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +55,8 @@ import { ConfirmarGuardarComponent } from './Compartido/confirmar-guardar/confir
     MaterialModule,
     ReactiveFormsModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+
   ],
   entryComponents:[ConfirmarPostulacionComponent], 
   providers: [],

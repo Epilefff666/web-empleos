@@ -34,12 +34,13 @@ export class IngresarComponent implements OnInit {
 
   errores:string[] =[];
   ingresar(credenciales:credencialesUsuario){
-    console.log(credenciales)
+    /* console.log(credenciales) */
     this.seguridadService.login(credenciales)
     .subscribe(respuesta => {
-      console.log(respuesta)
+      /* console.log(respuesta) */
       this.seguridadService.guardarToken(respuesta);
-      window.location.reload()
+      this.router.navigate(['/'])
+      window.location.reload();
     }, errores => this.errores = parsearErroresAPI(errores));
   }
 
