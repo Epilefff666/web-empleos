@@ -4,7 +4,10 @@
 
 export const environment = {
   production: false,
-  apiURL:'https://localhost:44346/api/'
+  apiURL:'https://localhost:44346/api/',
+  recaptcha:{
+    key:'6LcT2F8kAAAAALcIvL6lt1fS1_5nKjJqhXrpBJkh'
+  }
 };
 
 /*

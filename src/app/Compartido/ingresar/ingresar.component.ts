@@ -4,6 +4,7 @@ import { SeguridadService } from '../../seguridad/servicios/seguridad.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { credencialesUsuario } from '../interfaces/compartido.interfaces';
 import { parsearErroresAPI } from '../../utilidades/Utilidades';
+import { ReCaptchaV3Service } from 'ng-recaptcha';
 
 @Component({
   selector: 'app-ingresar',
@@ -14,7 +15,9 @@ export class IngresarComponent implements OnInit {
 
   constructor(private router:Router,
     private seguridadService:SeguridadService,
-    private formBuilder:FormBuilder) { }
+    private formBuilder:FormBuilder,
+    private recaptchaV3Service:ReCaptchaV3Service,
+    ) { }
 
     form!:FormGroup;
 
@@ -32,17 +35,49 @@ export class IngresarComponent implements OnInit {
     })
   }
 
+  token!:string
+  robot:boolean=true
   errores:string[] =[];
   ingresar(credenciales:credencialesUsuario){
-    /* console.log(credenciales) */
+
+    this.recaptchaV3Service.execute('INGRESAR')
+    .subscribe(token =>{
+      /* console.log(token) */
+      this.token = token
+      this.seguridadService.verificarReCaptcha(this.token)
+      .subscribe( response =>{
+        /* console.log(response) */
+        if(response.success === true){
+          this.robot= false;
+          if(this.robot === false){
+            this.seguridadService.login(credenciales)
+          .subscribe(respuesta => {
+            /* console.log(respuesta) */
+            this.seguridadService.guardarToken(respuesta);
+            this.router.navigate(['/'])
+            window.location.reload();
+          }, errores => this.errores = parsearErroresAPI(errores));
+          }
+          else{
+            console.log('eres un robot')
+          }
+        }
+      })
+    })
+
+    
+  }
+/*   errores:string[] =[];
+  ingresar(credenciales:credencialesUsuario){
+    console.log(credenciales)
     this.seguridadService.login(credenciales)
     .subscribe(respuesta => {
-      /* console.log(respuesta) */
+      console.log(respuesta)
       this.seguridadService.guardarToken(respuesta);
       this.router.navigate(['/'])
       window.location.reload();
     }, errores => this.errores = parsearErroresAPI(errores));
-  }
+  } */
 
   obtenerErrorCorreo(){
     var correo = this.form.get('email');

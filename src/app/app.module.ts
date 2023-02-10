@@ -25,6 +25,8 @@ import { ConfirmarPostulacionComponent } from './Compartido/confirmar-postulacio
 import { MensajePostuladoComponent } from './Compartido/mensaje-postulado/mensaje-postulado.component';
 import { ConfirmarGuardarComponent } from './Compartido/confirmar-guardar/confirmar-guardar.component';
 
+import { RECAPTCHA_V3_SITE_KEY, RecaptchaV3Module, RecaptchaModule, RecaptchaFormsModule } from "ng-recaptcha";
+import { environment } from 'src/environments/environment';
 
 
 @NgModule({
@@ -56,10 +58,12 @@ import { ConfirmarGuardarComponent } from './Compartido/confirmar-guardar/confir
     ReactiveFormsModule,
     FormsModule,
     RouterModule,
-
+    RecaptchaV3Module,
+    RecaptchaModule,
+    RecaptchaFormsModule
   ],
   entryComponents:[ConfirmarPostulacionComponent], 
-  providers: [],
+  providers: [{ provide: RECAPTCHA_V3_SITE_KEY, useValue: environment.recaptcha.key }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

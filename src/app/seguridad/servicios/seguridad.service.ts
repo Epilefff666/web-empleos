@@ -15,11 +15,24 @@ export class SeguridadService {
   constructor(private httpClient:HttpClient , private router:Router) { }
 
   apiURL = environment.apiURL + 'cuentas'
+  apiURLreCaptcha = environment.apiURL + 'recaptcha'
 
   private readonly llaveToken='token';
   private readonly llaveExpiracion='token-expiracion';
   private readonly campoRol = 'role';
   private readonly perfilID = 'perfilID';
+
+  /*-------------------------------------------- recaptcha incio --------------------------------------*/
+
+  verificarReCaptcha(token:string):Observable<any>{
+    let obj = new Object() 
+    obj ={
+      response: token
+    }
+    return this.httpClient.post<any>(this.apiURLreCaptcha,obj)
+  }
+
+  /*-------------------------------------------- recaptcha fin ------------------------------------------*/
 
   estaLogueado():boolean{
     const token = localStorage.getItem(this.llaveToken)
