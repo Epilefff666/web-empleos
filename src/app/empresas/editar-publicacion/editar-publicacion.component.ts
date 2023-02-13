@@ -5,6 +5,7 @@ import { CompartidosService } from 'src/app/Compartido/servicios/compartidos.ser
 import { SeguridadService } from 'src/app/seguridad/servicios/seguridad.service';
 import { EmpresasService } from '../servicios/empresas.service';
 import { publicar_empleo_creacionDTO, publicar_empleoDTO } from '../interfaces/empresas.interfaces';
+import { ReCaptchaV3Service } from 'ng-recaptcha';
 
 @Component({
   selector: 'app-editar-publicacion',
@@ -18,7 +19,9 @@ export class EditarPublicacionComponent implements OnInit {
     private activatedRoute:ActivatedRoute,
     private empresasService:EmpresasService,
     private compartidosService:CompartidosService,
-    private seguridadService:SeguridadService) { }
+    private seguridadService:SeguridadService,
+    private recaptchaV3Service:ReCaptchaV3Service,
+    ) { }
 
 
     form!:FormGroup
@@ -70,14 +73,39 @@ export class EditarPublicacionComponent implements OnInit {
     
   }
 
+  mensajeRobot!:string;
   editarEmpleo(id:number,value:publicar_empleo_creacionDTO){
+    this.recaptchaV3Service.execute('EDITAR')
+    .subscribe(token =>{
+      this.seguridadService.verificarReCaptcha(token)
+      .subscribe(response =>{
+        if(response.success === true){
+
+          this.empresasService.editarEmpleo(id, value)
+            .subscribe(() => {
+              console.log('empleo editado')
+              this.router.navigate(['/detalle-empleo', this.empleoId])
+            })
+
+        }else{
+          this.mensajeRobot = 'Usted es un robot'
+        }
+      })
+    })
+
+
+
+    
+  }
+
+  /* editarEmpleo(id:number,value:publicar_empleo_creacionDTO){
     
     this.empresasService.editarEmpleo(id,value)
     .subscribe(()=>{
       console.log('empleo editado')
       this.router.navigate(['/detalle-empleo',this.empleoId])
     })
-  }
+  } */
 
   obtenerError(){
     const puesto_empleo = this.form.get('puesto_empleo')

@@ -50,6 +50,12 @@
                     Guardar cambios
                 </button>
             </div>
+
+            <div *ngIf="this.mensajeRobot" style="text-align: center;">
+                <ul  style="color:white; background-color: #FF6200; border-radius: 15px;">
+                    <li>¡¡¡ {{mensajeRobot}} !!! </li>
+                </ul>
+            </div>
             
 
         </form>

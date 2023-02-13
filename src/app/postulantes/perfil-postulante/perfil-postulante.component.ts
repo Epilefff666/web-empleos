@@ -4,6 +4,7 @@ import { parsearErroresAPI, toBase64 } from 'src/app/utilidades/Utilidades';
 import { SeguridadService } from '../../seguridad/servicios/seguridad.service';
 import { PostulantesService } from '../servicios/postulantes.service';
 import { perfil_postulante_creacionDTO } from '../interfaces/postulantes.interfaces';
+import { ReCaptchaV3Service } from 'ng-recaptcha';
 
 @Component({
   selector: 'app-perfil-postulante',
@@ -14,7 +15,9 @@ export class PerfilPostulanteComponent implements OnInit {
 
   constructor(private formBuilder:FormBuilder,
     private seguridadService:SeguridadService,
-    private postulantesService:PostulantesService) { }
+    private postulantesService:PostulantesService,
+    private recaptchaV3Service:ReCaptchaV3Service,
+    ) { }
   
   pdf:any
   imagenBase64!:string;  
@@ -143,14 +146,30 @@ export class PerfilPostulanteComponent implements OnInit {
     },errores => this.errores = parsearErroresAPI(errores))
   }
 
+  mensajeRobot!:string
   guardarCambios(perfil:perfil_postulante_creacionDTO){
-    /* console.log(this.modelo.id) */
-    /* console.log(perfil) */
-    this.postulantesService.EditarPostulante(this.modelo.id,perfil)
-    .subscribe(()=>{
-      console.log('postulante actualizado')
-      window.location.reload()
-    },errores => this.errores = parsearErroresAPI(errores))
+    
+    this.recaptchaV3Service.execute('ACTUALIZAR')
+    .subscribe(token => {
+      this.seguridadService.verificarReCaptcha(token)
+      .subscribe(response =>{
+        if(response.success === true){
+
+          this.postulantesService.EditarPostulante(this.modelo.id, perfil)
+            .subscribe(() => {
+              console.log('postulante actualizado')
+              window.location.reload()
+            }, errores => this.errores = parsearErroresAPI(errores))
+
+        }else{
+          this.mensajeRobot = 'Usted es un robot'
+        }
+        
+
+      })
+    })
+
+    
   }
 
 

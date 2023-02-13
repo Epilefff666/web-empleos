@@ -40,26 +40,19 @@
                 
                 
             </div>
-    
-            <div>
-                <!-- <button class="buscador-boton" mat-button (click)="limpiar()" >
-                    Limpiar
-                </button>
-                <button class="buscador-boton" mat-button (click)="buscar(form.value)" >
-                    buscar
-                </button> -->
-                
-            </div>
+            
+            
             </div>
         </form>
-
-
-
     </div>
+    
 </div>
 
-
-
+<div *ngIf="this.mensajeRobot" style="text-align: center;">
+    <ul  style="color:white; background-color: #FF6200; border-radius: 15px;">
+        <li>¡¡¡ {{mensajeRobot}} !!! </li>
+    </ul>
+</div>
 <div class="lista-empleos" fxLayoutAlign="center" >
 
     <div *ngIf="resultados == false" style="color: white; padding-top: 50px;">

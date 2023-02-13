@@ -4,6 +4,7 @@ import { MustMatch, parsearErroresAPI, ValidadorContraseña } from 'src/app/util
 import { credencialesUsuario } from '../../interfaces/compartido.interfaces';
 import { SeguridadService } from '../../../seguridad/servicios/seguridad.service';
 import { Router } from '@angular/router';
+import { ReCaptchaV3Service } from 'ng-recaptcha';
 
 @Component({
   selector: 'app-registro-empresas',
@@ -14,7 +15,9 @@ export class RegistroEmpresasComponent implements OnInit {
 
   constructor( private formBuilder:FormBuilder,
      private seguridadService:SeguridadService,
-     private router:Router) { }
+     private router:Router,
+     private recaptchaV3Service:ReCaptchaV3Service,
+     ) { }
 
   form!: FormGroup;
   
@@ -40,7 +43,39 @@ export class RegistroEmpresasComponent implements OnInit {
 
   }
 
+  mensajeRobot!:string;
   errores:string[]=[];
+  token!:string;
+  registrar(credenciales:credencialesUsuario){
+    this.recaptchaV3Service.execute('REGISTRAR')
+    .subscribe( token =>{
+      this.token = token
+      this.seguridadService.verificarReCaptcha(this.token)
+      .subscribe( response =>{
+        console.log(response)
+        if(response.success === true){
+          
+          this.seguridadService.registrar(credenciales)
+            .subscribe(respuesta => {
+              console.log(respuesta);
+              this.seguridadService.guardarToken(respuesta);
+              this.router.navigate(['/']);
+              location.reload();
+            }, errores => this.errores = parsearErroresAPI(errores));
+
+        }
+        else{
+          this.mensajeRobot ='Usted es un robot';
+        }
+
+      })
+
+    })
+    
+    
+  }
+
+  /* errores:string[]=[];
   registrar(credenciales:credencialesUsuario){
     console.log(credenciales)
     this.seguridadService.registrar(credenciales)
@@ -49,9 +84,9 @@ export class RegistroEmpresasComponent implements OnInit {
       this.seguridadService.guardarToken(respuesta);
       this.router.navigate(['/']);
       location.reload();
-      /* console.log(respuesta); */
+      console.log(respuesta);
     },errores => this.errores = parsearErroresAPI(errores));
-  }
+  } */
 
 
   obtenerError(){

@@ -35,6 +35,7 @@ export class IngresarComponent implements OnInit {
     })
   }
 
+  mensajeRobot!:string;
   token!:string
   robot:boolean=true
   errores:string[] =[];
@@ -48,7 +49,7 @@ export class IngresarComponent implements OnInit {
       .subscribe( response =>{
         /* console.log(response) */
         if(response.success === true){
-          this.robot= false;
+          this.robot = false;
           if(this.robot === false){
             this.seguridadService.login(credenciales)
           .subscribe(respuesta => {
@@ -58,9 +59,9 @@ export class IngresarComponent implements OnInit {
             window.location.reload();
           }, errores => this.errores = parsearErroresAPI(errores));
           }
-          else{
-            console.log('eres un robot')
-          }
+        }
+        else{
+          this.mensajeRobot = 'Usted es un robot';
         }
       })
     })

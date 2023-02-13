@@ -4,6 +4,7 @@ import { EmpresasService } from '../servicios/empresas.service';
 import { CompartidosService } from '../../Compartido/servicios/compartidos.service';
 import { SeguridadService } from '../../seguridad/servicios/seguridad.service';
 import { Router } from '@angular/router';
+import { ReCaptchaV3Service } from 'ng-recaptcha';
 
 @Component({
   selector: 'app-publicar-empleo',
@@ -16,7 +17,9 @@ export class PublicarEmpleoComponent implements OnInit {
     private router:Router,
     private empresasService:EmpresasService,
     private compartidosService:CompartidosService,
-    private seguridadService:SeguridadService) { }
+    private seguridadService:SeguridadService,
+    private recaptchaV3Service:ReCaptchaV3Service,
+    ) { }
 
     form!:FormGroup
     empresaId!:number;
@@ -52,16 +55,37 @@ export class PublicarEmpleoComponent implements OnInit {
 
   }
 
+  mensajeRobot!:string;
   publicarEmpleo(value:any){
+    this.recaptchaV3Service.execute('PUBLICAR')
+    .subscribe(token=>{
+      this.seguridadService.verificarReCaptcha(token)
+      .subscribe( response =>{
+        if( response.success === true){
+
+          this.empresasService.publicarEmpleo(value)
+            .subscribe(() => {
+              console.log("empleo publicado")
+              this.router.navigate(['empresas/empleos-publicados']);
+              /* window.location.reload(); */
+            })
+            
+        }else{
+          this.mensajeRobot = 'Usted es un robot'
+        }
+      })
+    })
+  }
+
+/*   publicarEmpleo(value:any){
     console.log(value);
     this.empresasService.publicarEmpleo(value)
     .subscribe(()=>{
       console.log("empleo publicado")
       this.router.navigate(['empresas/empleos-publicados']);
-      /* window.location.reload(); */
+      window.location.reload();
     })
-  }
-
+  } */
 
   obtenerError(){
     const puesto_empleo = this.form.get('puesto_empleo')

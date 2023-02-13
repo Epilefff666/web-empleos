@@ -6,6 +6,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Location } from '@angular/common';
 import { HttpResponse } from '@angular/common/http';
 import { PageEvent } from '@angular/material/paginator'; 
+import { ReCaptchaV3Service } from 'ng-recaptcha';
+import { SeguridadService } from '../../seguridad/servicios/seguridad.service';
 
 @Component({
   selector: 'app-buscar-empleo',
@@ -36,6 +38,8 @@ export class BuscarEmpleoComponent implements OnInit {
     private router:Router,
     private formBuilder:FormBuilder,
     private location:Location,
+    private recaptchaV3Service:ReCaptchaV3Service,
+    private seguridadService:SeguridadService
     ) { }
 
   ngOnInit(): void {
@@ -48,23 +52,7 @@ export class BuscarEmpleoComponent implements OnInit {
     })
     
     this.leerValoresUrl();
-   
-    /* this.compartidosService.Obtener_ofertas()
-    .subscribe( ofertas => {
-      this.Ofertas = ofertas;
-      this.OfertasOriginal = ofertas;
-      this.leerValoresUrl();
-      this.valorRecibido=this.form.value;
-      this.buscarOfertas(this.valorRecibido);
-    }, error => console.error(error)); */
-
-    /* this.form.valueChanges
-    .subscribe(valores =>{
-      this.Ofertas = this.OfertasOriginal;
-      this.resultados=true;
-      this.buscarOfertas(valores);
-      this.escribirParametrosBusquedaEnUrl();
-    }) */
+  
 
   }
 
@@ -124,32 +112,31 @@ export class BuscarEmpleoComponent implements OnInit {
     this.router.navigate([url]);
   }
 
-  /* buscarOfertas(valores:any){
-    if(valores.palabraClave ){
-
-      this.Ofertas = this.Ofertas.filter( (x: { puesto_empleo : string | any[]; }) => x.puesto_empleo.indexOf(valores.palabraClave) !== -1)
-      if(this.Ofertas.length == 0){
-        this.resultados = false;
-      }
-    }
-    if(valores.categoria !== 0){
-      this.Ofertas =  this.Ofertas.filter( (x: { categoria: string | any[]; }) => x.categoria.indexOf(valores.categoria) !== -1 )
-      if(this.Ofertas.length == 0 ){
-        this.resultados = false;
-      }
-    }
-    
-  } */
-
+  mensajeRobot!:string
   buscar(form:any){
-    this.Ofertas = this.OfertasOriginal;
-/*     this.buscarOfertas(form); */
-    this.Ofertas = this.OfertasOriginal;
-    this.escribirParametrosBusquedaEnUrl();
-    let palabraClave = form.palabraClave
-    let categoria = form.categoria
-    let nombre_empresa = form.nombre_empresa
-    this.cargarRegistros(1,4,palabraClave,categoria,nombre_empresa)
+
+    this.recaptchaV3Service.execute('BUSCAR')
+    .subscribe(token=>{
+      this.seguridadService.verificarReCaptcha(token)
+      .subscribe(response=>{
+        if(response.success === true){
+
+          this.Ofertas = this.OfertasOriginal;
+          /*     this.buscarOfertas(form); */
+          this.Ofertas = this.OfertasOriginal;
+          this.escribirParametrosBusquedaEnUrl();
+          let palabraClave = form.palabraClave
+          let categoria = form.categoria
+          let nombre_empresa = form.nombre_empresa
+          this.cargarRegistros(1, 4, palabraClave, categoria, nombre_empresa)
+
+        }else{
+          this.mensajeRobot ='Usted es un robot';
+        }
+      })
+    })
+
+    
     
    }
 

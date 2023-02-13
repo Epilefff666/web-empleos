@@ -5,6 +5,7 @@ import { Router, Params } from '@angular/router';
 import { parsearErroresAPI, toBase64 } from '../../utilidades/Utilidades';
 import { FormGroup, FormBuilder, Validators, ValidatorFn } from '@angular/forms';
 import { SeguridadService } from '../../seguridad/servicios/seguridad.service';
+import { ReCaptchaV3Service } from 'ng-recaptcha';
 
 
 @Component({
@@ -17,7 +18,9 @@ export class PerfilEmpresaComponent implements OnInit {
   constructor(private empresasService:EmpresasService,
     private router:Router,
     private formBuilder:FormBuilder,
-    private seguridadService:SeguridadService) { }
+    private seguridadService:SeguridadService,
+    private recaptchaV3Service:ReCaptchaV3Service,
+    ) { }
 
   imagenBase64!:string;
   form!:FormGroup; 
@@ -88,7 +91,7 @@ export class PerfilEmpresaComponent implements OnInit {
     this.form.get('foto_perfil')?.setValue(file);
   }
 
-
+  mensajeRobot!:string;
   errores:any=[];
   registrarPerfil(perfil_empresa : perfil_empresa_creacionDTO){
     this.empresasService.CrearEmpresa(perfil_empresa).subscribe( () => {
@@ -98,11 +101,28 @@ export class PerfilEmpresaComponent implements OnInit {
   }
 
   guardarCambios(perfil_empresa : perfil_empresa_creacionDTO){
-    this.empresasService.actualizarEmpresaId(this.modelo.id,perfil_empresa)
-    .subscribe(()=>{
-      console.log("perfil actualizado")
-      window.location.reload()
+
+    this.recaptchaV3Service.execute('ACTUALIZAR')
+    .subscribe(token =>{
+      this.seguridadService.verificarReCaptcha(token)
+      .subscribe(response =>{
+        if(response.success ===true){
+
+          this.empresasService.actualizarEmpresaId(this.modelo.id, perfil_empresa)
+            .subscribe(() => {
+              console.log("perfil actualizado")
+              window.location.reload()
+            },errores => this.errores = parsearErroresAPI(errores))
+
+        }else{
+          this.mensajeRobot = 'Usted es un robot'
+        }
+      })
     })
+
+
+
+    
   }
 
         /* errores */

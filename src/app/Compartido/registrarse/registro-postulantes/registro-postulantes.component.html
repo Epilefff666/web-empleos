@@ -40,6 +40,11 @@
                     <button  class="boton-registro" mat-button [disabled]="form.invalid" >
                         Enviar registro
                     </button>
+                    <div *ngIf="this.mensajeRobot" >
+                        <ul  style="color:white; background-color: #FF6200; border-radius: 15px;">
+                            <li>¡¡¡ {{mensajeRobot}} !!! </li>
+                        </ul>
+                    </div>
                 </div>
 
             </form>

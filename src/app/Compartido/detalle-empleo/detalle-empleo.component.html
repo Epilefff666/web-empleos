@@ -87,9 +87,13 @@
                     <button class ="detalle-empleo-boton"mat-button [routerLink]="['/registrarse']">Postular empleo</button>
                 </div>
             </ng-container>
-            
         </app-autorizado>
         
+        <div *ngIf="this.mensajeRobot" style="text-align: center;">
+            <ul  style="color:white; background-color: #FF6200; border-radius: 15px;">
+                <li>¡¡¡ {{mensajeRobot}} !!! </li>
+            </ul>
+        </div>
         
     </div>
     

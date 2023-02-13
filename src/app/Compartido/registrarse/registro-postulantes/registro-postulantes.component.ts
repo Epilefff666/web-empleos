@@ -4,6 +4,7 @@ import { MustMatch, ValidadorContraseña, parsearErroresAPI } from '../../../uti
 import { credencialesUsuario } from '../../interfaces/compartido.interfaces';
 import { SeguridadService } from '../../../seguridad/servicios/seguridad.service';
 import { Router } from '@angular/router';
+import { ReCaptchaV3Service } from 'ng-recaptcha';
 
 @Component({
   selector: 'app-registro-postulantes',
@@ -14,7 +15,9 @@ export class RegistroPostulantesComponent implements OnInit {
 
   constructor(private formBuilder:FormBuilder, 
     private seguridadService:SeguridadService,
-    private router:Router) { }
+    private router:Router,
+    private recaptchaV3Service:ReCaptchaV3Service,
+    ) { }
 
   form!: FormGroup;
 
@@ -38,6 +41,33 @@ export class RegistroPostulantesComponent implements OnInit {
   }
 
   errores:string[]=[];
+  mensajeRobot!:string;
+  registrar(credenciales:credencialesUsuario){
+    this.recaptchaV3Service.execute('REGISTRAR')
+    .subscribe(token =>{
+      this.seguridadService.verificarReCaptcha(token)
+      .subscribe( response =>{
+        if(response.success === true){
+
+          this.seguridadService.registrar(credenciales)
+            .subscribe(respuesta => {
+              this.seguridadService.guardarToken(respuesta);
+
+              this.router.navigate(['/']);
+              location.reload();
+              console.log(respuesta);
+            }, errores => this.errores = parsearErroresAPI(errores));
+
+        }else{
+            this.mensajeRobot = 'Usted es un robot'
+        }
+      })
+    })
+    
+    
+  }
+
+/*   errores:string[]=[];
   registrar(credenciales:credencialesUsuario){
     console.log(credenciales)
     this.seguridadService.registrar(credenciales)
@@ -46,9 +76,9 @@ export class RegistroPostulantesComponent implements OnInit {
       
       this.router.navigate(['/']);
       location.reload();
-      /* console.log(respuesta); */
+      console.log(respuesta);
     },errores => this.errores = parsearErroresAPI(errores));
-  }
+  } */
 
 
   obtenerError(){

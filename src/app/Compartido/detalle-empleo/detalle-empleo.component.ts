@@ -14,6 +14,8 @@ import { ConfirmarGuardarComponent } from '../confirmar-guardar/confirmar-guarda
 import { AdministradorService } from 'src/app/administrador/servicios/administrador.service';
 import * as pdfMake from "pdfmake/build/pdfmake";
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
+import { ReCaptchaV3Service } from 'ng-recaptcha';
+import { SeguridadService } from '../../seguridad/servicios/seguridad.service';
 
 (<any>pdfMake).vfs = pdfFonts.pdfMake.vfs;
 
@@ -46,7 +48,10 @@ export class DetalleEmpleoComponent implements OnInit {
     private postulantesService:PostulantesService,
     private administradorService:AdministradorService,
     private formBuilder:FormBuilder,
-    public dialog : MatDialog) { }
+    public dialog : MatDialog,
+    private recaptchaV3Service:ReCaptchaV3Service,
+    private seguridadService:SeguridadService,
+    ) { }
 
   ngOnInit(): void {
     
@@ -97,8 +102,35 @@ export class DetalleEmpleoComponent implements OnInit {
     
   }
 
-
+  mensajeRobot!:string
   errores:any[]=[];
+  postular(){
+    this.recaptchaV3Service.execute('POSTULAR')
+    .subscribe(token=>{
+      this.seguridadService.verificarReCaptcha(token)
+      .subscribe(response=>{
+        if(response.success === true){
+
+          let valor = this.form.value;
+          this.postulantesService.postularEmpleo(valor)
+            .subscribe(() => {
+              console.log('postulacion realizada');
+              this.openDialogPostulacionExitosa()
+              this.postulado = true
+
+            }, errores => this.errores = parsearErroresAPI(errores))
+
+        }else{
+          this.mensajeRobot = 'Usted es un robot'
+        }
+      })
+    })
+
+    
+  
+}
+
+/*   errores:any[]=[];
   postular(){
     let valor = this.form.value;
     this.postulantesService.postularEmpleo(valor)
@@ -107,11 +139,9 @@ export class DetalleEmpleoComponent implements OnInit {
     this.openDialogPostulacionExitosa()
     this.postulado = true
     
-  },errores => this.errores = parsearErroresAPI(errores)
-   
-  )
+  },errores => this.errores = parsearErroresAPI(errores))
   
-}
+} */
 
   openDialog():void{
     const dialogRef = this.dialog.open(ConfirmarPostulacionComponent,{
