@@ -65,7 +65,8 @@ export class HomeComponent implements OnInit {
 
     enviarFormulario(formulario:any){
       this.compartidosService.enviarForm(formulario);
-      this.router.navigate(['buscar-empleo'],{queryParams:{categoria:formulario.categoria ,palabraClave:formulario.palabraClave,nombre_empresa:formulario.nombre_empresa}})
+      //this.router.navigate(['buscar-empleo'],{queryParams:{categoria:formulario.categoria ,palabraClave:formulario.palabraClave,nombre_empresa:formulario.nombre_empresa}})
+      this.router.navigate(['buscar-empleo'],{queryParams:{palabraClave:formulario.palabraClave}})
     }
   }
 

@@ -11,9 +11,14 @@
 .buscador-box{
     padding:3%
 }
+.contenedor-botones{
+width: 100%;
+align-content: right;
+}
 .buscador-boton{
     background-color: #33bbd1;
     margin-left: 10%;
+    margin-top: 10px;
     margin-bottom: 10px;
     width: 35%;
     height: 70px;
@@ -23,6 +28,7 @@
 .buscador-boton2{
     background-color: #ff6200;
     margin-left: 10%;
+    margin-top: 10px;
     margin-bottom: 10px;
     width: 35%;
     height: 70px;
@@ -35,7 +41,7 @@
     width: 1080px;
 }
 .buscador-box-formulario-input {
-    width: 540px;
+    width: 700px;
 }
 
 .lista-empleos{

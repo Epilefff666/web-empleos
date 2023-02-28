@@ -6,7 +6,7 @@
             
             <div fxLayoutAlign="row">
             <div>
-                <mat-form-field class="buscador-box-formulario-input" appearance="fill">
+                <!-- <mat-form-field class="buscador-box-formulario-input" appearance="fill">
                     <mat-label>Categoria</mat-label>
                             <mat-select formControlName="categoria" >
                                 <mat-option [value]="''" >
@@ -16,12 +16,11 @@
                                     {{option.nombre}}
                                 </mat-option>
                             </mat-select>
-                </mat-form-field>
-                <mat-form-field class="buscador-box-formulario-input" appearance="fill">
+                </mat-form-field> -->
+                <!-- <mat-form-field class="buscador-box-formulario-input" appearance="fill">
                     <mat-label>Empresa</mat-label>
                     <input matInput formControlName="nombre_empresa" >
-                         
-                </mat-form-field>
+                </mat-form-field> -->
             </div>
 
             <div>
@@ -31,16 +30,16 @@
                     <input matInput formControlName="palabraClave" >
                          
                 </mat-form-field>
+
+            </div>
+            <div fxLayoutAlign="row" class="contenedor-botones">
                 <button class="buscador-boton" mat-button (click)="buscar(form.value)" >
                     Buscar
                 </button>
                 <button class="buscador-boton2" mat-button (click)="limpiar()" >
                     Limpiar filtros
                 </button>
-                
-                
             </div>
-            
             
             </div>
         </form>

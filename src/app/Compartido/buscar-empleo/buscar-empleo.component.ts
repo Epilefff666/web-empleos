@@ -78,7 +78,7 @@ export class BuscarEmpleoComponent implements OnInit {
       
       this.form.patchValue(objeto);
       let formulario = this.form.value
-      this.cargarRegistros(this.paginaActual,this.cantidadRegistrosAMostrar,formulario.palabraClave,formulario.categoria,formulario.nombre_empresa);
+      this.cargarRegistros(this.paginaActual,this.cantidadRegistrosAMostrar,formulario.palabraClave);
     })
   }
 
@@ -127,8 +127,9 @@ export class BuscarEmpleoComponent implements OnInit {
           this.escribirParametrosBusquedaEnUrl();
           let palabraClave = form.palabraClave
           let categoria = form.categoria
-          let nombre_empresa = form.nombre_empresa
-          this.cargarRegistros(1, 4, palabraClave, categoria, nombre_empresa)
+          //let nombre_empresa = form.nombre_empresa
+          //this.cargarRegistros(1, 4, palabraClave, categoria, nombre_empresa)
+          this.cargarRegistros(1, 4, palabraClave)
 
         }else{
           this.mensajeRobot ='Usted es un robot';
@@ -142,19 +143,33 @@ export class BuscarEmpleoComponent implements OnInit {
 
   limpiar(){
     this.form.patchValue(this.formularioOriginal);
-    this.cargarRegistros(1,4,'','','')
+    this.cargarRegistros(1,4,'')
+    this.escribirParametrosBusquedaEnUrl()
     /* this.resultados = true */
   }
 
-  cargarRegistros(pagina:number, cantidadRegistrosAMostrar:number,palabraclave:string,categoria:string,empresa:string){
+/*   cargarRegistros(pagina:number, cantidadRegistrosAMostrar:number,palabraclave:string,categoria:string,empresa:string){
     this.compartidosService.Obtener_ofertas(pagina,cantidadRegistrosAMostrar,palabraclave,categoria,empresa)
     .subscribe( (respuesta:HttpResponse<ofertas_publicadasDTO[]>) => {
       this.Ofertas = respuesta.body;
       this.cantidadTotalRegistros = respuesta.headers.get("cantidadTotalRegistros");
       this.OfertasOriginal = this.Ofertas;
       this.valorRecibido=this.form.value;
-      /* this.buscarOfertas(this.valorRecibido); */
-      /* console.log(this.Ofertas) */
+      if(respuesta.body?.length == 0 ){
+        this.resultados = false
+      }else{
+        this.resultados = true
+      }
+    }, error => console.error(error));
+  } */
+
+  cargarRegistros(pagina:number, cantidadRegistrosAMostrar:number,palabraclave:string){
+    this.compartidosService.Obtener_ofertas2(pagina,cantidadRegistrosAMostrar,palabraclave)
+    .subscribe( (respuesta:HttpResponse<ofertas_publicadasDTO[]>) => {
+      this.Ofertas = respuesta.body;
+      this.cantidadTotalRegistros = respuesta.headers.get("cantidadTotalRegistros");
+      this.OfertasOriginal = this.Ofertas;
+      this.valorRecibido=this.form.value;
       if(respuesta.body?.length == 0 ){
         this.resultados = false
       }else{
@@ -168,7 +183,7 @@ export class BuscarEmpleoComponent implements OnInit {
     this.paginaActual =  datos.pageIndex +1 ;
     this.cantidadRegistrosAMostrar = datos.pageSize;
     let form = this.form.value
-    this.cargarRegistros(this.paginaActual,this.cantidadRegistrosAMostrar,form.palabraClave,form.categoria,form.nombre_empresa); 
+    this.cargarRegistros(this.paginaActual,this.cantidadRegistrosAMostrar,form.palabraClave); 
     this.escribirParametrosBusquedaEnUrl();
   }
 
