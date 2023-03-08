@@ -27,6 +27,7 @@ import { ConfirmarGuardarComponent } from './Compartido/confirmar-guardar/confir
 
 import { RECAPTCHA_V3_SITE_KEY, RecaptchaV3Module, RecaptchaModule, RecaptchaFormsModule } from "ng-recaptcha";
 import { environment } from 'src/environments/environment';
+import { DialogFechasComponent } from './Compartido/dialog-fechas/dialog-fechas.component';
 
 
 @NgModule({
@@ -46,6 +47,7 @@ import { environment } from 'src/environments/environment';
     ConfirmarPostulacionComponent,
     MensajePostuladoComponent,
     ConfirmarGuardarComponent,
+    DialogFechasComponent,
     
   ],
   imports: [

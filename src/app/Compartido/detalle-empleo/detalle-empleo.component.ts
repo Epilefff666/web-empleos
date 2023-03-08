@@ -41,6 +41,8 @@ export class DetalleEmpleoComponent implements OnInit {
   ReportePostulantes:any =[]
   fecha:any;
   tabla:any=[]
+  fecha_vencimiento: string;
+  fecha_publicacion: string;
 
   constructor( private compartidosService: CompartidosService, 
     private activatedRoute:ActivatedRoute, 
@@ -224,9 +226,20 @@ export class DetalleEmpleoComponent implements OnInit {
       let dia= new Date(this.ReportePublicacion.fecha_reporte).getDate();
       let  mes= new Date(this.ReportePublicacion.fecha_reporte).getMonth()+1;
       let  anho= new Date(this.ReportePublicacion.fecha_reporte).getFullYear();
-          this.fecha = dia+'/'+mes+'/'+anho;
+      this.fecha = dia+'/'+mes+'/'+anho;
+
+      let dia1= new Date(this.ReportePublicacion.fecha_publicacion).getDate();
+      let  mes1= new Date(this.ReportePublicacion.fecha_publicacion).getMonth()+1;
+      let  anho1= new Date(this.ReportePublicacion.fecha_publicacion).getFullYear();
+      this.fecha_publicacion = dia1+'/'+mes1+'/'+anho1;
+
+      let dia2= new Date(this.ReportePublicacion.fecha_vencimiento).getDate();
+      let  mes2= new Date(this.ReportePublicacion.fecha_vencimiento).getMonth()+1;
+      let  anho2= new Date(this.ReportePublicacion.fecha_vencimiento).getFullYear();
+      this.fecha_vencimiento = dia2+'/'+mes2+'/'+anho2;
 
       const pdfDefinition:any = {
+        pageMargins: [ 40, 100, 40, 60 ],
         header: [ 
           {svg:`<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect y="28" width="128" height="65" fill="black"/>
@@ -237,10 +250,10 @@ export class DetalleEmpleoComponent implements OnInit {
         ],
         content:[
           {text:'Fecha reporte: '+this.fecha, margin:[0,20,0,20],alignment:'right' },
-          {text:'Reporte de datos de Postulante', margin:[0,20,0,20],alignment:'center',decoration:'underline',bold:true},
+          {text:'Reporte de datos de Oferta de empleo', margin:[0,20,0,20],alignment:'center',decoration:'underline',bold:true},
           {text:' '},
           {text:' '},
-          {text:'Fecha de publicacion: '+this.ReportePublicacion.fecha_publicacion+'   Fecha de vencimiento: '+this.ReportePublicacion.fecha_vencimiento, bold:true},
+          {text:'Fecha de publicacion: '+this.fecha_publicacion+'   Fecha de vencimiento: '+this.fecha_vencimiento, bold:true},
           {text:''},
           {text:'Nombre de la empresa: ',bold:true},
           {text:this.ReportePublicacion.empresa},
@@ -260,9 +273,11 @@ export class DetalleEmpleoComponent implements OnInit {
           {text:' '},
           {text:'Cantidad de postulantes rechazados: '+this.ReportePublicacion.cantidad_rechazados,bold:true},
           {text:' '},
+          {text:'Cantidad de postulantes en espera: '+this.ReportePublicacion.cantidad_esperando,bold:true},
+          {text:' '},
           {text:' '},
           {
-            layout: 'lightHorizontalLines', // optional
+            layout: 'lightVerticalLines', // optional
             table: {
               alignment:'right',
               headerRows: 1,

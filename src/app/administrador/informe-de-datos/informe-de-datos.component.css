@@ -30,6 +30,7 @@ tr{
     font-size: 50px;
     line-height: 70px;
     text-decoration:underline;
+    margin-bottom: 10px;
 }
 .contenedor-datos{
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('src/assets/backgrounds/blue minimalist wallpaper.jfif');
@@ -40,15 +41,46 @@ tr{
     height:auto;
     margin: 0px;
     padding: 1%;
-    padding: 5% 20% 5% 20% ;
+    /* padding: 5% 20% 5% 20% ; */
 }
 .contenedor-tabla{
-    height: 500px;
+    width: 100%;
+    height: auto;
     overflow: auto;
 }
 
 .descargar-pdf{
-    margin: 10px;
+    margin-bottom: 10px;
     background-color: #33bbd1;
     color: white;
+}
+
+
+.label-graficas{
+    font-weight: bold;
+    padding: 1rem;
+    font-style:oblique
+}
+/* graficas -- tortas */
+.graficas{
+    background-color: white;
+}
+
+.advanced-pie-legend .total-value {
+    margin: 15px;
+}
+.advanced-pie-legend .legend-items-container .legend-items {
+    padding: 5px;
+}
+.advanced-pie-legend .legend-items-container .legend-items .legend-item .item-label {
+    margin-top: 5px;
+}
+
+/* graficas barras*/
+.chart-legend .legend-label {
+  
+    color:black;
+}
+.chart-legend .legend-title {
+    color: black;
 }

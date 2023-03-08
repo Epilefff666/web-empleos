@@ -1,33 +1,99 @@
 <div class="contenedor-datos" >
-    <div fxLayoutAlign="center"><h1 class="titulo">Reporte de Datos</h1></div>
-    <div fxLayoutAlign="end">
-        <button mat-button class="descargar-pdf" (click)="GenerarBackup()">
-            Generar Backup de la base de datos 
-        </button>
+    <div fxLayoutAlign="center"class="titulo">Reporte de Datos</div>
+    <div fxLayoutAlign="space-around">
         <button mat-button class="descargar-pdf" (click)="createPDF()">
             Descargar informe Pdf
         </button>
-    </div>
-    <div class="contenedor-tabla" *ngIf="datosReporte">
-        <table >
-            <tr>
-                <th> No </th><th> Detalle </th><th> Cantidad </th>
-            </tr>
-            <tr> <td> 1 </td><td>Empresas registradas</td><td> {{datosReporte.cantidad_empresas }}</td> </tr>
-            <tr> <td> 2 </td><td>Postulantes registrados</td><td> {{datosReporte.cantidad_postulantes}} </td> </tr>
-            <tr> <td> 3 </td><td>Postulaciones realizadas</td><td> {{datosReporte.cantidad_postulaciones}} </td> </tr>
-            <tr> <td> 4 </td><td>Ofertas publicadas</td><td>{{ datosReporte.cantidad_publicaciones}} </td> </tr>
-            <tr> <td> 5 </td><td>Postulantes aceptados</td><td>{{ datosReporte.cantidad_postulantes_aceptados }}</td> </tr>
-            <tr> <td> 6 </td><td>Postulantes rechazados</td><td> {{datosReporte.cantidad_postulantes_rechazados}} </td> </tr>
-            <tr> <td> 7 </td><td>Postulnates en espera</td><td> {{datosReporte.cantidad_postulantes_esperando}} </td> </tr>
-            <tr> <td> 8 </td><td>Publicaciones vigentes</td><td> {{datosReporte.cantidad_publicaciones_vigentes}} </td> </tr>
-            <tr> <td> 9 </td><td>Publicaciones vencidas </td><td> {{datosReporte.cantidad_publicaciones_caducadas}} </td> </tr>
-            <tr> <td> 10 </td><td>Postulantes varones </td><td> {{datosReporte.cantidad_postulantes_varones}} </td> </tr>
-            <tr> <td> 11 </td><td>Postulantes mujeres </td><td> {{datosReporte.cantidad_postulantes_mujeres}} </td> </tr>
-            <tr> <td> 12 </td><td>Postulantes de otro sexo </td><td> {{datosReporte.cantidad_postulantes_sexo_otro}} </td> </tr>
-        </table>
+        <button mat-button class="descargar-pdf" (click)="GenerarBackup()" >
+            Generar Backup de la base de datos 
+        </button>
         
     </div>
+    <div fxLayoutAlign="row">
+        <div class="contenedor-tabla" *ngIf="datosReporte">
+           
+            <table >
+                <tr>
+                    <th> No </th><th> Detalle </th><th> Cantidad </th>
+                </tr>
+                <tr> <td> 1 </td><td>Empresas registradas</td><td> {{datosReporte.cantidad_empresas }}</td> </tr>
+                <tr> <td> 2 </td><td>Postulantes registrados</td><td> {{datosReporte.cantidad_postulantes}} </td> </tr>
+                <tr> <td> 3 </td><td>Postulaciones realizadas</td><td> {{datosReporte.cantidad_postulaciones}} </td> </tr>
+                <tr> <td> 4 </td><td>Ofertas publicadas</td><td>{{ datosReporte.cantidad_publicaciones}} </td> </tr>
+                <tr> <td> 5 </td><td>Postulantes aceptados</td><td>{{ datosReporte.cantidad_postulantes_aceptados }}</td> </tr>
+                <tr> <td> 6 </td><td>Postulantes rechazados</td><td> {{datosReporte.cantidad_postulantes_rechazados}} </td> </tr>
+                <tr> <td> 7 </td><td>Postulnates en espera</td><td> {{datosReporte.cantidad_postulantes_esperando}} </td> </tr>
+                <tr> <td> 8 </td><td>Publicaciones vigentes</td><td> {{datosReporte.cantidad_publicaciones_vigentes}} </td> </tr>
+                <tr> <td> 9 </td><td>Publicaciones vencidas </td><td> {{datosReporte.cantidad_publicaciones_caducadas}} </td> </tr>
+                <tr> <td> 10 </td><td>Postulantes varones </td><td> {{datosReporte.cantidad_postulantes_varones}} </td> </tr>
+                <tr> <td> 11 </td><td>Postulantes mujeres </td><td> {{datosReporte.cantidad_postulantes_mujeres}} </td> </tr>
+                <tr> <td> 12 </td><td>Postulantes de otro sexo </td><td> {{datosReporte.cantidad_postulantes_sexo_otro}} </td> </tr>
+            </table>
+            
+        </div>
+        <div class="graficas" >
+            <div style="border:1px solid black;">
+                <ngx-charts-advanced-pie-chart class="grafica-sexo"   
+                [view]="view"
+                scheme="cool"
+                [results]="datos_sexo"
+                [gradient]="gradient"
+                >
+                </ngx-charts-advanced-pie-chart>
+                <label fxLayoutAlign="center" class="label-graficas">Postulantes agrupados por su sexo</label>
+            </div>
+            
+            <div style="border:1px solid black; padding-top: 50px;">
+                <ngx-charts-bar-vertical style="color: white;"
+                [view]="view"
+                scheme="cool"
+                [results]="publicaciones_meses"
+                [gradient]="gradient"
+                [xAxis]="showXAxis"
+                [yAxis]="showYAxis"
+                [legend]="showLegend"
+                [showXAxisLabel]="showXAxisLabel"
+                [showYAxisLabel]="showYAxisLabel"
+                [xAxisLabel]="xAxisLabel"
+                [yAxisLabel]="yAxisLabel"
+                >
+                </ngx-charts-bar-vertical>
+                <label fxLayoutAlign="center" class="label-graficas">Publicaciones realizadas por mes</label>
+            </div>
+            <div style="border:1px solid black;">
+                <ngx-charts-advanced-pie-chart class="grafica-sexo"
+                [view]="view"
+                scheme="cool"
+                [results]="datos_postulantes"
+                [gradient]="gradient"
+                >
+                </ngx-charts-advanced-pie-chart>
+                <label fxLayoutAlign="center" class="label-graficas" >Postulantes agrupados por su estado de postulación </label>
+            </div>
+            <div style="border:1px solid black;  padding-top: 50px;">
+                <ngx-charts-bar-vertical-2d style="color: white;"
+                [view]="view"
+                scheme="cool"
+                [results]="postulantes_meses"
+                [gradient]="gradient"
+                [xAxis]="showXAxis"
+                [yAxis]="showYAxis"
+                [legend]="showLegend"
+                [showXAxisLabel]="showXAxisLabel"
+                [showYAxisLabel]="showYAxisLabel"
+                [xAxisLabel]="xAxisLabel"
+                [yAxisLabel]="yAxisLabel2"
+                >
+                </ngx-charts-bar-vertical-2d>
+                <label fxLayoutAlign="center" class="label-graficas">Postulantes aceptados y rechazados por mes</label>
+            </div>
+            
+             
+        </div>
+        
+    </div>
+    
+    
     
     
 </div>

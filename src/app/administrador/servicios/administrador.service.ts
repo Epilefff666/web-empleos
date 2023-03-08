@@ -55,8 +55,8 @@ export class AdministradorService {
   public obtenerReporte():Observable<any>{
     return this.http.get<any>(this.apiURLreporte)
   }
-  public obtenerReporteUsuaios(id:string,rol:string):Observable<any>{
-    return this.http.get<any>(`${this.apiURLreporte}/${'usuarios'}/${id}/${rol}`);
+  public obtenerReporteUsuaios(id:string,rol:string,fecha_inicio:Date,fecha_fin:Date):Observable<any>{
+    return this.http.get<any>(`${this.apiURLreporte}/${'usuarios'}/${id}/${rol}/${fecha_inicio}/${fecha_fin}`);
   }
   public obtenerReportePublicacion(id:number):Observable<any>{
     return this.http.get<any>(`${this.apiURLreporte}/${'publicacion'}/${id}`);

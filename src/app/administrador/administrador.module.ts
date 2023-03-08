@@ -14,6 +14,8 @@ import { RegistroAdministradorComponent } from './registro-administrador/registr
 import { MostrarErroresComponent } from '../Compartido/mostrar-errores/mostrar-errores.component';
 import { CrearCategoriaComponent } from './crear-categoria/crear-categoria.component';
 import { EditarCategoriaComponent } from './editar-categoria/editar-categoria.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+
 
 @NgModule({
   declarations: [
@@ -34,6 +36,8 @@ import { EditarCategoriaComponent } from './editar-categoria/editar-categoria.co
     ReactiveFormsModule,
     FormsModule,
     RouterModule,
+    NgxChartsModule,
+
   ]
 })
 export class AdministradorModule { }

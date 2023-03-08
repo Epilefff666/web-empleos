@@ -23,8 +23,9 @@
             </div>
             <div fxLayout="column" fxLayoutAlign="center">
                 
-                <label style="color:white; text-align: center; font-size: 25px;" >Agrega tu Cv en formato PDF</label><br>
-                <input class="input_cv" type="file"  (change)="changeCv($event)" accept="application/pdf"  ><br>
+                <label style="color:white; text-align: center; font-size: 25px;" ><a style="color:white" href="https://localhost:44346/cv_modelo/CV modelo.xlsx" download="Cv">Descarga aquí la platilla de CV y adjuntala</a> </label><br>
+                
+                <input class="input_cv" type="file"  (change)="changeCv($event)" accept=".xlsx"  ><br>
                 <button class="boton_cv" *ngIf="modelo" mat-button (click)="abrirPdf(modelo.cv)"> Ver CV actual</button>
             </div>
             <div>

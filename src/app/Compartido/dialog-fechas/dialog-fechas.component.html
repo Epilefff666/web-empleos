@@ -1,0 +1,25 @@
+<div class="contenedor-popup"  fxLayout="column">
+    <div fxLayout="center" class ="mensaje" >{{mensaje}}</div>
+    <div mat-dialog-content fxLayout="row" fxLayoutAlign="space-around">
+
+        <form [formGroup]="form">
+            <mat-form-field appearance="fill">
+                <mat-label>Fecha inicio de reporte</mat-label>
+                    <input type="date" formControlName="fecha_inicio" matInput>
+                    <mat-error *ngIf="form.invalid">{{obtenerError()}}</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Fecha fin de reporte</mat-label>
+                    <input type="date" formControlName="fecha_fin" matInput>
+                    <mat-error *ngIf="form.invalid">{{obtenerError()}}</mat-error>
+            </mat-form-field>
+            <div>
+                <button mat-button class="boton-cancelar" (click)="onCancelar()">Cancelar</button>
+                <button mat-button class="boton-confirmar" [mat-dialog-close]="registrar(form.value)" [disabled]="form.invalid">Confirmar</button>
+            </div>
+        </form>
+
+        
+    
+    </div>
+</div>
