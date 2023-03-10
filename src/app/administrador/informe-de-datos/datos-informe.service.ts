@@ -345,7 +345,8 @@ export class DatosInformeService {
                 { text: datosReporte.porcentaje_postulantes_aceptados + '%', fillColor: '#DBDBDB', alignment: 'center', margin: 5 }, 
                 { text: datosReporte.porcentaje_postulantes_rechazados + '%', fillColor: '#DBDBDB', alignment: 'center', margin: 5 }, 
                 { text: datosReporte.porcentaje_postulantes_esperando + '%', alignment: 'center', fillColor: '#DBDBDB', margin: 5 },
-                { text: datosReporte.porcentaje_postulantes_esperando + datosReporte.porcentaje_postulantes_rechazados+datosReporte.porcentaje_postulantes_aceptados+'%', alignment: 'center', fillColor: '#DBDBDB', margin: 5 },
+                //{ text: datosReporte.porcentaje_postulantes_esperando + datosReporte.porcentaje_postulantes_rechazados+datosReporte.porcentaje_postulantes_aceptados+'%', alignment: 'center', fillColor: '#DBDBDB', margin: 5 },
+                { text: '100%', alignment: 'center', fillColor: '#DBDBDB', margin: 5 },
               ],
             ]
           }

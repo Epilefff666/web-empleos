@@ -33,9 +33,9 @@
             </p>
             <p>
                 <span class="detalle-empleo-cabecera-subtitulo2">Feha Publicacion:</span> 
-                {{detalle_empleo.fecha_publicacion}} &nbsp; &nbsp;
+                {{detalle_empleo.fecha_publicacion | date:"dd/MM/yy - hh:mm a"}} &nbsp; &nbsp;
                 <span class="detalle-empleo-cabecera-subtitulo2">Fecha de vencimiento:</span>
-                {{detalle_empleo.fecha_vencimiento}}
+                {{detalle_empleo.fecha_vencimiento | date:"dd/MM/yy - hh:mm a"}}
             </p>
         </div>
     </div>

@@ -10,7 +10,7 @@ import { EsEmpresaGuard } from './seguridad/guards/es-empresa.guard';
 import { EsPostulanteGuard } from './seguridad/guards/es-postulante.guard';
 import { RegistroEmpresasComponent } from './Compartido/registrarse/registro-empresas/registro-empresas.component';
 import { RegistroPostulantesComponent } from './Compartido/registrarse/registro-postulantes/registro-postulantes.component';
-
+import { EmpleosVencidosComponent } from './Compartido/empleos-vencidos/empleos-vencidos.component';
 
 const routes: Routes = [
 
@@ -25,6 +25,8 @@ const routes: Routes = [
   {path:'registrarse/registro-postulantes', component:RegistroPostulantesComponent},
 
   {path:'buscar-empleo',component:BuscarEmpleoComponent},
+
+  {path:'ofertas-pasadas',component: EmpleosVencidosComponent},
 
   {path:'detalle-empleo/:id_empleo', component:DetalleEmpleoComponent},
 

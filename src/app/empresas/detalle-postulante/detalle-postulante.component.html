@@ -13,9 +13,9 @@
             <h3 class="cabecera-profesion">{{detallePostulante.profesion_ocupacion}}</h3>  
             <button mat-button class="boton-cv" (click)="verPDF(detallePostulante.cv)"> Revisar CV </button><br><br>
             <span class="cabecera-datos"><strong>Postulado para el cargo de:</strong> {{detallePostulante.puesto_empleo}}</span><br><br>
-            <span class="cabecera-datos"><strong>Fecha de postulacion:</strong> {{detallePostulante.fecha_postulacion}}</span><br><br>
+            <span class="cabecera-datos"><strong>Fecha de postulacion:</strong> {{detallePostulante.fecha_postulacion | date:"dd/MM/yy - hh:mm a"}}</span><br><br>
             <div fxLayout="row" class="cabecera-datos">
-                <span><strong >Fecha Nacimiento:</strong> {{detallePostulante.fecha_nacimiento}} </span>&nbsp;&nbsp;&nbsp; 
+                <span><strong >Fecha Nacimiento:</strong> {{detallePostulante.fecha_nacimiento | date:"dd/MM/yy"}} </span>&nbsp;&nbsp;&nbsp; 
                 <span><strong >CI:</strong> {{detallePostulante.numero_documento}}</span> &nbsp;&nbsp;&nbsp;
                 <span><strong >Sexo:</strong> {{detallePostulante.sexo}}</span>&nbsp;&nbsp;&nbsp;
             </div>

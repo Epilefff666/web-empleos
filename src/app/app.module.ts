@@ -28,6 +28,7 @@ import { ConfirmarGuardarComponent } from './Compartido/confirmar-guardar/confir
 import { RECAPTCHA_V3_SITE_KEY, RecaptchaV3Module, RecaptchaModule, RecaptchaFormsModule } from "ng-recaptcha";
 import { environment } from 'src/environments/environment';
 import { DialogFechasComponent } from './Compartido/dialog-fechas/dialog-fechas.component';
+import { EmpleosVencidosComponent } from './Compartido/empleos-vencidos/empleos-vencidos.component';
 
 
 @NgModule({
@@ -48,6 +49,7 @@ import { DialogFechasComponent } from './Compartido/dialog-fechas/dialog-fechas.
     MensajePostuladoComponent,
     ConfirmarGuardarComponent,
     DialogFechasComponent,
+    EmpleosVencidosComponent,
     
   ],
   imports: [

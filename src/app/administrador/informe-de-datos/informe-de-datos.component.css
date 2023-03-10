@@ -44,7 +44,7 @@ tr{
     /* padding: 5% 20% 5% 20% ; */
 }
 .contenedor-tabla{
-    width: 100%;
+    width: 80%;
     height: auto;
     overflow: auto;
 }

@@ -72,7 +72,7 @@
                         {{option.nombre_empresa}}
                     </mat-card-subtitle>
                     <div fxLayoutAlign="space-between">
-                        <span class="card-fecha">Fecha de publicacion: <br> {{option.fecha_publicacion}}</span>
+                        <span class="card-fecha">Fecha de publicacion: <br> {{option.fecha_publicacion | date:"dd/MM/yy - hh:mm a"}}</span>
                         <button class="card-boton" mat-button [routerLink]="['/detalle-empleo',option.id]">
                         Ver detalles
                         </button>
@@ -93,7 +93,7 @@
                         {{option.nombre_empresa}}
                     </mat-card-subtitle>
                     <div fxLayoutAlign="space-between">
-                        <span class="card-fecha">Fecha de publicacion: <br> {{option.fecha_publicacion}}</span>
+                        <span class="card-fecha">Fecha de publicacion: <br> {{option.fecha_publicacion | date:"dd/MM/yy - hh:mm a"}}</span>
                         <button class="card-boton" mat-button [routerLink]="['/detalle-empleo',option.id]">
                         Ver detalles
                         </button>

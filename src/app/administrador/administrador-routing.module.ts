@@ -17,6 +17,7 @@ const routes: Routes =[
   {path:'administrar-usuarios',component:AdministrarUsuariosComponent},
   {path:'administrar-usuarios/registrar-administrador',component:RegistroAdministradorComponent},
   {path:'informe-de-datos',component:InformeDeDatosComponent},
+  {path:'**', redirectTo:'inicio'}
 ]
 
 @NgModule({

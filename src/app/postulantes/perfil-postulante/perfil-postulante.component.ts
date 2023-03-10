@@ -22,6 +22,7 @@ export class PerfilPostulanteComponent implements OnInit {
   pdf:any
   imagenBase64!:string;  
   cv!:string;  
+  hay_cv!:any;
   form!:FormGroup;
   email!:string
   errores:any=[];
@@ -107,6 +108,7 @@ export class PerfilPostulanteComponent implements OnInit {
       if(this.modelo !== null){
         this.form.patchValue(this.modelo)
         this.foto = modelo.foto_perfil;
+        this.hay_cv = modelo.cv;
         /* console.log(this.modelo) */
       }
     })

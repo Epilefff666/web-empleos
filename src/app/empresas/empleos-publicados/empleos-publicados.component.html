@@ -14,7 +14,7 @@
                     </mat-card-title>
                     
                     <mat-card-subtitle>
-                        <strong>Fecha de publicacion:</strong><br>  {{item.fecha_publicacion}}
+                        <strong>Fecha de publicacion:</strong><br>  {{item.fecha_publicacion | date:"dd/MM/yy - hh:mm a"}}
                     </mat-card-subtitle>
                 </div>
                 <div class="card_descripcion">
@@ -51,7 +51,7 @@
                                 </mat-card-title>
                                 
                                 <mat-card-subtitle>
-                                    Fecha de publicacion:{{item.fecha_publicacion}}
+                                    Fecha de publicacion:{{item.fecha_publicacion | date:"dd/MM/yy - hh:mm a"}}
                                 </mat-card-subtitle>
                             </div>
                             <div class="card_descripcion">

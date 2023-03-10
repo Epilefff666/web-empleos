@@ -1,9 +1,10 @@
- <div class="buscador" >
-    <div fxLayoutAlign="center"><h1 class="titulo_empleos_publicados">Ofertas vigentes</h1></div>
+<div class="buscador" >
+    <div fxLayoutAlign="center"><h1 class="titulo_empleos_publicados">Ofertas pasadas</h1></div>
+
     <div class="buscador-box" fxLayoutAlign="center" >
 
         
-        <form class="buscador-box-formulario" [formGroup]="form" >
+        <form class="buscador-box-formulario" [formGroup]="form" (submit)="buscar(form.value)" >
             
             <div fxLayoutAlign="row">
             <div>
@@ -34,7 +35,7 @@
 
             </div>
             <div fxLayoutAlign="row" class="contenedor-botones">
-                <button class="buscador-boton" mat-button (click)="buscar(form.value)" >
+                <button class="buscador-boton" mat-button  >
                     Buscar
                 </button>
                 <button class="buscador-boton2" mat-button (click)="limpiar()" >
@@ -46,7 +47,7 @@
         </form>
     </div>
     <div fxLayoutAlign="end">
-        <button class="boton-ofertas-pasdas" mat-button (click)="navegar('ofertas-pasadas')">Revisar ofertas pasadas</button>
+        <button class="boton-ofertas-pasdas" mat-button (click)="volver()">Volver y buscar ofertas vigentes</button>
     </div>
     
 </div>
@@ -123,3 +124,4 @@
 (page)="actualizarPaginacion($event)" class="paginador" 
 >
 </mat-paginator>
+

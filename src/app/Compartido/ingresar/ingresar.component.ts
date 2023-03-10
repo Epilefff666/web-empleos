@@ -55,7 +55,7 @@ export class IngresarComponent implements OnInit {
           .subscribe(respuesta => {
             /* console.log(respuesta) */
             this.seguridadService.guardarToken(respuesta);
-            this.router.navigate(['/'])
+            this.router.navigate(['inicio'])
             window.location.reload();
           }, errores => this.errores = parsearErroresAPI(errores));
           }

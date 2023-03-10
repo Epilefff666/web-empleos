@@ -41,6 +41,16 @@ export class CompartidosService {
     return this.http.get<ofertas_publicadasDTO[]>(this.apiURL+'/ofertas-filtro2', {observe:'response',params});
   }
 
+  public Obtener_ofertas_pasadas2(pagina:number, cantidadregistrosAMostrar:number,palabraClave:string): Observable<any>{
+    let params = new HttpParams();
+    params = params.append('pagina', pagina.toString());
+    params = params.append('recordsPorPagina', cantidadregistrosAMostrar.toString());
+    params = params.append('palabraClave',palabraClave);
+
+
+    return this.http.get<ofertas_publicadasDTO[]>(this.apiURL+'/ofertas-pasadas-filtro2', {observe:'response',params});
+  }
+
 
 
   public Obtener_categorias():Observable<categoriasDTO[]>{

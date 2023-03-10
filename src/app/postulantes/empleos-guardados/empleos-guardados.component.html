@@ -4,7 +4,7 @@
         <mat-card class="card-postulaciones" *ngFor="let item of empleosGuardados" fxLayout="row">
             <div fxLayout="column" class="card-contenido">
                 <mat-card-title>{{item.puesto_empleo}}</mat-card-title>
-                <mat-card-subtitle class="contenido-fecha">Fecha publicacion: {{item.fecha_publicacion}}</mat-card-subtitle>
+                <mat-card-subtitle class="contenido-fecha">Fecha publicacion: {{item.fecha_publicacion | date:"dd/MM/yy - hh:mm a"}}</mat-card-subtitle>
                 <mat-card-content>
                     {{item.descripcion.substring(0,200)}}...
                     <br>

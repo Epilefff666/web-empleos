@@ -10,15 +10,10 @@ import { DetallePostulanteComponent } from './detalle-postulante/detalle-postula
 
 const routes: Routes =[
   {path:'publicar-empleo',component:PublicarEmpleoComponent},
-
   {path:'postulantes',component:PostulantesComponent},
-
   {path:'postulantes/detalle-postulante/:postulanteId/:publicacionId',component:DetallePostulanteComponent},
-
   {path:'empleos-publicados',component:EmpleosPublicadosComponent},
-
   {path:'editar-publicacion/:id',component:EditarPublicacionComponent},
-
   {path:'perfil', component:PerfilEmpresaComponent},
 
   {path:'**',redirectTo : 'perfil'}

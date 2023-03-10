@@ -26,7 +26,7 @@
                 <label style="color:white; text-align: center; font-size: 25px;" ><a style="color:white" href="https://localhost:44346/cv_modelo/CV modelo.xlsx" download="Cv">Descarga aquí la platilla de CV y adjuntala</a> </label><br>
                 
                 <input class="input_cv" type="file"  (change)="changeCv($event)" accept=".xlsx"  ><br>
-                <button class="boton_cv" *ngIf="modelo" mat-button (click)="abrirPdf(modelo.cv)"> Ver CV actual</button>
+                <button class="boton_cv" *ngIf="hay_cv" mat-button (click)="abrirPdf(modelo.cv)"> Ver CV actual</button>
             </div>
             <div>
                 <button class="guardar_cambios" *ngIf="!modelo" (click)="registrarPerfil(form.value)" mat-button [disabled]="form.invalid"> Registrar perfil <mat-icon>update</mat-icon></button>
