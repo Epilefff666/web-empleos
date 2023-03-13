@@ -57,7 +57,7 @@ export interface publicar_empleo_creacionDTO{
     fecha_vencimiento:Date;
     perfil_empresaId:number;
     categoriasId:number;
-    estadoId:number;
+    estadosId:number;
 }
 
 export interface postulantes_empresaDTO{

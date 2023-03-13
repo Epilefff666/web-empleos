@@ -25,8 +25,10 @@ export class PublicarEmpleoComponent implements OnInit {
     empresaId!:number;
     categorias:any[]=[];
 
+
   ngOnInit(): void {
     this.empresaId =Number(localStorage.getItem('perfilID')) 
+
     this.compartidosService.Obtener_categorias()
     .subscribe((categorias)=>{
       this.categorias = categorias;
@@ -36,10 +38,31 @@ export class PublicarEmpleoComponent implements OnInit {
       puesto_empleo :['',{
         validators:[Validators.required]
       }],
-      descripcion:['',{
+      descripcion_general :['',{
         validators:[Validators.required]
       }],
-      requisitos:['',{
+      funciones:['' ,{
+        validators:[Validators.required]
+      }],
+      mision_cargo:['' ,{
+        validators:[Validators.required]
+      }],
+      tipo_contrato:['' ,{
+        validators:[Validators.required]
+      }],
+      jornada_laboral:['' ,{
+        validators:[Validators.required]
+      }],
+      estudios:[ '' ,{
+        validators:[Validators.required]
+      }],
+      anhos_experiencia:[ '' ,{
+        validators:[Validators.required]
+      }],
+      conocimientos_idiomas:[ '' ,{
+        validators:[Validators.required]
+      }],
+      competencias_laborales:['',{
         validators:[Validators.required]
       }],
       categoriasId:['',{
@@ -52,6 +75,7 @@ export class PublicarEmpleoComponent implements OnInit {
       perfil_empresaId:[this.empresaId],
       estadosId:[1]
     });
+    
 
   }
 
@@ -62,7 +86,6 @@ export class PublicarEmpleoComponent implements OnInit {
       this.seguridadService.verificarReCaptcha(token)
       .subscribe( response =>{
         if( response.success === true){
-
           this.empresasService.publicarEmpleo(value)
             .subscribe(() => {
               console.log("empleo publicado")
@@ -77,15 +100,6 @@ export class PublicarEmpleoComponent implements OnInit {
     })
   }
 
-/*   publicarEmpleo(value:any){
-    console.log(value);
-    this.empresasService.publicarEmpleo(value)
-    .subscribe(()=>{
-      console.log("empleo publicado")
-      this.router.navigate(['empresas/empleos-publicados']);
-      window.location.reload();
-    })
-  } */
 
   obtenerError(){
     const puesto_empleo = this.form.get('puesto_empleo')
@@ -98,5 +112,6 @@ export class PublicarEmpleoComponent implements OnInit {
       return '';
     }
   }
+
 
 }

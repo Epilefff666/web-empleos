@@ -68,8 +68,9 @@ export class EmpresasService {
 
 
 
-  public publicarEmpleo(publicar_empleo:publicar_empleo_creacionDTO){
-    return this.http.post(this.apiURLpublicar+'/crear',publicar_empleo);
+  public publicarEmpleo(publicar_empleo:any){
+    const formData = this.construirDataEmpleo(publicar_empleo)
+    return this.http.post(`${this.apiURLpublicar}/${'crear'}`,formData); 
   } 
 
   public editarEmpleo(id:number,publicar_empleo:publicar_empleo_creacionDTO){
@@ -137,6 +138,28 @@ export class EmpresasService {
     formData.append("UserId",perfil_empresa.userId);
    
     return formData;
+  }
+
+  private construirDataEmpleo(value:any):FormData{
+
+    let descripcion = '• Descripción General:\n'+value.descripcion_general+'\n\n\n• Funciones a cumplir en el cargo:\n'+value.funciones+'\n\n\n• Misión del cargo:\n'+value.mision_cargo+'\n\n\n• Tipo de contrato:\n'+value.tipo_contrato+'\n\n\n• Jornada laboral:\n'+value.jornada_laboral;
+    let requisitos = '• Requisitos de estudios:\n'+value.estudios+'\n\n\n• Requisitos de experiencia:\n'+value.anhos_experiencia+'\n\n\n• Requisitos de conocimientos e idiomas:\n'+value.conocimientos_idiomas+'\n\n\n• Requisitos de competencias laborales:\n'+value.competencias_laborales;
+    let fecha_publicacion = value.fecha_publicacion.toUTCString();
+    let fecha_vencimiento = value.fecha_vencimiento.toUTCString();
+    let perfil_empresaId = value.perfil_empresaId.toString();
+    let categoriasId = value.categoriasId.toString()
+    let estadosId = value.estadosId.toString()
+
+    const data = new FormData();
+    data.append("puesto_empleo",value.puesto_empleo);
+    data.append("descripcion",descripcion);
+    data.append("requisitos",requisitos);
+    data.append("fecha_publicacion",fecha_publicacion);
+    data.append("fecha_vencimiento",fecha_vencimiento);
+    data.append("perfil_empresaId",perfil_empresaId);
+    data.append("categoriasId",categoriasId);
+    data.append("estadosId",estadosId);
+    return data;
   }
 
 }

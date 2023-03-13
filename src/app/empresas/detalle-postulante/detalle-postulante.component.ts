@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EmpresasService } from '../servicios/empresas.service';
 import { ActivatedRoute } from '@angular/router';
 import { DetallePostulanteDTO, perfil_empresaDTO } from '../interfaces/empresas.interfaces';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmarPostulacionComponent } from 'src/app/Compartido/confirmar-postulacion/confirmar-postulacion.component';
 
@@ -35,10 +35,13 @@ export class DetallePostulanteComponent implements OnInit {
     })
 
     this.form = this.formBuilder.group({
-      descripcion:[''],
+      descripcion:['',{
+        validators:[Validators.required]}],
       link:[''],
-      fecha:[''],
-      hora:['']
+      fecha:['',{
+        validators:[Validators.required]}],
+      hora:['',{
+        validators:[Validators.required]}]
     })
     
   }

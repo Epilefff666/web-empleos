@@ -12,14 +12,56 @@
             </mat-form-field><br>
 
             <mat-form-field appearance="fill" class="formulario-inputs" >
-                <mat-label>Descripcion del empleo</mat-label>
-                <textarea formControlName="descripcion" matInput></textarea>
+                <mat-label>Describre de manera genral la oferta</mat-label>
+                <textarea formControlName="descripcion_general" matInput></textarea>
                 <mat-error >{{obtenerError()}}</mat-error>
             </mat-form-field><br>
 
             <mat-form-field appearance="fill" class="formulario-inputs" >
-                <mat-label>Requisitos del empleo</mat-label>
-                <textarea formControlName="requisitos" matInput></textarea>
+                <mat-label>Describe las funciones a cumplir en el cargo</mat-label>
+                <textarea formControlName="funciones" matInput></textarea>
+                <mat-error >{{obtenerError()}}</mat-error>
+            </mat-form-field><br>
+
+            <mat-form-field appearance="fill" class="formulario-inputs" >
+                <mat-label>describe la misión del cargo</mat-label>
+                <textarea formControlName="mision_cargo" matInput></textarea>
+                <mat-error >{{obtenerError()}}</mat-error>
+            </mat-form-field><br>
+
+            <mat-form-field appearance="fill" class="formulario-inputs" >
+                <mat-label>Describre el tipo de contrato </mat-label>
+                <textarea formControlName="tipo_contrato" matInput></textarea>
+                <mat-error >{{obtenerError()}}</mat-error>
+            </mat-form-field><br>
+
+            <mat-form-field appearance="fill" class="formulario-inputs" >
+                <mat-label>Describre la joranada laboral </mat-label>
+                <textarea formControlName="jornada_laboral" matInput></textarea>
+                <mat-error >{{obtenerError()}}</mat-error>
+            </mat-form-field><br>
+
+            <mat-form-field appearance="fill" class="formulario-inputs" >
+                <mat-label>Requisitos de estudios </mat-label>
+                <textarea formControlName="estudios" matInput></textarea>
+                <mat-error >{{obtenerError()}}</mat-error>
+            </mat-form-field><br>
+
+            <mat-form-field appearance="fill" class="formulario-inputs" >
+                <mat-label>Requisitos de años de experiencia </mat-label>
+                <textarea formControlName="anhos_experiencia" matInput></textarea>
+                <mat-error >{{obtenerError()}}</mat-error>
+            </mat-form-field><br>
+
+            <mat-form-field appearance="fill" class="formulario-inputs" >
+                <mat-label>Requisitos de conocimientos e idiomas</mat-label>
+                <textarea formControlName="conocimientos_idiomas" matInput></textarea>
+                <mat-error >{{obtenerError()}}</mat-error>
+            </mat-form-field><br>
+
+            <mat-form-field appearance="fill" class="formulario-inputs" >
+                <mat-label>Requisitos de competencias laborales</mat-label>
+                <textarea formControlName="competencias_laborales" matInput></textarea>
                 <mat-error >{{obtenerError()}}</mat-error>
             </mat-form-field><br>
 

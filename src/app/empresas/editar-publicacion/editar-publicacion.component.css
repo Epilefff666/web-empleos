@@ -25,6 +25,14 @@
     margin: 10px;
     width: 100%;
 }
+.formulario-inputs textarea{
+    border-radius:15px ;
+    background-color: white;
+    color: #142f3f;
+    margin: 10px;
+    width: 100%;
+    height: 250px;
+}
 .boton_publicar{
     background-color: #33bbd1;
     color: white;
