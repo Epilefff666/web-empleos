@@ -73,7 +73,7 @@
             <div style="border:1px solid black;  padding-top: 50px;">
                 <ngx-charts-bar-vertical-2d style="color: white;"
                 [view]="view"
-                scheme="cool"
+                scheme="night"
                 [results]="postulantes_meses"
                 [gradient]="gradient"
                 [xAxis]="showXAxis"
@@ -83,6 +83,8 @@
                 [showYAxisLabel]="showYAxisLabel"
                 [xAxisLabel]="xAxisLabel"
                 [yAxisLabel]="yAxisLabel2"
+                [groupPadding]="5"
+                [barPadding]="1"
                 >
                 </ngx-charts-bar-vertical-2d>
                 <label fxLayoutAlign="center" class="label-graficas">Postulantes aceptados y rechazados por mes</label>

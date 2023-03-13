@@ -19,12 +19,12 @@ export class DatosInformeService {
   public datosSexo(datosReporte: any) {
     this.datos_sexo = [
       {
-        "name": "hombres",
-        "value": datosReporte.cantidad_postulantes_varones
-      },
-      {
         "name": "mujeres",
         "value": datosReporte.cantidad_postulantes_mujeres
+      },
+      {
+        "name": "hombres",
+        "value": datosReporte.cantidad_postulantes_varones
       },
       {
         "name": "otro sexo",
@@ -37,13 +37,14 @@ export class DatosInformeService {
 
   public datosPostulantes(datosReporte: any) {
     this.datos_postulantes = [
-      {
-        "name": "Aceptados",
-        "value": datosReporte.cantidad_postulantes_aceptados
-      },
+      
       {
         "name": "Rechazados",
         "value": datosReporte.cantidad_postulantes_rechazados
+      },
+      {
+        "name": "Aceptados",
+        "value": datosReporte.cantidad_postulantes_aceptados
       },
       {
         "name": "En espera",
