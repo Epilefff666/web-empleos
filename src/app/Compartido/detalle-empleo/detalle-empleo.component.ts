@@ -43,6 +43,8 @@ export class DetalleEmpleoComponent implements OnInit {
   tabla:any=[]
   fecha_vencimiento: string;
   fecha_publicacion: string;
+  fecha_actual = new Date();
+  vigente:boolean= true;
 
   constructor( private compartidosService: CompartidosService, 
     private activatedRoute:ActivatedRoute, 
@@ -63,11 +65,15 @@ export class DetalleEmpleoComponent implements OnInit {
       this.empresasService.obtnerEmpleoId(params['id_empleo'])
       .subscribe( (valor)=>{
         this.detalle_empleo = valor;
-        /* console.log(this.detalle_empleo) */
+  /*       console.log(this.detalle_empleo)
+        console.log(new Date(this.detalle_empleo.fecha_vencimiento)+'asdasd'+this.fecha_actual) */
+        if( new Date(this.detalle_empleo.fecha_vencimiento) < this.fecha_actual){
+          
+          this.vigente =  false
+        }
         this.empresaId = valor.perfil_empresaId;
         this.empresasService.obtenerEmpresaId(this.empresaId)
         .subscribe( (valor)=>{
-
         this.empresa = valor
         });
       });

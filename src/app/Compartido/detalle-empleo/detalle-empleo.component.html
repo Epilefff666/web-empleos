@@ -68,7 +68,7 @@
         
         <app-autorizado [rol]="'postulante'">
             <ng-container Autorizado >
-                <div fxLayoutAlign="end" *ngIf="postulado == false">
+                <div fxLayoutAlign="end" *ngIf="postulado == false && vigente == true">
 <!--                     <button class ="detalle-empleo-boton"mat-button (click)="postular()">Postular al empleo</button>
  -->                    <button class ="detalle-empleo-boton"mat-button (click)="openDialog()">Postular al empleo</button>
                 </div>
