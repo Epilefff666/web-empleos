@@ -6,34 +6,54 @@
         </ul>
     </div>
     <form [formGroup]="form">
-        <div fxLayout="row" fxLayoutAlign="space-around" class="perfil-foto">
-            <div>
+        <div class=" movil">
+            <div fxLayoutAlign="center">
+                <div fxLayout="column"  >
+                    <img *ngIf="foto && !imagenBase64" class="foto_imagen" [src]="foto" alt="" >
+                    <img *ngIf="imagenBase64" class="foto_imagen" [src]="imagenBase64" alt="">
+                    <img *ngIf="!imagenBase64 && !foto" class="foto_imagen" src="../../../assets/logos/Persona_Mesa de trabajo 1.png" alt="">
+
+                    <div fxLayoutAlign="center" >
+                        <button class="input_imagen"  mat-button (click)="fileInput.click()"> <mat-icon >camera_enhance</mat-icon></button>
+                        <input type="file" hidden #fileInput 
+                        (change)="changeFoto($event)">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="center" class="perfil-foto">
+            <div class="desktop">
                 <div fxLayout="column" >
                     <img *ngIf="foto && !imagenBase64" class="foto_imagen" [src]="foto" alt="">
                     <img *ngIf="imagenBase64" class="foto_imagen" [src]="imagenBase64" alt="">
                     <img *ngIf="!imagenBase64 && !foto" class="foto_imagen" src="../../../assets/logos/Persona_Mesa de trabajo 1.png" alt="">
 
                     <div fxLayoutAlign="center">
-                        <button class="input_imagen"  mat-button (click)="fileInput.click()"> <mat-icon>camera_enhance</mat-icon></button>
+                        <button class="input_imagen"  mat-button (click)="fileInput.click()"> <mat-icon >camera_enhance</mat-icon></button>
                         <input type="file" hidden #fileInput 
                         (change)="changeFoto($event)">
                     </div>
                     
                 </div>
             </div>
-            <div fxLayout="column" fxLayoutAlign="center">
+            <div fxLayoutAlign="center">
+                <div fxLayout="column">
                 
-                <label style="color:white; text-align: center; font-size: 25px;" ><a style="color:white" href="https://localhost:44346/cv_modelo/CV modelo.xlsx" download="Cv">Descarga aquí la platilla de CV y adjuntala</a> </label><br>
+                    <label class="descargar_modelo_cv" ><a style="color:white" href="https://localhost:44346/cv_modelo/CV modelo.xlsx" download="Cv">Descarga aquí la platilla de CV y adjuntala</a> </label><br>
                 
-                <input class="input_cv" type="file"  (change)="changeCv($event)" accept=".xlsx"  ><br>
-                <button class="boton_cv" *ngIf="hay_cv" mat-button (click)="abrirPdf(modelo.cv)"> Ver CV actual</button>
+                    <input class="input_cv" type="file"  (change)="changeCv($event)" accept=".xlsx"  ><br>
+                    <button class="boton_cv" *ngIf="hay_cv" mat-button (click)="abrirPdf(modelo.cv)"> Ver CV actual</button>
+                </div>
             </div>
             <div>
-                <button class="guardar_cambios" *ngIf="!modelo" (click)="registrarPerfil(form.value)" mat-button [disabled]="form.invalid"> Registrar perfil <mat-icon>update</mat-icon></button>
-                <button class="guardar_cambios" *ngIf="modelo"(click)="guardarCambios(form.value)" mat-button [disabled]="form.invalid"> Guardar cambios <mat-icon>update</mat-icon></button>
+                <button class="guardar_cambios desktop" *ngIf="!modelo" (click)="registrarPerfil(form.value)" mat-button [disabled]="form.invalid"> Registrar perfil <mat-icon>update</mat-icon></button>
+                <button class="guardar_cambios desktop" *ngIf="modelo"(click)="guardarCambios(form.value)" mat-button [disabled]="form.invalid"> Guardar cambios <mat-icon>update</mat-icon></button>
             </div>
         </div>
-
+        <div>
+            <button class="guardar_cambios movil" *ngIf="!modelo" (click)="registrarPerfil(form.value)" mat-button [disabled]="form.invalid"> Registrar perfil <mat-icon>update</mat-icon></button>
+            <button class="guardar_cambios movil" *ngIf="modelo"(click)="guardarCambios(form.value)" mat-button [disabled]="form.invalid"> Guardar cambios <mat-icon>update</mat-icon></button>
+        </div>
         <div *ngIf="this.mensajeRobot" style="text-align: center;">
             <ul  style="color:white; background-color: #FF6200; border-radius: 15px;">
                 <li>¡¡¡ {{mensajeRobot}} !!! </li>

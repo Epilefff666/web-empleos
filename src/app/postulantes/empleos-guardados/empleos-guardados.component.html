@@ -5,14 +5,16 @@
             <div fxLayout="column" class="card-contenido">
                 <mat-card-title>{{item.puesto_empleo}}</mat-card-title>
                 <mat-card-subtitle class="contenido-fecha">Fecha publicacion: {{item.fecha_publicacion | date:"dd/MM/yy - hh:mm a"}}</mat-card-subtitle>
-                <mat-card-content>
+                <mat-card-content class="desktop">
                     {{item.descripcion.substring(0,200)}}...
                     <br>
                 </mat-card-content>
             </div>
             <div fxLayout="column" class="card-botones">
-                <button class="boton-detalle" mat-button [routerLink]="['/detalle-empleo',item.id]">Ver detalle empleo</button>
-                <button class="boton-eliminar" mat-button (click)="openDialog(item.id)">Eliminar empleo guardado</button>
+                <button class="boton-detalle desktop" mat-button [routerLink]="['/detalle-empleo',item.id]">Ver detalle empleo</button>
+                <button class="boton-eliminar desktop" mat-button (click)="openDialog(item.id)">Eliminar empleo guardado</button>
+                <button class="boton-detalle movil" mat-button [routerLink]="['/detalle-empleo',item.id]">Ver detalle </button>
+                <button class="boton-eliminar movil" mat-button (click)="openDialog(item.id)">Eliminar </button>
             </div>
             
         </mat-card>

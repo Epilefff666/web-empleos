@@ -33,7 +33,8 @@
                 </mat-form-field>
 
             </div>
-            <div fxLayoutAlign="row" class="contenedor-botones">
+            <div class=" contenedor-botones desktop">
+            <div fxLayoutAlign="row" >
                 <button class="buscador-boton" mat-button (click)="buscar(form.value)" >
                     Buscar
                 </button>
@@ -41,6 +42,16 @@
                     Limpiar filtros
                 </button>
             </div>
+            </div>
+            <div  class="contenedor-botones movil">
+                <button class="buscador-boton" mat-button (click)="buscar(form.value)" >
+                    Buscar
+                </button>
+                <button class="buscador-boton2" mat-button (click)="limpiar()" >
+                    Limpiar 
+                </button>
+            </div>
+            
             
             </div>
         </form>
@@ -56,7 +67,9 @@
         <li>¡¡¡ {{mensajeRobot}} !!! </li>
     </ul>
 </div>
-<div class="lista-empleos" fxLayoutAlign="center" >
+
+<div class="desktop">
+<div class="lista-empleos " fxLayoutAlign="center" >
 
     <div *ngIf="resultados == false" style="color: white; padding-top: 50px;">
         <h2>No se encontraron ofertas</h2>
@@ -87,7 +100,7 @@
     </div>
 
 
-    <div fxLayout="column">
+    <div fxLayout="column"  >
         <div *ngFor="let option of Ofertas; let i = index" >
 
             <mat-card class="lista-empleos-card" *ngIf="i%2 == 1" >
@@ -115,7 +128,41 @@
 
     
 </div>
+</div>
 
+<div class="movil">
+<div class="lista-empleos " fxLayoutAlign="center">
+
+    <div *ngIf="resultados == false" style="color: white; padding-top: 50px;">
+        <h2>No se encontraron ofertas</h2>
+    </div>
+    <div fxLayout="column" >
+        <div *ngFor="let option of Ofertas; let i = index" >
+
+            <mat-card class="lista-empleos-card"  >
+                <img mat-card-image class ="lista-empleos-card-image" [src]="option.foto_perfil" >
+                <mat-card-content>
+                    <mat-card-title class="card-titulo">
+                        {{option.puesto_empleo}}
+                    </mat-card-title>
+                    <br>
+                    <mat-card-subtitle class="card-subtitulo">
+                        {{option.nombre_empresa}}
+                    </mat-card-subtitle>
+                    <div fxLayoutAlign="space-between">
+                        <span class="card-fecha">Fecha de publicacion: <br> {{option.fecha_publicacion | date:"dd/MM/yy - hh:mm a"}}</span>
+                        <button class="card-boton" mat-button [routerLink]="['/detalle-empleo',option.id]">
+                        Ver detalles
+                        </button>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+            
+        </div >
+        
+    </div>
+</div>
+</div>
 
 
 <mat-paginator [pageSizeOptions]="[1,2,4,8]" showFirstLastButtons

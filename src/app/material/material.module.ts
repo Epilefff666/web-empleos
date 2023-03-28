@@ -14,6 +14,8 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatMenuModule} from '@angular/material/menu';
 
 
 
@@ -34,6 +36,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatPaginatorModule,
     MatTableModule,
     MatDialogModule,
+    MatSidenavModule,
+    MatMenuModule,
   ]
 })
 export class MaterialModule { }

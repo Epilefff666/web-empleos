@@ -30,3 +30,52 @@
 .username{
     color: white;
   }
+
+  @media (min-width:991px){
+    .movil{
+      display:none;
+    }
+  }
+
+
+  @media (max-width:991px){
+    .movil{
+      display: block;
+    }
+    .desktop{
+      display: none;
+    }
+    .barra-lateral{
+      color: white;
+      
+    }
+
+    .toolbar-boton{
+      background-color: white;
+      color: black;
+      margin-top:5px;
+    }
+    .advertencia{
+      margin-top: 15px;
+      font-size: 14px;
+      color: white;
+    }
+    .avatar2{
+      margin: 10px 10px 0px 10px;
+    width: 30px;
+    height: 30px;
+    size: cover;
+    border-radius: 50%;
+    border: solid white;
+    }
+
+  }
+
+  @media(max-width:436px){
+    
+    .advertencia{
+      margin-top: 15px;
+      font-size: 9px;
+      color: white;
+    }
+  }

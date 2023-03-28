@@ -89,3 +89,22 @@ pre{
      background-color:  #33bbd1;
     color:#142f3f;
 }
+@media(max-width:991px){
+    .detalle-empleo-cabecera-titulo{
+        line-height: 50px;
+    }
+}
+@media(max-width:767px){
+    .detalle-empleo-cabecera-titulo{
+        font-size: 30px;
+    }
+    .detalle-empleo-imagen{
+        display: none;
+    }
+    .detalle-empleo-contenido-descripcion{
+        /* margin-left:5%; */
+        margin-bottom: 10%;
+        color: white;
+        font-size: 20px;
+    }
+}

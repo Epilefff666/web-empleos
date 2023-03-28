@@ -55,11 +55,11 @@
         <h2 class="buscador-segunda-descripicon">Contamos con una bolsa de empleos con todas las ofertas de Chuquisaca</h2>
     </div>
 </div>
-<div class="ofertas-recientes">
+<div class="ofertas-recientes desktop">
     <div fxLayoutAlign="center"  >
         <h1 class="ofertas-recientes-titulo">Ofertas Recientes</h1>
     </div >
-    <div fxLayout="row" fxLayoutAlign="center">
+    <div fxLayout="row" fxLayoutAlign="center" class="ofertas">
         <div fxLayout="column" >
             <mat-card class="ofertas-recientes-card"  *ngFor="let option of Ofertas1">
                 <img mat-card-image class ="ofertas-recientes-card-image" [src]="option.foto_perfil" >
@@ -104,6 +104,38 @@
         
 
     </div>
+</div>
+    <!------------------------------------------------ movil ------------------------------------>
+
+
+    <div class="ofertas-recientes movil">
+        <div fxLayoutAlign="center"  >
+            <h1 class="ofertas-recientes-titulo">Ofertas Recientes</h1>
+        </div >
+        <div fxLayout="row" fxLayoutAlign="center" class="ofertas">
+            <div fxLayout="column" >
+                <mat-card class="ofertas-recientes-card"  *ngFor="let option of ofertas">
+                    <img mat-card-image class ="ofertas-recientes-card-image" [src]="option.foto_perfil" >
+                    <mat-card-content>
+                        <mat-card-title class="card-titulo">
+                            {{option.puesto_empleo}}
+                        </mat-card-title>
+                        <br>
+                        <mat-card-subtitle class="card-subtitulo">
+                            {{option.nombre_empresa}}
+                        </mat-card-subtitle>
+                        <div fxLayoutAlign="space-between">
+                            <span class="card-fecha">Fecha de publicacion: <br> {{option.fecha_publicacion | date:"dd/MM/yy - hh:mm a"}}</span>
+                            <button class="card-boton" mat-button [routerLink]="['/detalle-empleo',option.id]">
+                            Ver detalles
+                            </button>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+                
+            </div>
+            
+        </div>
     
 
 </div>

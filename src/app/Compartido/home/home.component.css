@@ -104,3 +104,200 @@
     width: 50%;
     color: white;
 }
+.movil{
+    display: none;
+}
+
+
+
+@media(max-width:991px){
+
+    .movil{
+        display: none;
+    }
+
+    .buscador-descripcion{
+        padding-left: 10px;
+        padding-top: 50px;
+    }
+    .buscador-descripcion-texto{
+        color: white;
+        font-size: 40px;
+        line-height: 65px;
+    }
+
+    .buscador-box-formulario{
+        text-align: center;
+        border-radius: 15px;
+        background-color: white;
+        width: 450px;
+        
+        
+      }
+    .buscador-box-formulario-input {
+        width: 450px;
+      }
+
+      .buscador-imagen{
+        width: 300px;
+        margin-top: 0px;
+    }
+    .buscador-boton{
+        margin-left:5px;
+        margin-top: 1px;
+        margin-bottom: 10px;
+       
+    }
+
+    .buscador-segunda-descripicon{
+        color: white;
+        font-size: 25px;
+        margin-top: 2px;
+        margin-bottom: 5%;
+        margin:10px;
+        text-align: center;
+      }
+
+    .ofertas-recientes-card{
+        margin-bottom: 100px;
+        max-width: 300px;
+        margin: 10px;
+    }  
+
+    .ofertas-recientes-card-image{
+        height: 150px;
+        width: 330px;
+    }
+
+}
+
+@media(max-width:767px){
+
+   .movil{
+    display: block;
+   }
+   .desktop{
+    display: none;
+   }
+
+    .buscador-descripcion{
+        padding-left: 10px;
+        padding-top: 30px;
+    }
+    .buscador-descripcion-texto{
+        color: white;
+        font-size: 30px;
+        line-height: 40px;
+    }
+    .buscador-box-formulario{
+        text-align: center;
+        border-radius: 15px;
+        background-color: white;
+        width: 400px;
+        
+        
+      }
+    .buscador-box-formulario-input {
+        width: 400px;
+      }
+
+    .buscador-imagen{
+        width: 200px;
+        margin-top: 5%;
+    }
+    .buscador-boton{
+        margin-left:5px;
+        margin-top: 1px;
+        margin-bottom: 10px;
+       
+    }
+
+    .buscador-segunda-descripicon{
+        color: white;
+        font-size: 16px;
+        margin-top: 2px;
+        margin-bottom: 5%;
+        margin:10px;
+        text-align: center;
+      }
+
+    .ofertas-recientes-card{
+        margin-bottom: 100px;
+        max-width: 250px;
+        margin: 10px;
+    }  
+
+    .ofertas-recientes-card-image{
+        height: 150px;
+        width: 280px;
+    }
+    .ofertas-recientes-titulo{
+        color: white;
+        font-size: 30px;
+        line-height: 70px;
+        padding: 5%;
+        text-decoration:underline;
+        text-align: center;
+    }
+    
+}
+
+@media(max-width:575px){
+    
+
+    .buscador-descripcion{
+        padding-left: 10px;
+        padding-top: 30px;
+    }
+    .buscador-descripcion-texto{
+        color: white;
+        font-size: 18px;
+        line-height: 25px;
+    }
+    .buscador-box{
+        margin-left: 5%;
+    }
+    .buscador-box-formulario{
+        
+        border-radius: 15px;
+        background-color: white;
+        width: 200px;
+        height: 50px;
+        
+      }
+    .buscador-box-formulario-input {
+        width: 200px;
+      }
+
+    .mat-input-element {
+        height: 10px;
+        line-height: 1.5;
+      }
+    .mat-form-field-infix {
+        padding: 12px;
+      }
+
+    .buscador-imagen{
+        width: 100px;
+        margin-top: 20%;
+    }
+    .buscador-boton{
+        margin-left:5px;
+        margin-top: 1px;
+        margin-bottom: 10px;
+        height: 50px;       
+    }
+
+    .buscador-segunda-descripicon{
+        color: white;
+        font-size: 12px;
+        margin-top: 2px;
+        margin-bottom: 5%;
+        margin:10px;
+        text-align: center;
+      }
+
+       
+}
+
+

@@ -39,7 +39,9 @@
 .guardar_cambios{
     color: white;
     background-color: #33bbd1;
+    margin: 20px;
     margin-top:100px ;
+    
     padding: 10%;
     width: 200px;
 }
@@ -54,6 +56,12 @@
     background-color:#33bbd1 ;
     color: white;
 }
+.descargar_modelo_cv{
+    color:white; 
+    text-align: center; 
+    font-size: 25px;
+}
+
 .perfil_form{
     padding: 50px 200px 50px 200px;
     
@@ -76,4 +84,87 @@ textarea{
     margin: 10px;
     width: 50%;
     
+}
+.movil{
+    display: none;
+}
+
+@media(max-width:991px){
+    .titulo_perfil{
+        font-size: 30px;
+    }
+    .foto_imagen{
+        margin: 10px;
+        width: 150px;
+        height: 150px;
+
+    }
+    
+    .perfil_form{
+        padding: 50px 50px 50px 50px;
+    }
+    .input_imagen{
+        color: white;
+        background-color: #33bbd1;
+        width: 20px;
+        margin-top: -60px;
+        border-radius: 50%;
+        padding:0%;
+    }
+    .input_cv{
+        padding:3%;
+        width: auto;
+        border-radius: 15px;
+    }
+    .descargar_modelo_cv{
+        font-size: 18px;
+    }
+    .guardar_cambios{
+        margin-top:15%;
+    }
+
+
+}
+@media(max-width:767px){
+
+    .desktop{
+        display: none;
+    }
+    .movil{
+        display: block;
+    }
+
+    .perfil_form{
+        padding: 15px 5px 15px 5px;
+    }
+    .descargar_modelo_cv{
+        margin-top: 10px;
+        font-size: 18px;
+    }
+    .input_imagen{
+        color: white;
+        background-color: #33bbd1;
+        width: 20px;
+        margin-top: -60px;
+        border-radius: 50%;
+        padding:0%;
+    }
+
+    .foto_imagen{   
+        margin: 5px;
+        width: 150px;
+        height: 150px;
+    }
+    .guardar_cambios{
+        margin: 0px;
+        margin-top:5%;
+        padding: 5%;
+        width: 100%;
+    }
+
+    .formulario-inputs_mediano{
+        width: 45%;
+    }
+
+
 }

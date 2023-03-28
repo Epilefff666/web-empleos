@@ -101,3 +101,118 @@ mat-paginator{
     background-color: #33bcd1;
     color: white;
 }
+.movil{
+    display:none;
+}
+
+@media(max-width:991px){
+
+    .buscador-box-formulario{
+        width: 900px;
+    }
+    .buscador-box-formulario-input{
+        width: 450px;
+    }
+    .buscador-boton{
+
+        margin-left: 5%;
+        width: 35%;
+
+    }
+    .buscador-boton2{
+        margin-left: 5%;
+        width: 45%;
+    }
+
+    .lista-empleos-card{
+        max-width: 300px;
+        margin: 10px;
+        margin-top: 30px;
+    }
+    .lista-empleos-card-image{
+        height: 150px;
+        width: 330px;
+
+    }
+
+
+}
+
+@media(max-width:767px){
+    .desktop{
+        display: none;
+    }
+    .movil{
+        display: block;
+    }
+    .titulo_empleos_publicados{
+        font-size: 30px;
+
+    }
+
+    .buscador-box-formulario{
+        width: 500px;
+    }
+    .buscador-box-formulario-input{
+        width: 250px;
+    }
+    .buscador-boton{
+
+        margin-left: 2%;
+        width: 35%;
+
+    }
+    .buscador-boton2{
+        margin-left: 2%;
+        width: 45%;
+    }
+
+    .lista-empleos-card{
+        max-width: 250px;
+        margin: 10px;
+        margin-top: 30px;
+    }
+    .lista-empleos-card-image{
+        height: 150px;
+        width: 280px;
+
+    }
+
+}
+@media(max-width:575px){
+    .buscador-box-formulario{
+        width: 400px;
+    }
+    .buscador-box-formulario-input{
+        width: 200px;
+    }
+    .buscador-boton{
+
+        margin-left: 10%;
+        margin-top: 10px;
+        margin-bottom: 5px;
+        width: 80%;
+        height: 30px;
+        color: white;
+        border-radius: 15px;
+    }
+    .buscador-boton2{
+        margin-left: 10%;
+        margin-top: 5px;
+        margin-bottom: 10px;
+        width: 80%;
+        height: 30px;
+        color: white;
+        border-radius: 15px;
+    }
+    .boton-ofertas-pasdas{
+        margin-right: 10%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        width: 80%;
+        height: 35px;
+        color: white;
+        border-radius: 15px;
+    }
+
+}

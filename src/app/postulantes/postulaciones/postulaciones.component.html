@@ -5,25 +5,34 @@
             <div fxLayout="column" class="card-contenido">
                 <mat-card-title>{{item.puesto_empleo}}</mat-card-title>
                 <mat-card-subtitle class="contenido-fecha">Fecha postulacion:{{item.fecha_postulacion | date:"dd/MM/yy - hh:mm a"}}</mat-card-subtitle>
-                <mat-card-content>
-                    {{item.descripcion.substring(0,200)}}...
-                    <br>
+                <mat-card-content >
+                    <div class="desktop">
+                        {{item.descripcion.substring(0,200)}}...
+                    </div>
+                    
                     <div fxLayoutAlign="center" *ngIf="item.estado == 'Postulado'" style="background-color:#33bbd1; border-radius: 15px;">
-                        <strong>Estado postulacion: {{item.estado}}</strong> 
+                        <strong class="desktop">Estado postulacion: {{item.estado}}</strong> 
+                        <strong class="movil">Estado: {{item.estado}}</strong> 
                     </div>
                     <div fxLayoutAlign="center" *ngIf="item.estado == 'Aceptado'" style="background-color:greenyellow;border-radius: 15px;">
-                        <strong>Estado postulacion: {{item.estado}}</strong> 
+                        <strong class="desktop">Estado postulacion: {{item.estado}}</strong> 
+                        <strong class="movil">Estado: {{item.estado}}</strong> 
                     </div>
                     <div fxLayoutAlign="center" *ngIf="item.estado == 'Rechazado'" style="background-color:#ff6200;border-radius: 15px;">
-                        <strong>Estado postulacion: {{item.estado}}</strong> 
+                        <strong class="desktop">Estado postulacion: {{item.estado}}</strong> 
+                        <strong class="movil">Estado: {{item.estado}}</strong> 
                     </div>
                       
                 </mat-card-content>
             </div>
-            <div fxLayout="column" class="card-botones">
-                <button class="boton-detalle" mat-button [routerLink]="['/detalle-empleo',item.publicacionesId]">Ver detalle empleo</button>
-                <button *ngIf="item.estado != 'Aceptado'" (click)="openDialog(item.perfil_postulanteId,item.publicacionesId)" class="boton-eliminar" mat-button  >Eliminar postulacion</button>
+            <div fxLayout="column" class="card-botones ">
+                <button class="boton-detalle desktop" mat-button [routerLink]="['/detalle-empleo',item.publicacionesId]">Ver detalle empleo</button>
+                <button *ngIf="item.estado != 'Aceptado'" (click)="openDialog(item.perfil_postulanteId,item.publicacionesId)" class="boton-eliminar desktop"mat-button  >Eliminar postulacion</button>
+                <button class="boton-detalle movil" mat-button [routerLink]="['/detalle-empleo',item.publicacionesId]">Ver detalle </button>
+                <button *ngIf="item.estado != 'Aceptado'" (click)="openDialog(item.perfil_postulanteId,item.publicacionesId)" class="boton-eliminar movil" mat-button  >Eliminar </button>
+
             </div>
+
             
         </mat-card>
     </div>

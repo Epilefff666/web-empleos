@@ -43,3 +43,60 @@
     width: 24%;
     margin: 10px;
 }
+
+@media(max-width:991px){
+    .registro-contenedor-titulo{
+
+        padding: 25% 5% 0% 5%;
+
+    }
+
+    .registro-contenedor-formulario{
+        text-align: center;
+        padding: 0% 3% 27% 3%;
+    }
+
+    .boton-ingresar{
+        font-size: 16px;
+
+    }
+    .boton-registrar{
+        font-size: 16px;
+
+    }
+}
+
+@media(max-width:767px){
+    .registro-contenedor-titulo{
+        font-size: 30px;
+    }
+
+    .formulario-inputs{
+        width: 70%;
+    }
+    .boton-ingresar{
+        font-size: 14px;
+        padding: 1%;
+        width: 35%;
+    }
+    .boton-registrar{
+        font-size: 14px;
+        padding: 1%;
+        width: 35%;
+    }
+}
+@media(max-width:575px){
+    .formulario-inputs{
+        width: 80%;
+    }
+    .boton-ingresar{
+        font-size: 12px;
+        padding: 1%;
+        width: 40%;
+    }
+    .boton-registrar{
+        font-size: 12px;
+        padding: 1%;
+        width: 40%;
+    }
+}

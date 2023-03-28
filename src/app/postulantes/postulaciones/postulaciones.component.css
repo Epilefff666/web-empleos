@@ -45,3 +45,49 @@
 .contenido-fecha{
     color: #33bbd1;
 }
+
+.movil{
+    display: none;
+}
+
+@media(max-width:991px){
+    .movil{
+        display: none;
+    }
+    .contenedor-postulaciones{
+        
+        height:1000px;
+        margin: 0px;
+        padding: 1%;
+    }
+
+    .titulo_perfil{
+        font-size: 30px;
+    }
+    .card-contenido{
+        width: 70%;
+    }
+    .card-botones{
+        width: 30%;
+    }
+    .contenido-fecha{
+        margin-bottom: 5px;
+    }
+}
+@media(max-width:767px){
+    .desktop{
+        display: none;
+    }
+    .movil{
+        display: block;
+    }
+    .card-postulaciones{
+        padding: 3%;
+    }
+    .card-contenido{
+        width: 60%;
+    }
+    .card-botones{
+        width: 40%;
+    }
+}

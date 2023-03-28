@@ -42,3 +42,36 @@
     font-size: 28px;
     /* font-weight: bolder; */
 }
+
+@media(max-width:767px){
+    .registro-contenedor-titulo{
+        font-size: 30px;
+        line-height: 40px;
+        padding:2% 5% 2% 5%;
+    }
+
+    .registro-contenedor-card{
+        margin-bottom: 100px;
+        max-width: 150px;
+        margin: 10px;
+    }
+    .registro-contenedor-card-image{
+        height: 75px;
+        width: 150px;
+    }
+    .card-titulo{
+        font-size: 20px;
+    }
+    .registro-contenedor-pregunta{
+        font-size: 25px;
+    }
+    .registro-contenedor{
+        padding-bottom: 25%;
+    }
+}
+@media(max-width:575px){
+    .registro-contenedor-titulo{
+        font-size: 20px;
+        line-height: 30px;
+    }
+}
