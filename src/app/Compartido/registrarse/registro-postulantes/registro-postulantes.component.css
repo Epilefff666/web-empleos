@@ -44,7 +44,7 @@
     margin: 10px;
 }
 
-@media(max-width:575px){
+@media(max-width:767px){
     .registro-contenedor-titulo{
         padding-top: 25%;
         font-size: 30px;

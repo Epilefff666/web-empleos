@@ -54,3 +54,8 @@ td{
     color: white;
     margin:5px;
 }
+@media(max-width:767px){
+    .titulo{
+        font-size: 30px;
+    }
+}

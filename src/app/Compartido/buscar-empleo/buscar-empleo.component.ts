@@ -179,7 +179,7 @@ export class BuscarEmpleoComponent implements OnInit {
   }
 
   actualizarPaginacion(datos: PageEvent){
-    console.log(datos.length)
+    //console.log(datos.length)
     this.paginaActual =  datos.pageIndex +1 ;
     this.cantidadRegistrosAMostrar = datos.pageSize;
     let form = this.form.value

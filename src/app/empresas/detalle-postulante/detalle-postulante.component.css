@@ -37,7 +37,7 @@
 .cabecera-datos{
     color: white;
     font-size: 20px;
-    margin-bottom: 2%;
+    margin-bottom: 0%;
 }
 .contenedor-detalle-postulante-contenido{
     background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('src/assets/backgrounds/background-02-01.jpg');
@@ -73,8 +73,15 @@ li{
     border-radius: 15px;
     margin: 1rem;
 }
+.formulario-inputs-mediano{
+    background-color: white;
+    color: #142f3f;
+    border-radius: 15px;
+    margin: 1rem;
+}
 .contenedor-botones{
     margin-left: 10%;
+    width: 100%;
     
 }
 .boton-formulario{
@@ -83,7 +90,7 @@ li{
     font-size: 20px;
     height: 50px;
     margin-top: 1%;
-
+    
 }
 .boton-formulario-rechazar{
     background-color: #FF6200;
@@ -92,4 +99,99 @@ li{
     height: 50px;
     margin-top: 1%;
 
+}
+.boton-volver{
+    color: white; 
+    border: 1px solid #ffff; 
+    height: 50px;
+}
+.titulo-formulario{
+    color:white; 
+    margin-top:20px; 
+    font-size:27px;
+}
+.movil{
+    display: none;
+}
+.tablet{
+    display: none;
+}
+@media(max-width:991px){
+    .desktop{
+        display: none;
+    }
+    .tablet{
+        display: block;
+    }
+    .cabecera-foto-perfil{
+        width: 200px;
+        height: 200px;
+
+    }
+    .cabecera-datos{
+        margin-left: -220px;
+    }
+    .contenedor-botones{
+        margin-left: 2%;
+    }
+}
+@media(max-width:767px){
+    .movil{
+        display: block;
+    }
+    .tablet{
+        display: none;
+    }
+    .cabecera-foto-perfil{
+        width: 100px;
+        height: 100px;
+    }
+    .cabecera-nombres{
+        font-size: 30px;
+    }
+    .cabecera-profesion{
+        font-size: 20px;
+        margin-left: -115px;
+    }
+    .boton-cv{
+        margin-left: -115px;
+    }
+    .cabecera-datos{
+        margin-left: -115px;
+    }
+    .boton-volver{
+        margin-left: -100px;
+    }
+    .titulo-formulario{ 
+        margin: 10px;
+        font-size:20px;
+    }
+    .formulario-inputs-mediano{
+        width: 40%;
+        margin: 5%;
+    }
+    .contenedor-botones{
+        text-align: center;
+        width: 90%;
+        margin: 5%;
+    }
+}
+@media(max-width:575px){
+    
+    .cabecera-nombres{
+        font-size: 20px;
+    }
+    .cabecera-profesion{
+        font-size: 16px;
+
+    }
+    .cabecera-datos{
+        font-size: 14px;
+    }
+    .contenido-subtitulo{
+        font-size: 20px;
+    }
+    .contenido-descripcion{
+        font-size: 14px;
+    }
 }

@@ -7,7 +7,7 @@
     </div>
 
 
-
+    <div class="desktop">
     <div class="contenedor_cards_postulantes"  fxLayoutAlign="center">
         <div fxLayout="column" >
             <div *ngFor="let item of postulantes; let i = index">
@@ -80,8 +80,46 @@
         </div>
 
     </div>
+    </div>
 
-
+    <div class="movil">
+        <div class="contenedor_cards_postulantes"  fxLayoutAlign="center">
+            <div fxLayout="column" >
+                <div *ngFor="let item of postulantes; let i = index">
+                    <mat-card class="card_postulante">
+                        <div fxLayout="row">
+                            <div >
+                                <!-- <img class="card_imagen" src="http://www.nosotros-los-ingenieros.com/wp-content/uploads/2020/06/cooper.jpg" alt=""> -->
+                                <img class="card_imagen" [src]="item.foto_perfil" alt="">
+                            </div>
+                            <div class="card_contenido" fxLayout="column">
+                                <mat-card-title >
+                                    <h3 class="card_nombre">{{item.nombres}} {{item.apellidos}}</h3>
+                                </mat-card-title>
+                                <mat-card-subtitle>
+                                    <h3 class="card_cargo">{{item.profesion_ocupacion}}</h3>
+                                </mat-card-subtitle>
+                                <mat-card-content >
+                                    <div class="contenido_descripcion">
+                                        <span>Postulado para:</span>   <br> <p>{{item.puesto_empleo}}</p> 
+                                    </div>
+                                    
+                                </mat-card-content>
+                                
+                            </div>
+                            
+                        </div>
+                        <div  fxLayout="rows" fxLayoutAlign="center">
+                            <button class="card_boton" mat-button [routerLink]="['detalle-postulante/',item.perfil_postulanteId,item.publicacionesId]">Ver perfil</button>
+                            <button class="card_boton" mat-button (click)="verPDF(item.cv)" >Revisar CV</button>
+                            <button class="card_boton" mat-button (click)="openDialog(item.perfil_postulanteId ,item.publicacionesId)">descartar</button>
+                        </div>
+                    </mat-card>
+                </div>
+                
+            </div>
+        </div>    
+    </div>
 
     <mat-paginator [pageSizeOptions]="[1,2,4,8]" showFirstLastButtons
         [length]="cantidadTotalRegistros" [pageSize]="cantidadRegistrosAMostrar"

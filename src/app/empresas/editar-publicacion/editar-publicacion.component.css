@@ -42,3 +42,28 @@
     margin: 10px;
 }
 
+@media(max-width:1200px){
+    .contenedor_formulario{
+        padding: 0% 10% 0% 10%;
+    }
+    .formulario-inputs{
+        width: 98%;
+    }
+    .boton_publicar{
+        width: 50%;
+    }
+}
+@media(max-width:767px){
+    .publicar_empleo_titulo{
+        font-size: 30px;
+    }
+    .contenedor_formulario{
+        padding: 0% 2% 0% 2%;
+    }
+    .formulario-inputs{
+        width: 95%;
+    }
+    .boton_publicar{
+        width: 60%;
+    }
+}

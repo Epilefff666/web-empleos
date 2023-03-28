@@ -84,3 +84,23 @@ tr{
 .chart-legend .legend-title {
     color: black;
 }
+@media(max-width:991px){
+    .contenedor-tabla{
+        width: 100%;
+    }
+}
+@media(max-width:767px){
+    .titulo{
+        font-size: 30px;
+    }
+    .contenedor-tabla{
+        width: 100%;
+        margin: 1%;
+    }
+    th{
+        padding: 10px;
+    }
+    td{
+        padding: 10px;
+    }
+}

@@ -31,14 +31,14 @@
     color: white;
   }
 
-  @media (min-width:991px){
+  @media (min-width:1200px){
     .movil{
       display:none;
     }
   }
 
 
-  @media (max-width:991px){
+  @media (max-width:1200px){
     .movil{
       display: block;
     }

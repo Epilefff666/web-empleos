@@ -43,3 +43,25 @@
     width: 24%;
     margin: 10px;
 }
+
+@media(max-width:767px){
+    .registro-contenedor-titulo{
+        padding-top: 25%;
+        font-size: 30px;
+    }
+    .registro-contenedor-formulario{
+        padding: 0% 1% 25% 1%;
+    }
+    .formulario-inputs{
+        width: 90%;
+    }
+
+    .boton-registro{
+        font-size: 14px;
+        width: 40%;
+    }
+    .boton-cancelar{
+        font-size: 14px;
+        width: 40%;
+    }
+}

@@ -59,3 +59,50 @@
     margin: 1%;
     width: 30%;
 }
+.movil{
+    display: none;
+}
+
+@media(max-width:1200px){
+    .card_postulante{
+        width: 300px;
+        max-height: 300px;
+        margin:10px ;
+    }
+
+    .card_imagen{
+        width: 100px;
+        height: 100px;
+    }
+    .contenido_descripcion{
+        margin-left: -100px;
+    }
+}
+@media(max-width:767px){
+    .desktop{
+        display: none;
+    }
+    .movil{
+        display: block;
+    }
+    .postulantes_titulo{
+        font-size: 30px;
+    }
+    .card_postulante{
+        width: 270px;
+        max-height: 270px;
+        margin:5px ;
+    }
+    .card_nombre{
+        font-size: 20px;
+    }
+    .card_imagen{
+        width: 100px;
+        height: 100px;
+    }
+    .card_boton{
+        font-size:12px ;
+    }
+
+
+}

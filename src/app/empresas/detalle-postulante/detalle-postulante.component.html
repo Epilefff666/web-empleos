@@ -12,8 +12,8 @@
             <h2 class="cabecera-nombres"> {{detallePostulante.apellidos}}</h2>
             <h3 class="cabecera-profesion">{{detallePostulante.profesion_ocupacion}}</h3>  
             <button mat-button class="boton-cv" (click)="verPDF(detallePostulante.cv)"> Revisar CV </button><br><br>
-            <span class="cabecera-datos"><strong>Postulado para el cargo de:</strong> {{detallePostulante.puesto_empleo}}</span><br><br>
-            <span class="cabecera-datos"><strong>Fecha de postulacion:</strong> {{detallePostulante.fecha_postulacion | date:"dd/MM/yy - hh:mm a"}}</span><br><br>
+            <p class="cabecera-datos"><strong>Postulado para el cargo de:</strong><br class="movil"> {{detallePostulante.puesto_empleo}}</p><br>
+            <p class="cabecera-datos"><strong>Fecha de postulacion:</strong> {{detallePostulante.fecha_postulacion | date:"dd/MM/yy - hh:mm a"}}</p><br>
             <div fxLayout="row" class="cabecera-datos">
                 <span><strong >Fecha Nacimiento:</strong> {{detallePostulante.fecha_nacimiento | date:"dd/MM/yy"}} </span>&nbsp;&nbsp;&nbsp; 
                 <span><strong >CI:</strong> {{detallePostulante.numero_documento}}</span> &nbsp;&nbsp;&nbsp;
@@ -25,7 +25,7 @@
             </div>
             
         </div>
-        <button mat-button style="color: white; border: 1px solid #ffff; height: 50px;" (click)="volver()">volver</button>
+        <button mat-button class="boton-volver" (click)="volver()">volver</button>
 
     </div>
     <div class="contenedor-detalle-postulante-contenido" style="color: white;">
@@ -69,7 +69,7 @@
 
         <div class="contenedor-formulario-acpetacion"  >
             <div fxLayoutAlign="center">   
-                <h3 style="color:white; margin-top:20px; font-size:27px;"> Formulario de aceptación e invitacion a entrevista </h3>
+                <h3 class="titulo-formulario"> Formulario de aceptación e invitacion a entrevista </h3>
             </div>
             
             
@@ -85,7 +85,7 @@
                 
                 <div fxLayout="row" fxLayoutalign="space-around">
     
-                    <mat-form-field appearance="fill" class="formulario-inputs">
+                    <mat-form-field appearance="fill" class="formulario-inputs-mediano">
                         <mat-label>Fecha </mat-label>
                         <div fxLayout="row">
                             <input formControlName="fecha" matInput [matDatepicker]="picker">
@@ -96,15 +96,30 @@
                         <mat-datepicker #picker></mat-datepicker>
                     </mat-form-field>
     
-                    <mat-form-field appearance="fill"  class="formulario-inputs">
+                    <mat-form-field appearance="fill"  class="formulario-inputs-mediano">
                         <mat-label>Hora </mat-label>
                         <input formControlName="hora" matInput type="time">
                     </mat-form-field>
-                    <div fxLayout="column" class="contenedor-botones">
-                        <button class="boton-formulario" mat-button (click)="openDialogAceptar(detallePostulante.perfil_postulanteId,detallePostulante.publicacionesId,form.value)" >Aceptar e invitar a entrevista al postulante</button>
-                        <button class="boton-formulario-rechazar" mat-button (click)="openDialogRechazar(detallePostulante.perfil_postulanteId,detallePostulante.publicacionesId)">Rechazar postulante</button>
+
+                    <div class="desktop">
+                        <div fxLayout="column" class="contenedor-botones">
+                            <button [disabled]="form.invalid" class="boton-formulario" mat-button (click)="openDialogAceptar(detallePostulante.perfil_postulanteId,detallePostulante.publicacionesId,form.value)" >Aceptar e invitar a entrevista al postulante</button>
+                            <button class="boton-formulario-rechazar" mat-button (click)="openDialogRechazar(detallePostulante.perfil_postulanteId,detallePostulante.publicacionesId)">Rechazar postulante</button>
+                        </div>
                     </div>
-                    
+                    <div class="tablet">
+                        <div fxLayout="column" class="contenedor-botones">
+                            <button [disabled]="form.invalid" class="boton-formulario" mat-button (click)="openDialogAceptar(detallePostulante.perfil_postulanteId,detallePostulante.publicacionesId,form.value)" >Aceptar e invitar </button>
+                            <button class="boton-formulario-rechazar" mat-button (click)="openDialogRechazar(detallePostulante.perfil_postulanteId,detallePostulante.publicacionesId)">Rechazar </button>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="movil">
+                    <div fxLayout="column" class="contenedor-botones">
+                        <button [disabled]="form.invalid" class="boton-formulario" mat-button (click)="openDialogAceptar(detallePostulante.perfil_postulanteId,detallePostulante.publicacionesId,form.value)" >Aceptar e invitar </button>
+                        <button class="boton-formulario-rechazar" mat-button (click)="openDialogRechazar(detallePostulante.perfil_postulanteId,detallePostulante.publicacionesId)">Rechazar </button>
+                    </div>
                 </div>
                 
                 

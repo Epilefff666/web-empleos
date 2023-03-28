@@ -67,3 +67,48 @@ textarea{
     margin: 10px;
     width: 50%;
 }
+.movil{
+    display: none;
+}
+@media(max-width:991px){
+    .foto_imagen{
+        margin: 10px;
+        width: 150px;
+        height: 150px;
+
+    }
+    .guardar_cambios{
+        margin-top:25%;
+    }
+    .perfil_form{
+        padding: 50px 50px 50px 50px;
+    }
+}
+@media(max-width:767px){
+    .desktop{
+        display: none;
+    }
+    .movil{
+        display: block;
+    }
+    .titulo_perfil{
+        font-size: 30px;
+    }
+    .perfil_form{
+        padding: 15px 5px 15px 5px;
+    }
+    .foto_imagen{   
+        margin: 5px;
+        width: 150px;
+        height: 150px;
+    }
+    .guardar_cambios{
+        margin: 0px;
+        margin-top:5%;
+        padding: 5%;
+        width: 100%;
+    }
+    .formulario-inputs_telefono{
+        width: 45%;
+    }
+}

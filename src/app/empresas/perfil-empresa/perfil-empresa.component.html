@@ -25,11 +25,15 @@
                 </div>
                 
             </div>
-            <div >
+            <div class="desktop">
                 <button class="guardar_cambios" *ngIf="!modelo" (click)="registrarPerfil(form.value)" mat-button [disabled]="form.invalid"> Registrar perfil <mat-icon>update</mat-icon></button>
                 <button class="guardar_cambios" *ngIf="modelo"(click)="guardarCambios(form.value)" mat-button [disabled]="form.invalid"> Guardar cambios <mat-icon>update</mat-icon></button>
             </div>
             
+        </div>
+        <div class="movil">
+            <button class="guardar_cambios" *ngIf="!modelo" (click)="registrarPerfil(form.value)" mat-button [disabled]="form.invalid"> Registrar perfil <mat-icon>update</mat-icon></button>
+            <button class="guardar_cambios" *ngIf="modelo"(click)="guardarCambios(form.value)" mat-button [disabled]="form.invalid"> Guardar cambios <mat-icon>update</mat-icon></button>
         </div>
         <div *ngIf="this.mensajeRobot" style="text-align: center;">
             <ul  style="color:white; background-color: #FF6200; border-radius: 15px;">

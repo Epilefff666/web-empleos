@@ -90,9 +90,6 @@ textarea{
 }
 
 @media(max-width:991px){
-    .titulo_perfil{
-        font-size: 30px;
-    }
     .foto_imagen{
         margin: 10px;
         width: 150px;
@@ -126,14 +123,15 @@ textarea{
 
 }
 @media(max-width:767px){
-
     .desktop{
         display: none;
     }
     .movil{
         display: block;
     }
-
+    .titulo_perfil{
+        font-size: 30px;
+    }
     .perfil_form{
         padding: 15px 5px 15px 5px;
     }

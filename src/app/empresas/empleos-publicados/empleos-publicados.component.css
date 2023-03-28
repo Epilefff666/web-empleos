@@ -62,3 +62,32 @@
     background-color: #142f3f;
     margin:3px;
 }
+.movil{
+    display: none;
+}
+@media(max-width:767px){
+    .desktop{
+        display: none;
+    }
+    .movil{
+        display: block;
+    }
+    .cards_clasificacion_titulo{
+        font-size: 30px;
+    }
+    .card-boton{
+        height: 30px;
+        padding: 1px;
+        font-size:12px ;
+        width: 100%;
+    }
+    mat-card-title{
+        font-size:18px ;
+    }
+    mat-card-subtitle{
+        margin-bottom: 0px;
+    }
+    .empleos_publicados_card{
+        padding: 2%;
+    }
+}

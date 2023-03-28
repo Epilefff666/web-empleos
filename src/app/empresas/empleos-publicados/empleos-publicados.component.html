@@ -17,11 +17,12 @@
                         <strong>Fecha de publicacion:</strong><br>  {{item.fecha_publicacion | date:"dd/MM/yy - hh:mm a"}}
                     </mat-card-subtitle>
                 </div>
-                <div class="card_descripcion">
+                <div class="card_descripcion desktop">
                     <mat-card-content >
                         {{item.descripcion.substring(0,200)}}...
                     </mat-card-content>
                 </div>
+                <div class="desktop">
                 <div fxLayout="column">
                     <button class="card-boton" mat-button [routerLink]="['/detalle-empleo',item.id]">
                         Ver detalles
@@ -30,6 +31,17 @@
                         Editar publicación
                     </button>
                 </div>
+                </div>
+            </div>
+            <div class="movil">
+            <div fxLayout="row" fxLayoutAlign="space-around">
+                <button class="card-boton" mat-button [routerLink]="['/detalle-empleo',item.id]">
+                    Ver detalles
+                </button>
+                <button class="card-boton" mat-button [routerLink]="['/empresas/editar-publicacion',item.id]">
+                    Editar publicación
+                </button>
+            </div>
             </div>
         </mat-card>
         <mat-paginator [pageSizeOptions]="[1,2,4,8]" showFirstLastButtons
@@ -54,7 +66,7 @@
                                     Fecha de publicacion:{{item.fecha_publicacion | date:"dd/MM/yy - hh:mm a"}}
                                 </mat-card-subtitle>
                             </div>
-                            <div class="card_descripcion">
+                            <div class="card_descripcion desktop">
                                 <mat-card-content >
                                     {{item.descripcion.substring(0,200)}}...
                                 </mat-card-content>

@@ -1,6 +1,6 @@
 <div class="contenedor-datos" >
     <div fxLayoutAlign="center"class="titulo">Reporte de Datos</div>
-    <div fxLayoutAlign="space-around">
+    <div fxLayoutAlign="space-around" fxLayout.xs="column">
         <button mat-button class="descargar-pdf" (click)="createPDF()">
             Descargar informe Pdf
         </button>
@@ -9,7 +9,7 @@
         </button>
         
     </div>
-    <div fxLayoutAlign="row">
+    <div fxLayoutAlign="row" fxLayout.sm="column" fxLayout.xs="column">
         <div class="contenedor-tabla" *ngIf="datosReporte">
            
             <table >
@@ -32,7 +32,7 @@
             
         </div>
         <div class="graficas" >
-            <div style="border:1px solid black;">
+            <div style="border:1px solid black;overflow: auto;">
                 <ngx-charts-advanced-pie-chart class="grafica-sexo"   
                 [view]="view"
                 scheme="cool"
@@ -43,7 +43,7 @@
                 <label fxLayoutAlign="center" class="label-graficas">Postulantes agrupados por su sexo</label>
             </div>
             
-            <div style="border:1px solid black; padding-top: 50px;">
+            <div style="border:1px solid black; padding-top: 50px;overflow: auto;">
                 <ngx-charts-bar-vertical style="color: white;"
                 [view]="view"
                 scheme="cool"
@@ -60,7 +60,7 @@
                 </ngx-charts-bar-vertical>
                 <label fxLayoutAlign="center" class="label-graficas">Publicaciones realizadas por mes</label>
             </div>
-            <div style="border:1px solid black;">
+            <div style="border:1px solid black; overflow: auto;">
                 <ngx-charts-advanced-pie-chart class="grafica-sexo"
                 [view]="view"
                 scheme="cool"
@@ -70,7 +70,7 @@
                 </ngx-charts-advanced-pie-chart>
                 <label fxLayoutAlign="center" class="label-graficas" >Postulantes agrupados por su estado de postulación </label>
             </div>
-            <div style="border:1px solid black;  padding-top: 50px;">
+            <div style="border:1px solid black;  padding-top: 50px; overflow: auto;">
                 <ngx-charts-bar-vertical-2d style="color: white;"
                 [view]="view"
                 scheme="night"
